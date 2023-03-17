@@ -5,6 +5,7 @@ import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
+import AddVehicle from "./AddVehicle";
 
 class App extends Component {
     async componentWillMount() {
@@ -102,10 +103,10 @@ class App extends Component {
                                     <p className="text-center">Loading...</p>
                                 </div>
                             ) : (
-                                <Main
-                                    vehicles={this.state.vehicles}
-                                    createVehicle={this.createVehicle}
-                                    purchaseVehicle={this.purchaseVehicle}
+                                <AddVehicle
+                                    // vehicles={this.state.vehicles}
+                                    // createVehicle={this.createVehicle}
+                                    // purchaseVehicle={this.purchaseVehicle}
                                 />
                             )}
                         </main>
