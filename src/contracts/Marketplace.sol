@@ -9,39 +9,39 @@ contract Marketplace {
     struct Vehicle {
         uint vin;
         string vehicleType;
-        uint price;
+        uint vehiclePrice;
         address payable owner;
         string[] unaviableDates;
     }
 
-    event ProductCreated(
+    event VehicleCreated(
         uint vin,
         string vehicleType,
-        uint price,
+        uint vehiclePrice,
         address payable owner,
         string[] unaviableDates
     );
 
-    // event ProductPurchased(
-    //     uint id,
-    //     string name,
-    //     uint price,
-    //     address payable owner,
-    //     bool purchased
-    // );
+    event VehiclePurchased(
+        uint vin,
+        string vehicleType,
+        uint vehiclePrice,
+        address payable owner,
+        string[] unaviableDates
+    );
 
     constructor() public {
         name = "Chen & Yarden final project";
     }
 
-    function createProduct(string memory _vehicleType, uint _price) public {
+    function createVehicle(string memory _vehicleType, uint _price) public {
         // Require a valid name
         require(bytes(_vehicleType).length > 0);
         // Require a valid price
         require(_price > 0);
-        // Increment product count
+        // Increment Vehicle count
         vehicleCount++;
-        // Create the product
+        // Create the Vehicle
         vehicles[vehicleCount] = Vehicle(
             vehicleCount,
             _vehicleType,
@@ -50,7 +50,7 @@ contract Marketplace {
             new string[](0)
         );
         // Trigger an event
-        emit ProductCreated(
+        emit VehicleCreated(
             vehicleCount,
             _vehicleType,
             _price,
@@ -59,7 +59,7 @@ contract Marketplace {
         );
     }
 
-    // function purchaseProduct(uint _id) public payable {
+    function purchaseVehicle(uint _id) public payable {
     //     // Fetch the product
     //     Product memory _product = products[_id];
     //     // Fetch the owner
@@ -88,5 +88,5 @@ contract Marketplace {
     //         payable(msg.sender),
     //         true
     //     );
-    // }
+    }
 }
