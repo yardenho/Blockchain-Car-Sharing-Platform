@@ -3,23 +3,23 @@ pragma solidity >=0.5.0 <0.9.0;
 
 contract Marketplace {
     string public name;
-    uint public vehicleCount = 0;
-    mapping(uint => Vehicle) public vehicles;
+    uint public productCount = 0;
+    mapping(uint => Product) public products;
 
-    struct Vehicle {
-        uint vehicleNumber;
-        string vehicleType;
-        uint pricePerDay;
+    struct Product {
+        uint id;
+        string name;
+        uint price;
         address payable owner;
-        string[] unaviliableDates;
+        bool purchased;
     }
 
     event ProductCreated(
-        uint vehicleNumber,
-        string vehicleType,
-        uint pricePerDay,
+        uint id,
+        string name,
+        uint price,
         address payable owner,
-        string[] unaviliableDates
+        bool purchased
     );
 
     // event ProductPurchased(
@@ -34,28 +34,28 @@ contract Marketplace {
         name = "Chen & Yarden final project";
     }
 
-    function createVehicle(string memory _vehicleNumber, uint _price) public {
+    function createProduct(string memory _name, uint _price) public {
         // Require a valid name
-        require(bytes(_vehicleNumber).length > 0);
+        require(bytes(_name).length > 0);
         // Require a valid price
         require(_price > 0);
         // Increment product count
-        vehicleCount++;
+        productCount++;
         // Create the product
-        vehicles[vehicleCount] = Vehicle(
-            vehicleCount,
-            _vehicleNumber,
+        products[productCount] = Product(
+            productCount,
+            _name,
             _price,
             payable(msg.sender),
-            new string[](0)
+            false
         );
         // Trigger an event
         emit ProductCreated(
-            vehicleCount,
-            _vehicleNumber,
+            productCount,
+            _name,
             _price,
             payable(msg.sender),
-            new string[](0)
+            false
         );
     }
 
