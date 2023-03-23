@@ -91,7 +91,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -104,7 +105,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -138,7 +140,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -169,7 +172,8 @@
       "name": "purchaseVehicle",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vin\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehiclePrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string[]\",\"name\":\"unaviableDates\",\"type\":\"string[]\"}],\"name\":\"VehicleCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vin\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehiclePrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string[]\",\"name\":\"unaviableDates\",\"type\":\"string[]\"}],\"name\":\"VehiclePurchased\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_vehicleType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"createVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"purchaseVehicle\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vehicleCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"vehicles\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"vin\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"vehiclePrice\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/contracts/Marketplace.sol\":\"Marketplace\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/contracts/Marketplace.sol\":{\"keccak256\":\"0x6bb27ab6c1d70bb65c9e1d5c48da4e0b0e43160d1bf475bce05cecb4d5967ffb\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4f777475276ca43e5e4816a7c96b8242b94d8d41dbef6c56921576109116bf36\",\"dweb:/ipfs/QmRHXKBrnfZoWfmfqbBHmbKwCJXsV6nHryQa9CBxDzK8jP\"]}},\"version\":1}",
@@ -12769,12 +12773,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x33218Ba52134daA6781307C095789976b07c3F1e",
-      "transactionHash": "0x6ebbe1a1266ac59296c81a13ce9d70d4bdf7d864460470d854e83e3a0582c488"
+      "address": "0xF60fdB63aBBcBc5FcfbbEAA94aD9ba3fdE089B48",
+      "transactionHash": "0xadecfb15f2ac81c2a673e941659c2642f10d2725e4fe196a383172d430737a66"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-03-17T11:45:13.737Z",
+  "updatedAt": "2023-03-20T09:49:11.415Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

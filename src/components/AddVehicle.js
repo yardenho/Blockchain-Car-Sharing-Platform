@@ -1,70 +1,115 @@
-import React, { Component } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
+import React, { Component, useState } from "react";
 
 class AddVehicle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gearboxType: "Manual transmission",
+    };
+  }
 
   render() {
     return (
       <div id="content">
         <h1>Add Vehicle</h1>
-        <form onSubmit={(event) => {
-          event.preventDefault()
-            // car number, car type, pricePerDay, owner, unAvavilabe, gas Type, number of seats, gearbox - manaul or automat
-            //   const name = this.productName.value
-            //   const price = window.web3.utils.toWei(this.productPrice.value.toString(), 'Ether')
-            //   this.props.createProduct(name, price)
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            // car number - vin, car type, pricePerDay, owner, unAvavilabe, gas Type, number of seats, gearbox - manaul or automat
+            // const name = this.productName.value
+            const vin = this.vin.value;
+            const vehicleType = this.vehicleType.value;
+            const numOfSeats = this.numberOfSeats.value;
 
-        }}>
+            if (isNaN(this.pricePerDay.value.toString())) {
+              // price per day is not a number - need to show an error message
+              return;
+            }
+
+            const pricePerDay = window.web3.utils.toWei(
+              this.pricePerDay.value.toString(),
+              "Ether"
+            );
+
+            const gearboxType = this.state.gearboxType;
+            console.log("my name is no + ", gearboxType);
+
+            // this.props.createProduct(name, rentPrice)
+          }}
+        >
           <div className="form-group mr-sm-2">
             <br></br>
             <input
               id="vin"
               type="text"
-            //   ref={(input) => { this.productName = input }}
+              ref={(input) => {
+                this.vin = input;
+              }}
               className="form-control"
               placeholder="VIN"
-              required />
-              <input
+              required
+            />
+            <input
               id="vehicleType"
               type="text"
-            //   ref={(input) => { this.productName = input }}
+              ref={(input) => {
+                this.vehicleType = input;
+              }}
               className="form-control"
               placeholder="Vehicle type"
-              required />
-              <input
+              required
+            />
+            <input
               id="pricePerDay"
-              type="text"
-            //   ref={(input) => { this.productName = input }}
+              type="number"
+              ref={(input) => {
+                this.pricePerDay = input;
+              }}
               className="form-control"
               placeholder="Price per day"
-              required />
-              <input
-              id="seatsNum"
-              type="text"
-            //   ref={(input) => { this.productName = input }}
-              className="form-control"
-              placeholder="Product Name"
-              required />
-              <select id="gearboxType" class="form-select" aria-label="Default select example">
-                <option selected value="1">Manual transmission</option>
-                <option value="2">Automatic transmission</option>
-              </select>
-          </div>
-          <div className="form-group mr-sm-2">
+              required
+            />
             <input
-              id="productPrice"
-              type="text"
-              ref={(input) => { this.productPrice = input }}
+              id="seatsNum"
+              type="number"
+              ref={(input) => {
+                this.numberOfSeats = input;
+              }}
               className="form-control"
-              placeholder="Product Price"
-              required />
+              placeholder="Number of seats"
+              required
+            />
+
+            <label>
+              Pick the vehicle's gearbox type:
+              <select
+                name="gearboxType"
+                value={this.state.gearboxType} // ...force the select's value to match the state variable...
+                onChange={(e) => this.setState({ gearboxType: e.target.value })} // ... and update the state variable on any change!
+              >
+                <option value="Manual transmission">Manual transmission</option>
+                <option value="Automatic transmission">
+                  Automatic transmission
+                </option>
+              </select>
+            </label>
           </div>
-          <button type="submit" className="btn btn-primary">Add Vehicle</button>
+          <button type="submit" className="btn btn-primary">
+            Add Vehicle
+          </button>
         </form>
         <p>&nbsp;</p>
       </div>
     );
   }
 }
+
+// for number of seats field
+// function GearboxTypePicker() {
+//   const [gearbox, setGearbox] = useState(0);
+//   return (
+
+//   );
+// }
 
 export default AddVehicle;
