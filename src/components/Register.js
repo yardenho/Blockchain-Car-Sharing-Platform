@@ -1,7 +1,5 @@
 import React, { Component, useState } from "react";
 import { privateKeys, index, increaceIndex } from "../privateKeysForTests";
-import Accounts from "web3-eth-accounts";
-import Web3 from "web3";
 
 class Register extends Component {
     constructor(props) {
@@ -11,7 +9,6 @@ class Register extends Component {
         };
     }
     render() {
-        // const [registerMode, setRegisterMode] = setState(false);
         function wait(milliseconds) {
             return new Promise((resolve) => {
                 setTimeout(resolve, milliseconds);
@@ -68,7 +65,7 @@ class Register extends Component {
                         // const confirmPassword = this.confirmPassword.value;
 
                         if (checkDetails() == true) return;
-                        //**** check if user isnt already exist ****
+                        //**** check if user isnt allready exist ****
 
                         //get private key from the keys file
                         getKeys();
