@@ -22,7 +22,8 @@
         "web3": "1.0.0-beta.55"
     },
     "scripts": {
-        "start": "react-scripts --openssl-legacy-provider start",
+        "start1": "react-scripts --openssl-legacy-provider start",
+        "start2": "react-scripts start --openssl-legacy-provider",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"

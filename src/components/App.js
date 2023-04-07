@@ -6,6 +6,7 @@ import Marketplace from "../abis/Marketplace.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
+import Register from "./Register";
 
 class App extends Component {
     async componentWillMount() {
@@ -18,7 +19,7 @@ class App extends Component {
             window.web3 = new Web3(window.ethereum);
             await window.ethereum.enable();
         } else if (window.web3) {
-            window.web3 = new Web3(window.web3.currentProvider);
+            window.web3 = new Web3(window.ethereum);
         } else {
             window.alert(
                 "Non-Ethereum browser detected. You should consider trying MetaMask!"
@@ -103,11 +104,12 @@ class App extends Component {
                                     <p className="text-center">Loading...</p>
                                 </div>
                             ) : (
-                                <AddVehicle
-                                    // vehicles={this.state.vehicles}
-                                    // createVehicle={this.createVehicle}
-                                    // purchaseVehicle={this.purchaseVehicle}
-                                />
+                                <Register />
+                                // <AddVehicle
+                                //     // vehicles={this.state.vehicles}
+                                //     // createVehicle={this.createVehicle}
+                                //     // purchaseVehicle={this.purchaseVehicle}
+                                // />
                             )}
                         </main>
                     </div>
