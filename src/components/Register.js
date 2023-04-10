@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { privateKeys, index, increaceIndex } from "../privateKeysForTests";
 
 class Register extends Component {
-    showKey = false;
+    // showKey = false;
 
-    // constructor(props) {
-    //     super(props);
-    //     // this.state = {
-    //     //     showKey: false,
-    //     // };
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            showKey: false,
+        };
+    }
     render() {
         function wait(milliseconds) {
             return new Promise((resolve) => {
@@ -24,14 +24,15 @@ class Register extends Component {
                 alert(
                     "cannot register in that moment, the managers will fix the problem as soon as possible"
                 );
-                return;
+                return true;
             }
             //print the private key for 10 seconds
-            this.showKey = true;
-            // this.setState({ showKey: true });
+            // this.showKey = true;
+            this.setState({ showKey: true });
             await wait(5000); //waiting 5 secondes
-            // this.setState({ showKey: false });
-            this.showKey = false;
+            this.setState({ showKey: false });
+            // this.showKey = false;
+            return false;
         };
 
         const checkDetails = () => {
@@ -63,7 +64,7 @@ class Register extends Component {
                 </p>
                 <h5>please fill your details </h5>
                 <form
-                    onSubmit={(event) => {
+                    onSubmit={async (event) => {
                         event.preventDefault();
                         const fullName = this.fullName.value;
                         const emailAddress = this.emailAddress.value;
@@ -79,31 +80,17 @@ class Register extends Component {
                         //**** check if user isnt allready exist ****
 
                         //get private key from the keys file
-                        getKeys();
-                        console.log("fullName " + fullName);
-                        console.log("emailAddress " + emailAddress);
-                        console.log("age" + age);
-                        console.log("age" + age);
-                        console.log("picture" + picture);
-                        console.log("IDnumber" + IDnumber);
-                        console.log("password" + password);
+                        const res = await getKeys();
+                        if (res === true) return;
                         //saving the user details
                         this.props.createUser(
-                            "yarden",
-                            "yarden@ffff",
-                            21,
-                            "hhh",
-                            "123456789",
-                            "1234567890"
+                            fullName,
+                            emailAddress,
+                            age,
+                            picture,
+                            IDnumber,
+                            password
                         );
-                        // this.props.createUser(
-                        //     fullName,
-                        //     emailAddress,
-                        //     age,
-                        //     picture,
-                        //     IDnumber,
-                        //     password
-                        // );
                         //***** Do we need public key too ?? *****
                         //*****move to log in page****
                     }}
@@ -184,7 +171,7 @@ class Register extends Component {
                         Register
                     </button>
                 </form>
-                {this.showKey === true && (
+                {this.state.showKey === true && (
                     <p>Your private key is: {this.userPrivateKey}</p>
                 )}
                 <p>&nbsp;</p>
