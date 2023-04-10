@@ -1,13 +1,15 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { privateKeys, index, increaceIndex } from "../privateKeysForTests";
 
 class Register extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showKey: false,
-        };
-    }
+    showKey = false;
+
+    // constructor(props) {
+    //     super(props);
+    //     // this.state = {
+    //     //     showKey: false,
+    //     // };
+    // }
     render() {
         function wait(milliseconds) {
             return new Promise((resolve) => {
@@ -25,9 +27,11 @@ class Register extends Component {
                 return;
             }
             //print the private key for 10 seconds
-            this.setState({ showKey: true });
+            this.showKey = true;
+            // this.setState({ showKey: true });
             await wait(5000); //waiting 5 secondes
-            this.setState({ showKey: false });
+            // this.setState({ showKey: false });
+            this.showKey = false;
         };
 
         const checkDetails = () => {
@@ -35,8 +39,13 @@ class Register extends Component {
                 alert("A user must by older then 17 yaers old");
                 return true;
             }
+            console.log("id lengtht" + this.IDnumber.value.length);
+            if (this.IDnumber.value.length !== 9) {
+                alert("A user Id number must by 9 digits");
+                return true;
+            }
             //*** how to chack id number **** - TODO
-            if (this.password.value != this.confirmPassword.value) {
+            if (this.password.value !== this.confirmPassword.value) {
                 alert("Please provide an equal passwords");
                 return true;
             }
@@ -56,22 +65,45 @@ class Register extends Component {
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
-                        // const fullName = this.fullName.value;
-                        // const emailAddress = this.emailAddress.value;
-                        // const age = this.age.value;
-                        // const picture = this.picture;
-                        // const IDnumber = this.IDnumber.value;
-                        // const password = this.password.value;
-                        // const confirmPassword = this.confirmPassword.value;
+                        const fullName = this.fullName.value;
+                        const emailAddress = this.emailAddress.value;
+                        const age = parseInt(this.age.value);
+                        console.log("--------------------- " + event.target);
+                        const input = document.querySelector("#picture");
+                        console.log(input.files[0].name);
+                        const picture = input.files[0].name;
+                        const IDnumber = this.IDnumber.value;
+                        const password = this.password.value;
 
-                        if (checkDetails() == true) return;
+                        if (checkDetails() === true) return;
                         //**** check if user isnt allready exist ****
 
                         //get private key from the keys file
                         getKeys();
-
+                        console.log("fullName " + fullName);
+                        console.log("emailAddress " + emailAddress);
+                        console.log("age" + age);
+                        console.log("age" + age);
+                        console.log("picture" + picture);
+                        console.log("IDnumber" + IDnumber);
+                        console.log("password" + password);
                         //saving the user details
-
+                        this.props.createUser(
+                            "yarden",
+                            "yarden@ffff",
+                            21,
+                            "hhh",
+                            "123456789",
+                            "1234567890"
+                        );
+                        // this.props.createUser(
+                        //     fullName,
+                        //     emailAddress,
+                        //     age,
+                        //     picture,
+                        //     IDnumber,
+                        //     password
+                        // );
                         //***** Do we need public key too ?? *****
                         //*****move to log in page****
                     }}
@@ -139,7 +171,8 @@ class Register extends Component {
                             placeholder="Confirm password"
                             required
                         />
-                        <p>Add a picture </p>
+                        <label>Choose a picture: </label>
+
                         <input
                             type="file"
                             id="picture"
@@ -150,12 +183,10 @@ class Register extends Component {
                     <button type="submit" className="btn btn-primary">
                         Register
                     </button>
-
-                    {this.state.showKey == true && (
-                        <p>Youe private key is: {this.userPrivateKey}</p>
-                    )}
                 </form>
-
+                {this.showKey === true && (
+                    <p>Your private key is: {this.userPrivateKey}</p>
+                )}
                 <p>&nbsp;</p>
             </div>
         );
