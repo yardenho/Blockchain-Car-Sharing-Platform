@@ -3,9 +3,11 @@ import Web3 from "web3";
 import logo from "../logo.png";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
+import Users from "../abis/Users.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
+import Register from "./Register";
 
 class App extends Component {
   async componentWillMount() {
@@ -18,7 +20,7 @@ class App extends Component {
       window.web3 = new Web3(window.ethereum);
       await window.ethereum.enable();
     } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
+      window.web3 = new Web3(window.ethereum);
     } else {
       window.alert(
         "Non-Ethereum browser detected. You should consider trying MetaMask!"
@@ -26,12 +28,7 @@ class App extends Component {
     }
   }
 
-  async loadBlockchainData() {
-    const web3 = window.web3;
-    // Load account
-    const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    const networkId = await web3.eth.net.getId();
+  async loadMarketplaceContract(web3, networkId) {
     const networkData = Marketplace.networks[networkId];
     if (networkData) {
       const marketplace = web3.eth.Contract(
@@ -48,10 +45,40 @@ class App extends Component {
           vehicles: [...this.state.vehicles, vehicle],
         });
       }
-      this.setState({ loading: false });
     } else {
       window.alert("Marketplace contract not deployed to detected network.");
     }
+  }
+
+  async loadUsresContract(web3, networkId) {
+    const networkData = Users.networks[networkId];
+    if (networkData) {
+      const usersContract = web3.eth.Contract(Users.abi, networkData.address);
+      this.setState({ usersContract });
+      const usersCount = await usersContract.methods.usersCount().call();
+      console.log("user count *** - " + usersCount);
+      this.setState({ usersCount });
+      // Load users
+      for (var i = 1; i <= usersCount; i++) {
+        const user = await usersContract.methods.users(i).call();
+        this.setState({
+          vehicles: [...this.state.users, user],
+        });
+      }
+    } else {
+      window.alert("Usres contract not deployed to detected network.");
+    }
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3;
+    // Load account
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    const networkId = await web3.eth.net.getId();
+    this.loadMarketplaceContract(web3, networkId);
+    this.loadUsresContract(web3, networkId);
+    this.setState({ loading: false });
   }
 
   constructor(props) {
@@ -60,11 +87,14 @@ class App extends Component {
       account: "",
       vehicleCount: 0,
       vehicles: [],
+      userCount: 0,
+      users: [],
       loading: true,
     };
 
     this.createVehicle = this.createVehicle.bind(this);
     this.purchaseVehicle = this.purchaseVehicle.bind(this);
+    this.createUser = this.createUser.bind(this);
   }
 
   createVehicle(vin, vehicleType, price, numOfSeats, gearboxType) {
@@ -75,6 +105,20 @@ class App extends Component {
       .once("receipt", (receipt) => {
         this.setState({ loading: false });
       });
+  }
+
+  createUser(fullName, emailAddress, age, picture, IDnumber, password) {
+    this.setState({ loading: true });
+    console.log("in app.js createUser");
+    console.log(this.state.account);
+    this.state.usersContract.methods
+      .createUser(fullName, emailAddress, age, picture, IDnumber, password)
+      .send({ from: this.state.account })
+      .once("transactionHash", (transactionHash) => {
+        console.log("in app.js receipt");
+        this.setState({ loading: false });
+      });
+    // transactionHash
   }
 
   purchaseVehicle(id, price) {
@@ -99,6 +143,7 @@ class App extends Component {
                   <p className="text-center">Loading...</p>
                 </div>
               ) : (
+                // <Register createUser={this.createUser} />
                 <AddVehicle
                   vehicles={this.state.vehicles}
                   createVehicle={this.createVehicle}
