@@ -9,53 +9,69 @@ contract Marketplace {
     struct Vehicle {
         uint vin;
         string vehicleType;
-        uint vehiclePrice;
+        uint vehiclePricePerDay;
         address payable owner;
         string[] unaviableDates;
+        uint numOfSeats;
+        string gearboxType;
     }
 
     event VehicleCreated(
         uint vin,
         string vehicleType,
-        uint vehiclePrice,
+        uint vehiclePricePerDay,
         address payable owner,
-        string[] unaviableDates
+        string[] unaviableDates,
+        uint numOfSeats,
+        string gearboxType
     );
 
     event VehiclePurchased(
         uint vin,
         string vehicleType,
-        uint vehiclePrice,
+        uint vehiclePricePerDay,
         address payable owner,
-        string[] unaviableDates
+        string[] unaviableDates,
+        uint numOfSeats,
+        string gearboxType
     );
 
     constructor() public {
         name = "Chen & Yarden final project";
     }
 
-    function createVehicle(string memory _vehicleType, uint _price) public {
-        // Require a valid name
-        require(bytes(_vehicleType).length > 0);
+    function createVehicle(string memory _vin, string memory _vehicleType, uint _price, uint _numOfSeats, string memory _gearboxType) public {
+        // Require a valid vin
+        require(bytes(_vin).length > 0);
         // Require a valid price
         require(_price > 0);
+        // Require a valid vehicle type
+        require(bytes(_vehicleType).length > 0);
+        // Require a valid number of seats in the vehicle
+        require(_numOfSeats > 0);
+        // Require a valid gearbox type
+        require(bytes(_gearboxType).length > 0);
         // Increment Vehicle count
         vehicleCount++;
         // Create the Vehicle
         vehicles[vehicleCount] = Vehicle(
             vehicleCount,
-            _vehicleType,
+            _vin,
             _price,
             payable(msg.sender),
-            new string[](0)
+            new string[](0),
+            _numOfSeats,
+            _gearboxType
         );
         // Trigger an event
         emit VehicleCreated(
             vehicleCount,
-            _vehicleType,
+            _vin,
             _price,
             payable(msg.sender),
-            new string[](0)
+            new string[](0),
+            _numOfSeats,
+            _gearboxType
         );
     }
 
@@ -90,3 +106,7 @@ contract Marketplace {
     //     );
     }
 }
+
+
+// TODO: handle string[] unaviableDates
+// TODO: need to add vehicle status
