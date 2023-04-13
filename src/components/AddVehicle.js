@@ -38,13 +38,13 @@ class AddVehicle extends Component {
             console.log("price per day + ", pricePerDay);
             console.log("gearbox type + ", gearboxType);
 
-            // this.props.createVehicle(
-            //   vin,
-            //   vehicleType,
-            //   pricePerDay,
-            //   numOfSeats,
-            //   gearboxType
-            // );
+            this.props.createVehicle(
+              vin,
+              vehicleType,
+              pricePerDay,
+              numOfSeats,
+              gearboxType
+            );
           }}
         >
           <div className="form-group mr-sm-2">

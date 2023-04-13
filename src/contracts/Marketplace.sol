@@ -54,25 +54,25 @@ contract Marketplace {
         // Increment Vehicle count
         vehicleCount++;
         // Create the Vehicle
-        vehicles[vehicleCount] = Vehicle(
-            vehicleCount,
-            _vin,
-            _price,
-            payable(msg.sender),
-            new string[](0),
-            _numOfSeats,
-            _gearboxType
-        );
-        // Trigger an event
-        emit VehicleCreated(
-            vehicleCount,
-            _vin,
-            _price,
-            payable(msg.sender),
-            new string[](0),
-            _numOfSeats,
-            _gearboxType
-        );
+        // vehicles[vehicleCount] = Vehicle(
+        //     vehicleCount,
+        //     _vin,
+        //     _price,
+        //     payable(msg.sender),
+        //     new string[](0),
+        //     _numOfSeats,
+        //     _gearboxType
+        // );
+        // // Trigger an event
+        // emit VehicleCreated(
+        //     vehicleCount,
+        //     _vin,
+        //     _price,
+        //     payable(msg.sender),
+        //     new string[](0),
+        //     _numOfSeats,
+        //     _gearboxType
+        // );
     }
 
     function purchaseVehicle(uint _id) public payable {
