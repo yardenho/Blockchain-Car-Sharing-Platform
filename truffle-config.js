@@ -8,6 +8,11 @@ module.exports = {
             port: 7545,
             network_id: "*", // Match any network id
         },
+        // development: {
+        //     host: "127.0.0.1",
+        //     port: 8545,
+        //     network_id: "4964", // Match any network id
+        // },
     },
     contracts_directory: "./src/contracts/",
     contracts_build_directory: "./src/abis/",

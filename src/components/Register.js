@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { privateKeys, index, increaceIndex } from "../privateKeysForTests";
+import { privateKeys, index, increaceIndex } from "../privateKeys";
 
 class Register extends Component {
     // showKey = false;
@@ -18,7 +18,6 @@ class Register extends Component {
         }
 
         const getKeys = async () => {
-            this.userPrivateKey = privateKeys[index];
             const res = increaceIndex();
             if (res == null) {
                 alert(
@@ -26,10 +25,14 @@ class Register extends Component {
                 );
                 return true;
             }
+            this.userPrivateKey = privateKeys[index - 1][1];
+            this.userAddress = privateKeys[index - 1][0];
+            this.userNodeNumber = index;
+
             //print the private key for 10 seconds
             // this.showKey = true;
             this.setState({ showKey: true });
-            await wait(5000); //waiting 5 secondes
+            await wait(10000); //waiting 10 secondes
             this.setState({ showKey: false });
             // this.showKey = false;
             return false;
@@ -53,6 +56,17 @@ class Register extends Component {
             return false;
         };
 
+        const checkUser = () => {
+            console.log(this.props.users);
+            for (let i = 0; i < this.props.users.length; ++i) {
+                if (this.props.users[i].IDnumber === this.IDnumber.value) {
+                    alert("There is already a user with this ID number");
+                    return true;
+                }
+            }
+            return false;
+        };
+
         return (
             <div id="content">
                 <h1>Welcome !</h1>
@@ -69,7 +83,6 @@ class Register extends Component {
                         const fullName = this.fullName.value;
                         const emailAddress = this.emailAddress.value;
                         const age = parseInt(this.age.value);
-                        console.log("--------------------- " + event.target);
                         const input = document.querySelector("#picture");
                         console.log(input.files[0].name);
                         const picture = input.files[0].name;
@@ -77,13 +90,16 @@ class Register extends Component {
                         const password = this.password.value;
 
                         if (checkDetails() === true) return;
-                        //**** check if user isnt allready exist ****
+                        //**** check if user isnt already exist ****
+                        if (checkUser() === true) return;
 
                         //get private key from the keys file
                         const res = await getKeys();
                         if (res === true) return;
                         //saving the user details
+                        console.log("user address " + this.userAddress);
                         this.props.createUser(
+                            this.userAddress,
                             fullName,
                             emailAddress,
                             age,
@@ -91,7 +107,7 @@ class Register extends Component {
                             IDnumber,
                             password
                         );
-                        //***** Do we need public key too ?? *****
+                        //TODO - need to make a automatice file for the run command
                         //*****move to log in page****
                     }}
                 >
@@ -140,7 +156,7 @@ class Register extends Component {
                         />
                         <input
                             id="password"
-                            type="text"
+                            type="password"
                             ref={(input) => {
                                 this.password = input;
                             }}
@@ -150,7 +166,7 @@ class Register extends Component {
                         />
                         <input
                             id="confirmPassword"
-                            type="text"
+                            type="password"
                             ref={(input) => {
                                 this.confirmPassword = input;
                             }}
@@ -158,7 +174,9 @@ class Register extends Component {
                             placeholder="Confirm password"
                             required
                         />
-                        <label>Choose a picture: </label>
+                        <label style={{ marginRight: 5 }}>
+                            upload your driver license:{" "}
+                        </label>
 
                         <input
                             type="file"
@@ -171,8 +189,22 @@ class Register extends Component {
                         Register
                     </button>
                 </form>
+                <button
+                    onClick={(event) => (window.location.href = "/login.js")}
+                    className="btn btn-primary"
+                    style={{ marginTop: 5 }}
+                >
+                    Move to login page
+                </button>
                 {this.state.showKey === true && (
-                    <p>Your private key is: {this.userPrivateKey}</p>
+                    <>
+                        <p>Your private key is: {this.userPrivateKey}</p>
+                        <p>Your node is number: {this.userNodeNumber}.</p>
+                        <p>
+                            Your node run command apperes in the path node
+                            {this.userNodeNumber}/run_command.txt
+                        </p>
+                    </>
                 )}
                 <p>&nbsp;</p>
             </div>

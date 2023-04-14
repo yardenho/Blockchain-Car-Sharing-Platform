@@ -7,6 +7,7 @@ contract Users {
     mapping(uint => User) public users;
 
     struct User {
+        string userAddress;
         string fullName;
         string emailAddress;    
         uint age;
@@ -16,6 +17,7 @@ contract Users {
     }
     
     event UserCreated(
+        string userAddress,
         string fullName,
         string emailAddress,
         uint age,
@@ -28,24 +30,26 @@ contract Users {
         name = "Chen & Yarden final project";
     }
 
-    function createUser(string memory _fullName, string memory _emailAddress, uint _age, string memory _picture, string memory _IDnumber, string memory _password) public {
-        // // Require a valid name
+    function createUser(string memory _userAddress, string memory _fullName, string memory _emailAddress, uint _age, string memory _picture, string memory _IDnumber, string memory _password) public {
+        // Require a valid user address
+        require(bytes(_userAddress).length > 0);
+        // Require a valid name
         require(bytes(_fullName).length > 0);
-        // // Require a valid email address
+        // Require a valid email address
         require(bytes(_emailAddress).length > 0);
-        // // Require a valid age
+        // Require a valid age
         require(_age > 16);
-        // // Require a valid picture
+        // Require a valid picture
         require(bytes(_picture).length > 0);
-        // // Require a valid ID number
+        // Require a valid ID number
         require(bytes(_IDnumber).length > 0);
-        // // Require a valid password
+        // Require a valid password
         require(bytes(_password).length > 0);  
-
         // Increment users count
         usersCount++;
         // Create the user
         users[usersCount] = User(
+            _userAddress,
             _fullName,
             _emailAddress,
             _age,
@@ -55,6 +59,7 @@ contract Users {
         );
         // Trigger an event
         emit UserCreated(
+            _userAddress,
             _fullName,
             _emailAddress,
             _age,
@@ -63,6 +68,4 @@ contract Users {
             _password
         );
     }
-
-
 }

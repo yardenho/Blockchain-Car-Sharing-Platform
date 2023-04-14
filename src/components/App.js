@@ -69,7 +69,7 @@ class App extends Component {
             for (var i = 1; i <= usersCount; i++) {
                 const user = await usersContract.methods.users(i).call();
                 this.setState({
-                    vehicles: [...this.state.users, user],
+                    users: [...this.state.users, user],
                 });
             }
         } else {
@@ -83,6 +83,7 @@ class App extends Component {
         const accounts = await web3.eth.getAccounts();
         this.setState({ account: accounts[0] });
         const networkId = await web3.eth.net.getId();
+        console.log("network id " + networkId);
         this.loadMarketplaceContract(web3, networkId);
         this.loadUsresContract(web3, networkId);
         this.setState({ loading: false });
@@ -114,12 +115,21 @@ class App extends Component {
             });
     }
 
-    createUser(fullName, emailAddress, age, picture, IDnumber, password) {
+    createUser(
+        address,
+        fullName,
+        emailAddress,
+        age,
+        picture,
+        IDnumber,
+        password
+    ) {
         this.setState({ loading: true });
         console.log("in app.js createUser");
         console.log(this.state.account);
         this.state.usersContract.methods
             .createUser(
+                address,
                 fullName,
                 emailAddress,
                 age,
@@ -157,7 +167,10 @@ class App extends Component {
                                     <p className="text-center">Loading...</p>
                                 </div>
                             ) : (
-                                <Register createUser={this.createUser} />
+                                <Register
+                                    createUser={this.createUser}
+                                    users={this.state.users}
+                                />
                                 // <AddVehicle
                                 // // vehicles={this.state.vehicles}
                                 // // createVehicle={this.createVehicle}
