@@ -105,10 +105,10 @@ class App extends Component {
         this.createUser = this.createUser.bind(this);
     }
 
-    createVehicle(name, price) {
+    createVehicle(vin, vehicleType, price, numOfSeats, gearboxType) {
         this.setState({ loading: true });
         this.state.marketplace.methods
-            .createVehicle(name, price)
+            .createVehicle(vin, vehicleType, price, numOfSeats, gearboxType)
             .send({ from: this.state.account })
             .once("receipt", (receipt) => {
                 this.setState({ loading: false });
