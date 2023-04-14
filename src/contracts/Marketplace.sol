@@ -7,7 +7,7 @@ contract Marketplace {
     mapping(uint => Vehicle) public vehicles;
 
     struct Vehicle {
-        uint vin;
+        string vin;
         string vehicleType;
         uint vehiclePricePerDay;
         address payable owner;
@@ -17,7 +17,7 @@ contract Marketplace {
     }
 
     event VehicleCreated(
-        uint vin,
+        string vin,
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
@@ -27,7 +27,17 @@ contract Marketplace {
     );
 
     event VehiclePurchased(
-        uint vin,
+        string vin,
+        string vehicleType,
+        uint vehiclePricePerDay,
+        address payable owner,
+        string[] unaviableDates,
+        uint numOfSeats,
+        string gearboxType
+    );
+
+    event VehicleRented(
+        string vin,
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
@@ -54,25 +64,25 @@ contract Marketplace {
         // Increment Vehicle count
         vehicleCount++;
         // Create the Vehicle
-        // vehicles[vehicleCount] = Vehicle(
-        //     vehicleCount,
-        //     _vin,
-        //     _price,
-        //     payable(msg.sender),
-        //     new string[](0),
-        //     _numOfSeats,
-        //     _gearboxType
-        // );
-        // // Trigger an event
-        // emit VehicleCreated(
-        //     vehicleCount,
-        //     _vin,
-        //     _price,
-        //     payable(msg.sender),
-        //     new string[](0),
-        //     _numOfSeats,
-        //     _gearboxType
-        // );
+        vehicles[vehicleCount] = Vehicle(
+            _vin,
+            _vehicleType,
+            _price,
+            payable(msg.sender),
+            new string[](0),
+            _numOfSeats,
+            _gearboxType
+        );
+        // Trigger an event
+        emit VehicleCreated(
+            _vin,
+            _vehicleType,
+            _price,
+            payable(msg.sender),
+            new string[](0),
+            _numOfSeats,
+            _gearboxType
+        );
     }
 
     function purchaseVehicle(uint _id) public payable {
@@ -108,5 +118,7 @@ contract Marketplace {
 }
 
 
-// TODO: handle string[] unaviableDates
-// TODO: need to add vehicle status
+// TODO: when adding a new vehicle we need to test that the vin doesn't already exists.
+// TODO: need to add up for rent status in vehicles.
+// TODO: maybe add id to the vehicle so we can use get by id when needed.
+
