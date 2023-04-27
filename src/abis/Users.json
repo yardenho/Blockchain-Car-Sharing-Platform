@@ -10251,9 +10251,7 @@
   "ast": {
     "absolutePath": "project:/src/contracts/users.sol",
     "exportedSymbols": {
-      "Users": [
-        395
-      ]
+      "Users": [395]
     },
     "id": 396,
     "license": "GPL-3.0",
@@ -10261,15 +10259,7 @@
     "nodes": [
       {
         "id": 252,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.5",
-          ".0",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.5", ".0", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "37:31:2"
       },
@@ -10281,9 +10271,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 395,
-        "linearizedBaseContracts": [
-          395
-        ],
+        "linearizedBaseContracts": [395],
         "name": "Users",
         "nameLocation": "81:5:2",
         "nodeType": "ContractDefinition",
@@ -10404,9 +10392,7 @@
                 "pathNode": {
                   "id": 259,
                   "name": "User",
-                  "nameLocations": [
-                    "168:4:2"
-                  ],
+                  "nameLocations": ["168:4:2"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 275,
                   "src": "168:4:2"
@@ -10985,10 +10971,7 @@
                       "id": 312,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "865:7:2",
                       "typeDescriptions": {
@@ -11136,10 +11119,7 @@
                       "id": 322,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "957:7:2",
                       "typeDescriptions": {
@@ -11227,10 +11207,7 @@
                       "id": 332,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1043:7:2",
                       "typeDescriptions": {
@@ -11378,10 +11355,7 @@
                       "id": 338,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1111:7:2",
                       "typeDescriptions": {
@@ -11529,10 +11503,7 @@
                       "id": 348,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1198:7:2",
                       "typeDescriptions": {
@@ -11680,10 +11651,7 @@
                       "id": 358,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1285:7:2",
                       "typeDescriptions": {

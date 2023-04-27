@@ -11934,9 +11934,7 @@
   "ast": {
     "absolutePath": "project:/src/contracts/Marketplace.sol",
     "exportedSymbols": {
-      "Marketplace": [
-        192
-      ]
+      "Marketplace": [192]
     },
     "id": 193,
     "license": "GPL-3.0",
@@ -11944,15 +11942,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.5",
-          ".0",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.5", ".0", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "37:31:0"
       },
@@ -11964,9 +11954,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 192,
-        "linearizedBaseContracts": [
-          192
-        ],
+        "linearizedBaseContracts": [192],
         "name": "Marketplace",
         "nameLocation": "81:11:0",
         "nodeType": "ContractDefinition",
@@ -12087,9 +12075,7 @@
                 "pathNode": {
                   "id": 8,
                   "name": "Vehicle",
-                  "nameLocations": [
-                    "176:7:0"
-                  ],
+                  "nameLocations": ["176:7:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 27,
                   "src": "176:7:0"
@@ -13187,10 +13173,7 @@
                       "id": 99,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1433:7:0",
                       "typeDescriptions": {
@@ -13278,10 +13261,7 @@
                       "id": 109,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1509:7:0",
                       "typeDescriptions": {
@@ -13429,10 +13409,7 @@
                       "id": 115,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1580:7:0",
                       "typeDescriptions": {
@@ -13520,10 +13497,7 @@
                       "id": 125,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1689:7:0",
                       "typeDescriptions": {
@@ -13671,10 +13645,7 @@
                       "id": 131,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1765:7:0",
                       "typeDescriptions": {
