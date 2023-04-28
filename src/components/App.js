@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Web3 from "web3";
-import logo from "../logo.png";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
 import Users from "../abis/Users.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
-import Register from "./Register";
+import Register from "./Register.js";
+import Login from "./login";
+import { Routes, Route } from "react-router-dom";
 
 class App extends Component {
     async componentWillMount() {
@@ -39,6 +40,7 @@ class App extends Component {
             const vehicleCount = await marketplace.methods
                 .vehicleCount()
                 .call();
+            console.log("vehical count = " + vehicleCount);
             this.setState({ vehicleCount });
             // Load vehicles
             for (var i = 1; i <= vehicleCount; i++) {
@@ -61,6 +63,7 @@ class App extends Component {
                 Users.abi,
                 networkData.address
             );
+            console.log(usersContract.methods);
             this.setState({ usersContract });
             const usersCount = await usersContract.methods.usersCount().call();
             console.log("user count *** - " + usersCount);
@@ -81,6 +84,7 @@ class App extends Component {
         const web3 = window.web3;
         // Load account
         const accounts = await web3.eth.getAccounts();
+        console.log(accounts[0]);
         this.setState({ account: accounts[0] });
         const networkId = await web3.eth.net.getId();
         console.log("network id " + networkId);
@@ -167,10 +171,29 @@ class App extends Component {
                                     <p className="text-center">Loading...</p>
                                 </div>
                             ) : (
-                                <Register
-                                    createUser={this.createUser}
-                                    users={this.state.users}
-                                />
+                                <Routes>
+                                    <Route
+                                        exact
+                                        path="/"
+                                        element={
+                                            <Register
+                                                createUser={this.createUser}
+                                                users={this.state.users}
+                                            />
+                                        }
+                                        // component={Register}
+                                    />
+                                    <Route
+                                        exact
+                                        path="/login"
+                                        element={
+                                            <Login
+                                                user={this.state.account}
+                                                users={this.state.users}
+                                            ></Login>
+                                        }
+                                    />
+                                </Routes>
                                 // <AddVehicle
                                 // // vehicles={this.state.vehicles}
                                 // // createVehicle={this.createVehicle}
