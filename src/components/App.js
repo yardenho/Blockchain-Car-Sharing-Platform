@@ -56,7 +56,7 @@ class App extends Component {
         }
     }
 
-    async loadUsresContract(web3, networkId) {
+    async loadUsersContract(web3, networkId) {
         const networkData = Users.networks[networkId];
         if (networkData) {
             const usersContract = web3.eth.Contract(
@@ -67,14 +67,14 @@ class App extends Component {
             this.setState({ usersContract });
             const usersCount = await usersContract.methods.usersCount().call();
             console.log("user count *** - " + usersCount);
-            this.setState({ usersCount });
+            this.setState({ userCount: usersCount });
+            const stateUsers = this.state.users;
             // Load users
             for (var i = 1; i <= usersCount; i++) {
                 const user = await usersContract.methods.users(i).call();
-                this.setState({
-                    users: [...this.state.users, user],
-                });
+                stateUsers.push(user);
             }
+            this.setState({ users: stateUsers });
         } else {
             window.alert("Usres contract not deployed to detected network.");
         }
@@ -89,7 +89,7 @@ class App extends Component {
         const networkId = await web3.eth.net.getId();
         console.log("network id " + networkId);
         this.loadMarketplaceContract(web3, networkId);
-        this.loadUsresContract(web3, networkId);
+        this.loadUsersContract(web3, networkId);
         this.setState({ loading: false });
     }
 
@@ -162,7 +162,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Navbar account={this.state.account} />
+                <Navbar account={this.state.account} users={this.state.users} />
                 <div className="container-fluid mt-5">
                     <div className="row">
                         <main role="main" className="col-lg-12 d-flex">
@@ -181,7 +181,6 @@ class App extends Component {
                                                 users={this.state.users}
                                             />
                                         }
-                                        // component={Register}
                                     />
                                     <Route
                                         exact
