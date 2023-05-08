@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import Web3 from "web3";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
+import Garages from "../abis/GarageRegistration.json";
 import Users from "../abis/Users.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
 import Register from "./Register.js";
 import Login from "./login";
+import MainPage from "./MainPage";
 import { Routes, Route } from "react-router-dom";
+import GarageRegistration from "./GarageRegistration";
 
 class App extends Component {
     async componentWillMount() {
@@ -80,6 +83,33 @@ class App extends Component {
         }
     }
 
+    async loadGaragesContract(web3, networkId) {
+        const networkData = Garages.networks[networkId];
+        if (networkData) {
+            const garagesContract = web3.eth.Contract(
+                Garages.abi,
+                networkData.address
+            );
+            this.setState({ garagesContract });
+            const garagesCount = await garagesContract.methods
+                .garagesCount()
+                .call();
+            console.log("garages count = " + garagesCount);
+            this.setState({ garagesCount });
+            // Load vehicles
+            for (var i = 1; i <= garagesCount; i++) {
+                const garage = await garagesContract.methods.garages(i).call();
+                this.setState({
+                    garages: [...this.state.garages, garage],
+                });
+            }
+        } else {
+            window.alert(
+                "Garages Registration contract not deployed to detected network."
+            );
+        }
+    }
+
     async loadBlockchainData() {
         const web3 = window.web3;
         // Load account
@@ -90,6 +120,7 @@ class App extends Component {
         console.log("network id " + networkId);
         this.loadMarketplaceContract(web3, networkId);
         this.loadUsersContract(web3, networkId);
+        this.loadGaragesContract(web3, networkId);
         this.setState({ loading: false });
     }
 
@@ -101,12 +132,15 @@ class App extends Component {
             vehicles: [],
             userCount: 0,
             users: [],
+            garagesCount: 0,
+            garages: [],
             loading: true,
         };
 
         this.createVehicle = this.createVehicle.bind(this);
         this.purchaseVehicle = this.purchaseVehicle.bind(this);
         this.createUser = this.createUser.bind(this);
+        this.createGarage = this.createGarage.bind(this);
     }
 
     createVehicle(vin, vehicleType, price, numOfSeats, gearboxType) {
@@ -149,6 +183,20 @@ class App extends Component {
         // transactionHash
     }
 
+    createGarage(garageName, BnNumber, city, password) {
+        this.setState({ loading: true });
+        console.log("in app.js createGarage");
+        console.log(this.state.account);
+        this.state.garagesContract.methods
+            .createGarage(garageName, BnNumber, city, password)
+            .send({ from: this.state.account })
+            .once("transactionHash", (transactionHash) => {
+                console.log("in app.js receipt");
+                this.setState({ loading: false });
+            });
+        // transactionHash
+    }
+
     purchaseVehicle(id, price) {
         //     this.setState({ loading: true });
         //     this.state.marketplace.methods
@@ -175,6 +223,11 @@ class App extends Component {
                                     <Route
                                         exact
                                         path="/"
+                                        element={<MainPage />}
+                                    />
+                                    <Route
+                                        exact
+                                        path="/Register"
                                         element={
                                             <Register
                                                 createUser={this.createUser}
@@ -192,7 +245,23 @@ class App extends Component {
                                             ></Login>
                                         }
                                     />
+                                    <Route
+                                        exact
+                                        path="/GarageRegistration"
+                                        element={
+                                            <GarageRegistration
+                                                garages={this.state.garages}
+                                                createGarage={this.createGarage}
+                                            ></GarageRegistration>
+                                        }
+                                    />
                                 </Routes>
+                                // <GarageRegistration
+                                //     garages={this.state.garages}
+                                //     createGarage={this.createGarage}
+                                // >
+                                //     {" "}
+                                // </GarageRegistration>
                                 // <AddVehicle
                                 // // vehicles={this.state.vehicles}
                                 // // createVehicle={this.createVehicle}
