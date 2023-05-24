@@ -22,7 +22,7 @@ contract GarageRegistration {
     );
 
     constructor() public {
-        name = "Chen & Yarden final project";
+        name = "garage registration contract";
     }
 
     function createGarage(string memory _garageName, string memory _BnNumber, string memory _city, string memory _password) public {

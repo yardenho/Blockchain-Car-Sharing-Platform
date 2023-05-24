@@ -3,11 +3,13 @@ import Web3 from "web3";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
 import Garages from "../abis/GarageRegistration.json";
+import VehicleDoc from "../abis/VehicleDoc.json";
 import Users from "../abis/Users.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
 import Register from "./Register.js";
+import VehicalDocumentation from "./VehicleDoc";
 import Login from "./login";
 import MainPage from "./MainPage";
 import { Routes, Route } from "react-router-dom";
@@ -110,6 +112,36 @@ class App extends Component {
         }
     }
 
+    async loadVehicleDocContract(web3, networkId) {
+        const networkData = VehicleDoc.networks[networkId];
+        if (networkData) {
+            const VehicalDocContract = web3.eth.Contract(
+                VehicleDoc.abi,
+                networkData.address
+            );
+            this.setState({ VehicalDocContract });
+            const VehicalDocCount = await VehicalDocContract.methods
+                .documentationsCount()
+                .call();
+            console.log("documentations count = " + VehicalDocCount);
+            this.setState({ VehicalDocCount });
+            // Load vehicles
+            for (var i = 1; i <= VehicalDocCount; i++) {
+                const document = await VehicalDocContract.methods
+                    .documentations(i)
+                    .call();
+                this.setState({
+                    documentations: [...this.state.documentations, document],
+                });
+            }
+            console.log(
+                "this.state.documentations = " + this.state.documentations
+            );
+        } else {
+            window.alert("document contract not deployed to detected network.");
+        }
+    }
+
     async loadBlockchainData() {
         const web3 = window.web3;
         // Load account
@@ -121,6 +153,8 @@ class App extends Component {
         this.loadMarketplaceContract(web3, networkId);
         this.loadUsersContract(web3, networkId);
         this.loadGaragesContract(web3, networkId);
+        this.loadVehicleDocContract(web3, networkId);
+
         this.setState({ loading: false });
     }
 
@@ -134,6 +168,8 @@ class App extends Component {
             users: [],
             garagesCount: 0,
             garages: [],
+            VehicalDocCount: 0,
+            documentations: [],
             loading: true,
         };
 
@@ -141,6 +177,7 @@ class App extends Component {
         this.purchaseVehicle = this.purchaseVehicle.bind(this);
         this.createUser = this.createUser.bind(this);
         this.createGarage = this.createGarage.bind(this);
+        this.createDocument = this.createDocument.bind(this);
     }
 
     createVehicle(vin, vehicleType, price, numOfSeats, gearboxType) {
@@ -189,6 +226,19 @@ class App extends Component {
         console.log(this.state.account);
         this.state.garagesContract.methods
             .createGarage(garageName, BnNumber, city, password)
+            .send({ from: this.state.account })
+            .once("transactionHash", (transactionHash) => {
+                console.log("in app.js receipt");
+                this.setState({ loading: false });
+            });
+        // transactionHash
+    }
+    createDocument(vehicleVin, garageBnNumber, description, approved) {
+        this.setState({ loading: true });
+        console.log("in app.js createDocument");
+        console.log(this.state.account);
+        this.state.VehicalDocContract.methods
+            .createDocument(vehicleVin, garageBnNumber, description, approved)
             .send({ from: this.state.account })
             .once("transactionHash", (transactionHash) => {
                 console.log("in app.js receipt");
@@ -255,7 +305,21 @@ class App extends Component {
                                             ></GarageRegistration>
                                         }
                                     />
+                                    <Route
+                                        exact
+                                        path="/vehicleDoc"
+                                        element={
+                                            <VehicalDocumentation
+                                                garages={this.state.garages}
+                                                vehicles={this.state.vehicles}
+                                                createDocument={
+                                                    this.createDocument
+                                                }
+                                            ></VehicalDocumentation>
+                                        }
+                                    />
                                 </Routes>
+                                // vehicleDoc
                                 // <GarageRegistration
                                 //     garages={this.state.garages}
                                 //     createGarage={this.createGarage}

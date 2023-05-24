@@ -86,7 +86,7 @@ class GarageRegistration extends Component {
                         //get private key from the keys file
                         const res = await getKeys();
                         if (res === true) return;
-                        //saving the user details
+                        //saving the garage details
                         this.props.createGarage(
                             garageName,
                             BnNumber,
