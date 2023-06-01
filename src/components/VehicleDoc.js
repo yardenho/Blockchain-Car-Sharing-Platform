@@ -18,7 +18,9 @@ class VehicalDoc extends Component {
 
             console.log(this.props.garages);
             for (let i = 0; i < this.props.garages.length; ++i) {
-                if (this.props.garages[i].BnNumber === this.BnNumber.value) {
+                if (
+                    this.props.garages[i].BnNumber === this.garageBnNumber.value
+                ) {
                     return false; //exist
                 }
             }
@@ -37,6 +39,24 @@ class VehicalDoc extends Component {
             alert("There is not that vehicle vin in the system");
             return true; // not exist
         };
+
+        const currentDate = () => {
+            // Date object
+            const date = new Date();
+
+            let currentDay = String(date.getDate()).padStart(2, "0");
+
+            let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+
+            let currentYear = date.getFullYear();
+
+            // we will display the date as DD/MM/YYYY
+
+            let currentDate = `${currentDay}/${currentMonth}/${currentYear}`;
+
+            console.log("The current date is " + currentDate);
+            return currentDate;
+        };
         return (
             <div id="content" style={{ width: "100%" }}>
                 <center>
@@ -48,6 +68,9 @@ class VehicalDoc extends Component {
                             const vehicleVin = this.vehicleVin.value;
                             const garageBnNumber = this.garageBnNumber.value;
                             const description = this.description.value;
+
+                            const date = currentDate();
+
                             /// check the details corectness
                             if (checkDetails() === true) return;
 
@@ -56,12 +79,12 @@ class VehicalDoc extends Component {
 
                             //**** check if vehicle isn't already exist ****
                             if (checkVehicle() === true) return;
-
                             //saving the document details
                             this.props.createDocument(
                                 vehicleVin,
                                 garageBnNumber,
                                 description,
+                                date,
                                 false
                             );
                             alert(

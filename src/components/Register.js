@@ -107,8 +107,8 @@ class Register extends Component {
                             IDnumber,
                             password
                         );
-                        //TODO - need to make a automatice file for the run command
-                        window.href("/login");
+                        //TODO - need to forward to login
+                        // window.href("/login");
                     }}
                 >
                     <div className="form-group mr-sm-2">

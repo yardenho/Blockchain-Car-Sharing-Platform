@@ -14,6 +14,7 @@ import Login from "./login";
 import MainPage from "./MainPage";
 import { Routes, Route } from "react-router-dom";
 import GarageRegistration from "./GarageRegistration";
+import DocumentationList from "./DocumentationList";
 
 class App extends Component {
     async componentWillMount() {
@@ -98,13 +99,17 @@ class App extends Component {
                 .call();
             console.log("garages count = " + garagesCount);
             this.setState({ garagesCount });
+            const stateGarages = this.state.garages;
+
             // Load vehicles
             for (var i = 1; i <= garagesCount; i++) {
                 const garage = await garagesContract.methods.garages(i).call();
-                this.setState({
-                    garages: [...this.state.garages, garage],
-                });
+                stateGarages.push(garage);
+                // this.setState({
+                //     garages: [...this.state.garages, garage],
+                // });
             }
+            this.setState({ garages: stateGarages });
         } else {
             window.alert(
                 "Garages Registration contract not deployed to detected network."
@@ -125,15 +130,20 @@ class App extends Component {
                 .call();
             console.log("documentations count = " + VehicalDocCount);
             this.setState({ VehicalDocCount });
+            const stateVehiclesDocs = this.state.documentations;
+
             // Load vehicles
             for (var i = 1; i <= VehicalDocCount; i++) {
                 const document = await VehicalDocContract.methods
                     .documentations(i)
                     .call();
-                this.setState({
-                    documentations: [...this.state.documentations, document],
-                });
+                // this.setState({
+                //     documentations: [...this.state.documentations, document],
+                // });
+                stateVehiclesDocs.push(document);
             }
+            this.setState({ documentations: stateVehiclesDocs });
+
             console.log(
                 "this.state.documentations = " + this.state.documentations
             );
@@ -154,6 +164,10 @@ class App extends Component {
         this.loadUsersContract(web3, networkId);
         this.loadGaragesContract(web3, networkId);
         this.loadVehicleDocContract(web3, networkId);
+
+        console.log(this.state.users);
+
+        console.log(this.state.garages);
 
         this.setState({ loading: false });
     }
@@ -178,6 +192,7 @@ class App extends Component {
         this.createUser = this.createUser.bind(this);
         this.createGarage = this.createGarage.bind(this);
         this.createDocument = this.createDocument.bind(this);
+        this.approveDoc = this.approveDoc.bind(this);
     }
 
     createVehicle(vin, vehicleType, price, numOfSeats, gearboxType) {
@@ -220,12 +235,12 @@ class App extends Component {
         // transactionHash
     }
 
-    createGarage(garageName, BnNumber, city, password) {
+    createGarage(garageAddress, garageName, BnNumber, city, password) {
         this.setState({ loading: true });
         console.log("in app.js createGarage");
         console.log(this.state.account);
         this.state.garagesContract.methods
-            .createGarage(garageName, BnNumber, city, password)
+            .createGarage(garageAddress, garageName, BnNumber, city, password)
             .send({ from: this.state.account })
             .once("transactionHash", (transactionHash) => {
                 console.log("in app.js receipt");
@@ -233,12 +248,18 @@ class App extends Component {
             });
         // transactionHash
     }
-    createDocument(vehicleVin, garageBnNumber, description, approved) {
+    createDocument(vehicleVin, garageBnNumber, description, date, approved) {
         this.setState({ loading: true });
         console.log("in app.js createDocument");
         console.log(this.state.account);
         this.state.VehicalDocContract.methods
-            .createDocument(vehicleVin, garageBnNumber, description, approved)
+            .createDocument(
+                vehicleVin,
+                garageBnNumber,
+                description,
+                date,
+                approved
+            )
             .send({ from: this.state.account })
             .once("transactionHash", (transactionHash) => {
                 console.log("in app.js receipt");
@@ -255,6 +276,17 @@ class App extends Component {
         //         .once("receipt", (receipt) => {
         //             this.setState({ loading: false });
         //         });
+    }
+
+    approveDoc(id) {
+        this.setState({ loading: true });
+        this.state.VehicalDocContract.methods
+            .approveDoc(id)
+            .send({ from: this.state.account })
+            .once("transactionHash", (receipt) => {
+                console.log(" in approveDoc in app.js");
+                this.setState({ loading: false });
+            });
     }
 
     render() {
@@ -292,6 +324,7 @@ class App extends Component {
                                             <Login
                                                 user={this.state.account}
                                                 users={this.state.users}
+                                                garages={this.state.garages}
                                             ></Login>
                                         }
                                     />
@@ -316,6 +349,31 @@ class App extends Component {
                                                     this.createDocument
                                                 }
                                             ></VehicalDocumentation>
+                                        }
+                                    />
+                                    <Route
+                                        exact
+                                        path="/DocsList"
+                                        element={
+                                            <DocumentationList
+                                                docs={this.state.documentations}
+                                                approveDoc={this.approveDoc}
+                                            ></DocumentationList>
+                                        }
+                                    />
+                                    <Route
+                                        exact
+                                        path="/AddVehicle"
+                                        element={
+                                            <AddVehicle
+                                                vehicles={this.state.vehicles}
+                                                createVehicle={
+                                                    this.createVehicle
+                                                }
+                                                purchaseVehicle={
+                                                    this.purchaseVehicle
+                                                }
+                                            />
                                         }
                                     />
                                 </Routes>

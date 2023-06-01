@@ -7,6 +7,7 @@ contract GarageRegistration {
     mapping(uint => Garage) public garages;
 
     struct Garage {
+        string garageAddress;
         string garageName;
         string BnNumber;
         string city;
@@ -15,6 +16,7 @@ contract GarageRegistration {
     }
     
     event garageCreated(
+        string garageAddress,
         string garageName,
         string BnNumber,
         string city,
@@ -25,7 +27,9 @@ contract GarageRegistration {
         name = "garage registration contract";
     }
 
-    function createGarage(string memory _garageName, string memory _BnNumber, string memory _city, string memory _password) public {
+    function createGarage(string memory _garageAddress, string memory _garageName, string memory _BnNumber, string memory _city, string memory _password) public {
+        // Require a valid garage address
+        require(bytes(_garageAddress).length > 0);
         // Require a valid garage name
         require(bytes(_garageName).length > 0);
         // Require a valid Bn number
@@ -39,6 +43,7 @@ contract GarageRegistration {
         garagesCount++;
         // Create the user
         garages[garagesCount] = Garage(
+            _garageAddress,
             _garageName,
             _BnNumber,
             _city,
@@ -46,6 +51,7 @@ contract GarageRegistration {
         );
         // Trigger an event
         emit garageCreated(
+            _garageAddress,
             _garageName,
             _BnNumber,
             _city,

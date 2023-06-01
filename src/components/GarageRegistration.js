@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { privateKeys, index, increaceIndex } from "../privateKeys";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 class GarageRegistration extends Component {
     // showKey = false;
@@ -88,13 +90,16 @@ class GarageRegistration extends Component {
                         if (res === true) return;
                         //saving the garage details
                         this.props.createGarage(
+                            this.garageAddress,
                             garageName,
                             BnNumber,
                             city,
                             password
                         );
-                        //TODO - need to make a automatice file for the run command
-                        window.href("/login");
+                        //TODO - need to move directlly to login page
+                        // const navigate = useNavigate();
+                        // navigate("/login");
+                        // window.open("/login ");
                     }}
                 >
                     <div className="form-group mr-sm-2">
