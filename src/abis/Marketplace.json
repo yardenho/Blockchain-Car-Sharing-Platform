@@ -9340,12 +9340,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x926e1bd91222428939c961D391cb731723c3c282",
-      "transactionHash": "0xf3c052172be9e6ca82a9a1ec237e6095004a28a33dc0190eb84b709a4956d0d2"
+      "address": "0x6973d5587344560dc71C58b2EC591F107e23be80",
+      "transactionHash": "0xf13113d71cea4327f46cf7a06fafa5e77157ce47ad9ef036bc7ef7c7bb48a2ad"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-01T11:25:01.089Z",
+  "updatedAt": "2023-06-06T11:32:01.870Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

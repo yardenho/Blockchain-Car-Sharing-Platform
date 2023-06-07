@@ -28,6 +28,10 @@ class Login extends Component {
                     if (this.props.users[i].password === this.password.value) {
                         this.setState({ error: "" });
                         //TODO - forwards to web
+                        console.log("true");
+                        this.props.loginUser(true);
+                        window.location.replace("/userMainPage");
+                        return true;
                     } else {
                         this.setState({
                             error: "The password incorrect",
