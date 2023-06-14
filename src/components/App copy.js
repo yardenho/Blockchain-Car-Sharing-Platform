@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
 import Register from "./Register";
-import VehiclesList from "./VehiclesList";
+import VehiclesList from "./RentersVehiclesList";
 
 class App extends Component {
   async componentWillMount() {
