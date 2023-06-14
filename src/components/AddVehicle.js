@@ -15,8 +15,6 @@ class AddVehicle extends Component {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            // car number - vin, car type, pricePerDay, owner, unAvavilabe, gas Type, number of seats, gearbox - manaul or automat
-            // const name = this.productName.value
             const vin = this.vin.value;
             const vehicleType = this.vehicleType.value;
             const numOfSeats = this.numberOfSeats.value;
@@ -89,9 +87,8 @@ class AddVehicle extends Component {
               placeholder="Number of seats"
               required
             />
-
             <label>
-              Pick the vehicle's gearbox type:
+              Pick the vehicle's gearbox type:{" "}
               <select
                 name="gearboxType"
                 value={this.state.gearboxType} // ...force the select's value to match the state variable...
