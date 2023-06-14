@@ -19,11 +19,11 @@
     "react-dom": "16.8.4",
     "react-router-dom": "^6.10.0",
     "react-scripts": "2.1.3",
-    "truffle": "^6.0.0",
+    "truffle": "^5.8.0",
     "web3": "1.0.0-beta.55"
   },
   "scripts": {
-    "start1": "react-scripts --openssl-legacy-provider start",
+    "start1": "react-scripts --openssl-legacy-provider start  --rpc.allow-unprotected-txs",
     "start2": "react-scripts start --openssl-legacy-provider  --rpc.allow-unprotected-txs",
     "build": "react-scripts build",
     "test": "react-scripts test",
