@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Web3 from "web3";
-import logo from "../logo.png";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
+import Garages from "../abis/GarageRegistration.json";
+import VehicleDoc from "../abis/VehicleDoc.json";
 import Users from "../abis/Users.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import AddVehicle from "./AddVehicle";
 import Register from "./Register";
-import VehiclesList from "./RentersVehiclesList";
 
 class App extends Component {
   async componentWillMount() {
@@ -95,7 +95,7 @@ class App extends Component {
     };
 
     this.createVehicle = this.createVehicle.bind(this);
-    //this.purchaseVehicle = this.purchaseVehicle.bind(this);
+    this.purchaseVehicle = this.purchaseVehicle.bind(this);
     this.createUser = this.createUser.bind(this);
   }
 
@@ -161,16 +161,15 @@ class App extends Component {
                   <p className="text-center">Loading...</p>
                 </div>
               ) : (
-                // <Register
-                //   createUser={this.createUser}
-                //   users={this.state.users}
-                // />
+                <Register
+                  createUser={this.createUser}
+                  users={this.state.users}
+                />
                 // <AddVehicle
-                //   vehicles={this.state.vehicles}
-                //   createVehicle={this.createVehicle}
-                //   purchaseVehicle={this.purchaseVehicle}
+                // // vehicles={this.state.vehicles}
+                // // createVehicle={this.createVehicle}
+                // // purchaseVehicle={this.purchaseVehicle}
                 // />
-                <VehiclesList vehicles={this.state.vehicles} />
               )}
             </main>
           </div>

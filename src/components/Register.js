@@ -29,7 +29,7 @@ class Register extends Component {
             this.userAddress = privateKeys[index - 1][0];
             this.userNodeNumber = index;
 
-            //print the private key for 10 seconds
+            //print the private key for 30 seconds
             // this.showKey = true;
             this.setState({ showKey: true });
             await wait(10000); //waiting 10 secondes
@@ -66,7 +66,6 @@ class Register extends Component {
             }
             return false;
         };
-
         return (
             <div id="content">
                 <h1>Welcome !</h1>
@@ -89,6 +88,7 @@ class Register extends Component {
                         const IDnumber = this.IDnumber.value;
                         const password = this.password.value;
 
+                        /// check the details corectness
                         if (checkDetails() === true) return;
                         //**** check if user isnt already exist ****
                         if (checkUser() === true) return;
@@ -107,8 +107,8 @@ class Register extends Component {
                             IDnumber,
                             password
                         );
-                        //TODO - need to make a automatice file for the run command
-                        //*****move to log in page****
+                        //TODO - need to forward to login
+                        // window.href("/login");
                     }}
                 >
                     <div className="form-group mr-sm-2">
@@ -189,12 +189,11 @@ class Register extends Component {
                         Register
                     </button>
                 </form>
-                <button
-                    onClick={(event) => (window.location.href = "/login.js")}
-                    className="btn btn-primary"
-                    style={{ marginTop: 5 }}
-                >
-                    Move to login page
+
+                <button className="btn btn-primary" style={{ marginTop: 5 }}>
+                    <a href="/login" style={{ color: "white" }}>
+                        Move to login page
+                    </a>
                 </button>
                 {this.state.showKey === true && (
                     <>

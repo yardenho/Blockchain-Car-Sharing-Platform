@@ -1,0 +1,12 @@
+
+admin.addPeer("enode://416d273c80027964edb49210a4b4a9061ba77ea22457dd8419dd07b75667e25964be30b9e8db0b6ff2d5dd4d44d28d82d7656048306f64632c8d48f217908055@127.0.0.1:0?discport=30310")
+miner.mine()
+miner.start()
+admin.perrscount()
+admin.perrsCount()
+admin.peersCount()
+admin.peerCount()
+admin.nodeInfo()
+admin.nodeInfo
+admin.peers
+admin.startHTTP("127.0.0.1", 4964)
