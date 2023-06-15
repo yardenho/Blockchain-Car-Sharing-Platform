@@ -20,6 +20,7 @@ import UserMainPage from "./UserMainPage";
 import UserProfile from "./UserProfile";
 import OwnerCarsList from "./OwnerCarsList";
 import EditVehicle from "./EditVehicle";
+import VehiclesList from "./RentersVehiclesList";
 
 class App extends Component {
     async componentWillMount() {
@@ -609,18 +610,6 @@ class App extends Component {
                                         element={<EditVehicle />}
                                     />
                                 </Routes>
-                                // vehicleDoc
-                                // <GarageRegistration
-                                //     garages={this.state.garages}
-                                //     createGarage={this.createGarage}
-                                // >
-                                //     {" "}
-                                // </GarageRegistration>
-                                // <AddVehicle
-                                // // vehicles={this.state.vehicles}
-                                // // createVehicle={this.createVehicle}
-                                // // purchaseVehicle={this.purchaseVehicle}
-                                // />
                             )}
                         </main>
                     </div>
