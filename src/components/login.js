@@ -18,7 +18,7 @@ class Login extends Component {
                     //check if the private key similar to the running node
 
                     console.log(this.props.user === account.address);
-                    if (this.props.user != account.address) {
+                    if (this.props.user !== account.address) {
                         this.setState({
                             error:
                                 "The private key dose not match to the connected user in the wallet",
@@ -29,8 +29,8 @@ class Login extends Component {
                         this.setState({ error: "" });
                         //TODO - forwards to web
                         console.log("true");
-                        this.props.loginUser(true);
-                        window.location.replace("/userMainPage");
+                        window.location.href = "/userMainPage";
+                        // replace("/userMainPage");
                         return true;
                     } else {
                         this.setState({
@@ -79,7 +79,7 @@ class Login extends Component {
                         console.log(this.privateKey.value.length);
                         if (
                             this.privateKey.value.startsWith("0x") === false ||
-                            this.privateKey.value.length != 66
+                            this.privateKey.value.length !== 66
                         ) {
                             this.setState({
                                 error:
@@ -96,7 +96,7 @@ class Login extends Component {
                         console.log(this.props.user);
                         console.log(account.address);
 
-                        if (this.props.user != account.address) {
+                        if (this.props.user !== account.address) {
                             this.setState({
                                 error:
                                     "The private key dose not match to the connected user in the wallet",

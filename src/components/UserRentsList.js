@@ -1,13 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
-class DocumentationList extends Component {
+class UserRentsList extends Component {
     render() {
         return (
             <div id="content">
                 <h1>Garages Documentation that needs aprroval</h1>
-                {this.props.docs.length === 0 && (
-                    <h5>You don`t have any documents for your cars</h5>
-                )}
                 <table className="table">
                     <thead>
                         <tr>
@@ -18,8 +15,10 @@ class DocumentationList extends Component {
                             <th scope="col"></th>
                         </tr>
                     </thead>
-
                     <tbody id="documentationList">
+                        {this.props.rents.length === 0 && (
+                            <p>You don`t have any rents </p>
+                        )}
                         {this.props.docs.map((doc, key) => {
                             return (
                                 <tr key={key}>
@@ -51,4 +50,4 @@ class DocumentationList extends Component {
     }
 }
 
-export default DocumentationList;
+export default UserRentsList;

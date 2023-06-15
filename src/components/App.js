@@ -3,6 +3,7 @@ import Web3 from "web3";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
 import Garages from "../abis/GarageRegistration.json";
+import Company from "../abis/Company.json";
 import VehicleDoc from "../abis/VehicleDoc.json";
 import Users from "../abis/Users.json";
 import Navbar from "./Navbar";
@@ -13,9 +14,12 @@ import VehicalDocumentation from "./VehicleDoc";
 import Login from "./login";
 import MainPage from "./MainPage";
 import { Routes, Route } from "react-router-dom";
-import GarageRegistration from "./GarageRegistration";
+import CompanyRegistration from "./CompanyRegistration";
 import DocumentationList from "./DocumentationList";
 import UserMainPage from "./UserMainPage";
+import UserProfile from "./UserProfile";
+import OwnerCarsList from "./OwnerCarsList";
+import EditVehicle from "./EditVehicle";
 
 class App extends Component {
     async componentWillMount() {
@@ -118,6 +122,39 @@ class App extends Component {
         }
     }
 
+    async loadCompanysContract(web3, networkId) {
+        const networkData = Company.networks[networkId];
+        if (networkData) {
+            const companiesContract = web3.eth.Contract(
+                Company.abi,
+                networkData.address
+            );
+            this.setState({ companiesContract });
+            const companiesCount = await companiesContract.methods
+                .companiesCount()
+                .call();
+            console.log("companies count = " + companiesCount);
+            this.setState({ companiesCount });
+            const stateCompanies = this.state.companies;
+
+            // Load vehicles
+            for (var i = 1; i <= companiesCount; i++) {
+                const company = await companiesContract.methods
+                    .companies(i)
+                    .call();
+                stateCompanies.push(company);
+                // this.setState({
+                //     garages: [...this.state.garages, garage],
+                // });
+            }
+            this.setState({ companues: stateCompanies });
+        } else {
+            window.alert(
+                "Garages Registration contract not deployed to detected network."
+            );
+        }
+    }
+
     async loadVehicleDocContract(web3, networkId) {
         const networkData = VehicleDoc.networks[networkId];
         if (networkData) {
@@ -165,22 +202,20 @@ class App extends Component {
         this.loadUsersContract(web3, networkId);
         this.loadGaragesContract(web3, networkId);
         this.loadVehicleDocContract(web3, networkId);
+        this.loadCompanysContract(web3, networkId);
 
         console.log(this.state.users);
 
         console.log(this.state.garages);
+        console.log("this.state.companies");
+        console.log(this.state.companies);
 
         this.setState({ loading: false });
     }
 
-    loginUser = (isLog) => {
-        this.setState({ userLog: isLog });
-    };
-
     constructor(props) {
         super(props);
         this.state = {
-            userLog: false,
             account: "",
             vehicleCount: 0,
             vehicles: [],
@@ -188,6 +223,8 @@ class App extends Component {
             users: [],
             garagesCount: 0,
             garages: [],
+            companiesCount: 0,
+            companies: [],
             VehicalDocCount: 0,
             documentations: [],
             loading: true,
@@ -196,7 +233,9 @@ class App extends Component {
         this.createVehicle = this.createVehicle.bind(this);
         this.purchaseVehicle = this.purchaseVehicle.bind(this);
         this.createUser = this.createUser.bind(this);
+        this.updateUser = this.updateUser.bind(this);
         this.createGarage = this.createGarage.bind(this);
+        this.createCompany = this.createCompany.bind(this);
         this.createDocument = this.createDocument.bind(this);
         this.approveDoc = this.approveDoc.bind(this);
     }
@@ -241,6 +280,25 @@ class App extends Component {
         // transactionHash
     }
 
+    updateUser(address, fullName, emailAddress, age, picture, password) {
+        this.setState({ loading: true });
+        console.log("in app.js updateUser");
+        console.log(this.state.account);
+        console.log(address);
+
+        console.log(typeof this.state.users[0].userAddress);
+
+        this.state.usersContract.methods
+            .updateUser(address, fullName, emailAddress, age, picture, password)
+            .send({ from: this.state.account })
+            .once("transactionHash", (transactionHash) => {
+                console.log("in app.js receipt");
+                this.setState({ loading: false });
+                console.log(transactionHash);
+            });
+        // transactionHash
+    }
+
     createGarage(garageAddress, garageName, BnNumber, city, password) {
         this.setState({ loading: true });
         console.log("in app.js createGarage");
@@ -254,6 +312,27 @@ class App extends Component {
             });
         // transactionHash
     }
+
+    createCompany(companyAddress, companyName, BnNumber, city, password) {
+        this.setState({ loading: true });
+        console.log("in app.js createCompany");
+        console.log(this.state.account);
+        this.state.companiesContract.methods
+            .createCompany(
+                companyAddress,
+                companyName,
+                BnNumber,
+                city,
+                password
+            )
+            .send({ from: this.state.account })
+            .once("transactionHash", (transactionHash) => {
+                console.log("in app.js receipt");
+                this.setState({ loading: false });
+            });
+        // transactionHash
+    }
+
     createDocument(vehicleVin, garageBnNumber, description, date, approved) {
         this.setState({ loading: true });
         console.log("in app.js createDocument");
@@ -330,10 +409,9 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path="/login"
+                                        path="/Login"
                                         element={
                                             <Login
-                                                loginUser={this.loginUser}
                                                 user={this.state.account}
                                                 users={this.state.users}
                                                 garages={this.state.garages}
@@ -342,12 +420,16 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path="/GarageRegistration"
+                                        path="/CompanyRegistration"
                                         element={
-                                            <GarageRegistration
+                                            <CompanyRegistration
                                                 garages={this.state.garages}
                                                 createGarage={this.createGarage}
-                                            ></GarageRegistration>
+                                                companies={this.state.companies}
+                                                createCompany={
+                                                    this.createCompany
+                                                }
+                                            ></CompanyRegistration>
                                         }
                                     />
                                     <Route
@@ -448,6 +530,83 @@ class App extends Component {
                                                 ]}
                                             />
                                         }
+                                    />
+                                    <Route
+                                        exact
+                                        path="/UserProfile"
+                                        element={
+                                            <UserProfile
+                                                account={this.state.account}
+                                                users={this.state.users}
+                                                updateUser={this.updateUser}
+                                            />
+                                        }
+                                    />
+                                    <Route
+                                        exact
+                                        path="/UserOfferedCars"
+                                        element={
+                                            <OwnerCarsList
+                                                account={"0x151515315d5fvfdv"}
+                                                vehicles={[
+                                                    {
+                                                        vin: "1",
+                                                        vehicleType: "Honda",
+                                                        owner:
+                                                            "0x151515315d5fvfdv",
+                                                        vehiclePricePerDay: "1",
+                                                        unaviableDates: "null",
+                                                        numOfSeats: "5",
+                                                        gearboxType: "auto",
+                                                    },
+                                                    {
+                                                        vin: "2",
+                                                        vehicleType: "Tesla",
+                                                        owner:
+                                                            "0x151515315dfhdh55555fvfdv",
+                                                        vehiclePricePerDay: "2",
+                                                        unaviableDates: "null",
+                                                        numOfSeats: "3",
+                                                        gearboxType: "auto",
+                                                    },
+                                                    {
+                                                        vin: "3",
+                                                        vehicleType: "Mercedes",
+                                                        owner:
+                                                            "0x151515315dfhdh55555fvfdv",
+                                                        vehiclePricePerDay: "3",
+                                                        unaviableDates: "null",
+                                                        numOfSeats: "4",
+                                                        gearboxType: "auto",
+                                                    },
+                                                    {
+                                                        vin: "4",
+                                                        vehicleType: "Mercedes",
+                                                        owner:
+                                                            "0x151515315d5fvfdv",
+                                                        vehiclePricePerDay: "4",
+                                                        unaviableDates: "null",
+                                                        numOfSeats: "5",
+                                                        gearboxType: "auto",
+                                                    },
+                                                    {
+                                                        vin: "5",
+                                                        vehicleType: "Mercedes",
+                                                        owner:
+                                                            "0fhdh55555fvfdv",
+                                                        vehiclePricePerDay: "5",
+                                                        unaviableDates: "null",
+                                                        numOfSeats: "5",
+                                                        gearboxType: "auto",
+                                                    },
+                                                ]}
+                                            />
+                                        }
+                                    />
+                                    <Route
+                                        exact
+                                        path="/EditVehicle"
+                                        element={<EditVehicle />}
                                     />
                                 </Routes>
                                 // vehicleDoc

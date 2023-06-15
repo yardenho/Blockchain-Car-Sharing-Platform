@@ -1,4 +1,4 @@
-import React, { Component, Card } from "react";
+import React, { Component } from "react";
 
 class CarCard extends Component {
     render() {
@@ -57,15 +57,25 @@ class CarCard extends Component {
                                     <h5
                                         id="product_price"
                                         style={{
-                                            "margin-top": "1vw",
+                                            marginTop: "1vw",
                                         }}
                                     >
                                         Vehicle price per day:{" "}
-                                        {this.props.data.vehiclePricePerDay}
+                                        {this.props.data.vehiclePricePerDay} Eth
                                     </h5>
                                 </div>
                             </div>
                         </div>
+                        {this.props.toEdit === true && (
+                            <button
+                                onClick={() => {
+                                    window.location.replace("/EditVehicle");
+                                }}
+                                className="button"
+                            >
+                                Edit details
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

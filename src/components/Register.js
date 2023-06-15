@@ -43,7 +43,7 @@ class Register extends Component {
                 alert("A user must by older then 17 yaers old");
                 return true;
             }
-            console.log("id lengtht" + this.IDnumber.value.length);
+            console.log("id length" + this.IDnumber.value.length);
             if (this.IDnumber.value.length !== 9) {
                 alert("A user Id number must by 9 digits");
                 return true;
@@ -191,7 +191,7 @@ class Register extends Component {
                 </form>
 
                 <button className="btn btn-primary" style={{ marginTop: 5 }}>
-                    <a href="/login" style={{ color: "white" }}>
+                    <a href="/Login" style={{ color: "white" }}>
                         Move to login page
                     </a>
                 </button>

@@ -26,6 +26,15 @@ contract Users {
         string password
     );
 
+    event UserUpdated(
+        string fullName,
+        string emailAddress,
+        uint age,
+        string picture,
+        string password,
+        uint res
+    );
+
     constructor() public {
         name = "Chen & Yarden final project";
     }
@@ -69,4 +78,51 @@ contract Users {
         );
     }
 
+        function updateUser(string memory _userAddress, string memory _fullName, string memory _emailAddress, uint _age, string memory _picture, string memory _password) public {
+        // Require a valid user address
+        require(bytes(_userAddress).length > 0);
+        // Require a valid name
+        require(bytes(_fullName).length > 0);
+        // Require a valid email address
+        require(bytes(_emailAddress).length > 0);
+        // Require a valid age
+        require(_age > 16);
+        // Require a valid picture
+        require(bytes(_picture).length > 0);
+        // Require a valid ID number
+        require(bytes(_password).length > 0);  
+        // Update the user
+        uint res = 0;
+        // address _add1 =  address(bytes20(bytes(users[0].userAddress)));
+        // address _add2 =  address(bytes20(bytes(users[0].userAddress)));
+
+       for(uint i = 0 ; i< usersCount; ++i){
+            string memory us = users[i].userAddress;
+            bytes memory b1 = bytes(us);
+            bytes memory b2 = bytes(_userAddress);
+            if(b1.length == b2.length){
+                res = 1;
+            }
+            bool a = keccak256(abi.encodePacked(us)) == keccak256(abi.encodePacked(_userAddress));
+            if(a)
+            {
+                users[i].fullName = _fullName;
+                users[i].emailAddress = _emailAddress;
+                users[i].age = _age;
+                users[i].picture = _picture;
+                users[i].password = _password;
+                res = 2;
+
+            }
+       }
+        // Trigger an event
+        emit UserUpdated(
+            _fullName,
+            _emailAddress,
+            _age,
+            _picture,
+            _password,
+            res
+        );
+    }
 }

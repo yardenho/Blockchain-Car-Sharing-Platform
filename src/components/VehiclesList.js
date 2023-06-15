@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import CarCard from "./CarCard";
 class VehicleList extends Component {
     render() {
@@ -11,13 +11,19 @@ class VehicleList extends Component {
                     display: "flex",
                     marginBottom: "60px ",
                     marginLeft: "60px ",
-
+                    marginTop: "30px",
                     elevation: "1",
                     flex: "1",
                 }}
             >
                 {this.props.data.map((vehicle) => {
-                    return <CarCard data={vehicle}></CarCard>;
+                    return (
+                        <CarCard
+                            key={vehicle.vin}
+                            data={vehicle}
+                            toEdit={this.props.toEdit}
+                        ></CarCard>
+                    );
                 })}
             </div>
         );
