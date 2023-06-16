@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useMemo } from "react";
 import Web3 from "web3";
 import "./App.css";
 import Marketplace from "../abis/Marketplace.json";
@@ -21,6 +21,7 @@ import UserProfile from "./UserProfile";
 import OwnerCarsList from "./OwnerCarsList";
 import EditVehicle from "./EditVehicle";
 import VehiclesList from "./RentersVehiclesList";
+import GarageMainPage from "./GarageMainPage";
 
 class App extends Component {
     async componentWillMount() {
@@ -229,6 +230,7 @@ class App extends Component {
             VehicalDocCount: 0,
             documentations: [],
             loading: true,
+            accountsCount: 0,
         };
 
         this.createVehicle = this.createVehicle.bind(this);
@@ -376,6 +378,16 @@ class App extends Component {
     }
 
     render() {
+        const increaseAccountsCount = () => {
+            // console.log("this.state.garagesCount");
+
+            // console.log(this.state.accountsCount);
+            const res = parseInt(localStorage.getItem("count")) + 1;
+            localStorage.setItem("count", res);
+            this.setState({ accountsCount: res });
+            return res;
+        };
+
         return (
             <div>
                 <Navbar
@@ -383,6 +395,7 @@ class App extends Component {
                     account={this.state.account}
                     users={this.state.users}
                     garages={this.state.garages}
+                    companies={this.state.companies}
                 />
                 <div className="container-fluid mt-5">
                     <div className="row">
@@ -405,6 +418,18 @@ class App extends Component {
                                             <Register
                                                 createUser={this.createUser}
                                                 users={this.state.users}
+                                                registeredCount={
+                                                    parseInt(
+                                                        this.state.userCount
+                                                    ) +
+                                                    parseInt(
+                                                        this.state
+                                                            .companiesCount
+                                                    ) +
+                                                    parseInt(
+                                                        this.state.garagesCount
+                                                    )
+                                                }
                                             />
                                         }
                                     />
@@ -416,6 +441,7 @@ class App extends Component {
                                                 user={this.state.account}
                                                 users={this.state.users}
                                                 garages={this.state.garages}
+                                                companies={this.state.companies}
                                             ></Login>
                                         }
                                     />
@@ -429,6 +455,18 @@ class App extends Component {
                                                 companies={this.state.companies}
                                                 createCompany={
                                                     this.createCompany
+                                                }
+                                                registeredCount={
+                                                    parseInt(
+                                                        this.state.userCount
+                                                    ) +
+                                                    parseInt(
+                                                        this.state
+                                                            .companiesCount
+                                                    ) +
+                                                    parseInt(
+                                                        this.state.garagesCount
+                                                    )
                                                 }
                                             ></CompanyRegistration>
                                         }
@@ -608,6 +646,18 @@ class App extends Component {
                                         exact
                                         path="/EditVehicle"
                                         element={<EditVehicle />}
+                                    />
+
+                                    <Route
+                                        exact
+                                        path="/GarageMainPage"
+                                        element={
+                                            <GarageMainPage
+                                                documentations={
+                                                    this.state.documentations
+                                                }
+                                            />
+                                        }
                                     />
                                 </Routes>
                             )}

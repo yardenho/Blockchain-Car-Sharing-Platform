@@ -58,7 +58,7 @@ class VehicalDoc extends Component {
             return currentDate;
         };
         return (
-            <div id="content" style={{ width: "100%" }}>
+            <div id="content" style={{ width: "100%", marginTop: "60px" }}>
                 <center>
                     <h5 style={{ fontSize: "40px" }}>Add document</h5>
                     <form

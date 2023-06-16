@@ -31,6 +31,14 @@ class Navbar extends Component {
                     return 1;
                 }
             }
+            for (var k = 0; k < this.props.companies.length; ++k) {
+                if (
+                    this.props.companies[k].companyAddress ===
+                    this.props.account
+                ) {
+                    return 2;
+                }
+            }
             return -1;
         };
 
@@ -99,6 +107,32 @@ class Navbar extends Component {
                         </button>
                         <div id="myDropdown" className="dropdown-content">
                             <a href="/UserProfile">My Profile</a>
+                            <a href="/UserOfferedCars">My cars</a>
+                            <a href="#">My Rents</a>
+                            <a href="/DocsList">My cars documentations</a>
+                            <a href="/">Log out</a>
+                        </div>
+                    </div>
+                )}
+                {checkUserConnected() === 1 && (
+                    <div className="dropdown">
+                        <button onClick={myFunction} className="dropbtn">
+                            &#9776; Menu actions
+                        </button>
+                        <div id="myDropdown" className="dropdown-content">
+                            <a href="#">My Profile</a>
+                            <a href="/GarageMainPage">Cars documentations</a>
+                            <a href="/">Log out</a>
+                        </div>
+                    </div>
+                )}
+                {checkUserConnected() === 2 && (
+                    <div className="dropdown">
+                        <button onClick={myFunction} className="dropbtn">
+                            &#9776; Menu actions
+                        </button>
+                        <div id="myDropdown" className="dropdown-content">
+                            <a href="#">My Profile</a>
                             <a href="/UserOfferedCars">My cars</a>
                             <a href="#">My Rents</a>
                             <a href="/DocsList">My cars documentations</a>

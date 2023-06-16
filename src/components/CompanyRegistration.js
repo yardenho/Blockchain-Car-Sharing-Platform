@@ -11,6 +11,7 @@ class CompanyRegistration extends Component {
         };
     }
     render() {
+        console.log("index " + index);
         function wait(milliseconds) {
             return new Promise((resolve) => {
                 setTimeout(resolve, milliseconds);
@@ -18,16 +19,34 @@ class CompanyRegistration extends Component {
         }
 
         const getKeys = async () => {
-            const res = increaceIndex();
-            if (res == null) {
+            const res = this.props.registeredCount + 1;
+            console.log(this.props.registeredCount);
+            console.log(res);
+            console.log(privateKeys.length);
+            console.log(res >= privateKeys.length);
+
+            if (res >= privateKeys.length) {
                 alert(
                     "cannot register in that moment, the managers will fix the problem as soon as possible"
                 );
                 return true;
             }
-            this.garagePrivateKey = privateKeys[index - 1][1];
-            this.Address = privateKeys[index - 1][0];
-            this.garageNodeNumber = index;
+
+            this.PrivateKey = privateKeys[res][1];
+            this.Address = privateKeys[res][0];
+            this.NodeNumber = res;
+            // const res = increaceIndex();
+            // if (res == null) {
+            //     alert(
+            //         "cannot register in that moment, the managers will fix the problem as soon as possible"
+            //     );
+            //     return true;
+            // }
+            // this.userPrivateKey = res[1];
+            // this.userAddress = res[2];
+            // this.garagePrivateKey = privateKeys[index - 1][1];
+            // this.Address = privateKeys[index - 1][0];
+            // this.garageNodeNumber = index;
 
             //print the private key for 30 seconds
             // this.showKey = true;
@@ -102,11 +121,12 @@ class CompanyRegistration extends Component {
                         //**** check if garage isn't already exist ****
                         if (checkCompany() === true) return;
 
+                        //get private key from the keys file
+                        const res = await getKeys();
+                        if (res === true) return;
+
                         console.log(GarageCheckBox.checked);
                         if (GarageCheckBox.checked) {
-                            //get private key from the keys file
-                            const res = await getKeys();
-                            if (res === true) return;
                             //saving the garage details
                             this.props.createGarage(
                                 this.Address,
@@ -116,9 +136,6 @@ class CompanyRegistration extends Component {
                                 password
                             );
                         } else {
-                            //get private key from the keys file
-                            const res = await getKeys();
-                            if (res === true) return;
                             //saving the garage details
                             this.props.createCompany(
                                 this.Address,
@@ -205,13 +222,18 @@ class CompanyRegistration extends Component {
                         Move to login page
                     </a>
                 </button>
+                <button className="btn btn-primary" style={{ marginTop: 5 }}>
+                    <a href="/Register" style={{ color: "white" }}>
+                        Move to user register
+                    </a>
+                </button>
                 {this.state.showKey === true && (
                     <>
-                        <p>Your private key is: {this.garagePrivateKey}</p>
-                        <p>Your node is number: {this.garageNodeNumber}.</p>
+                        <p>Your private key is: {this.PrivateKey}</p>
+                        <p>Your node is number: {this.NodeNumber}.</p>
                         <p>
                             Your node run command apperes in the path node
-                            {this.garageNodeNumber}/run_command.txt
+                            {this.NodeNumber}/run_command.txt
                         </p>
                     </>
                 )}

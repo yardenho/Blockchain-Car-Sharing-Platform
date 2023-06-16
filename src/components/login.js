@@ -56,7 +56,31 @@ class Login extends Component {
                         this.props.garages[i].password === this.password.value
                     ) {
                         this.setState({ error: "" });
-                        //TODO - forwards to web
+                        window.location.href = "/GarageMainPage";
+                        return true;
+                    } else {
+                        this.setState({
+                            error: "The password incorrect",
+                        });
+                        return false;
+                    }
+                }
+            }
+            return false;
+        };
+
+        const checkCompanies = (account) => {
+            for (var i = 0; i < this.props.companies.length; ++i) {
+                if (
+                    this.props.companies[i].companyAddress === account.address
+                ) {
+                    //check if the private key similar to the running node
+                    console.log(this.props.user === account.address);
+                    if (
+                        this.props.companies[i].password === this.password.value
+                    ) {
+                        this.setState({ error: "" });
+                        window.location.href = "/userMainPage";
                     } else {
                         this.setState({
                             error: "The password incorrect",
@@ -105,6 +129,9 @@ class Login extends Component {
                             let res = checkUsers(account);
                             if (res === false) {
                                 res = checkGarages(account);
+                            }
+                            if (res == false) {
+                                res = checkCompanies(account);
                             }
                         }
                     }}
