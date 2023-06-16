@@ -113,8 +113,7 @@ class Register extends Component {
                             IDnumber,
                             password
                         );
-                        //TODO - need to forward to login
-                        // window.href("/login");
+                        window.location.href = "/";
                     }}
                 >
                     <div className="form-group mr-sm-2">
@@ -195,17 +194,11 @@ class Register extends Component {
                         Register
                     </button>
                 </form>
-
-                <button className="btn btn-primary" style={{ marginTop: 5 }}>
+                {/* <button className="btn btn-primary" style={{ marginTop: 5 }}>
                     <a href="/Login" style={{ color: "white" }}>
                         Move to login page
                     </a>
-                </button>
-                <button className="btn btn-primary" style={{ marginTop: 5 }}>
-                    <a href="/CompanyRegistration" style={{ color: "white" }}>
-                        Move to company register
-                    </a>
-                </button>
+                </button> */}
                 {this.state.showKey === true && (
                     <>
                         <p>Your private key is: {this.userPrivateKey}</p>

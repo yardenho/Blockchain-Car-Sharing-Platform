@@ -19,7 +19,7 @@ class GarageMainPage extends Component {
                     </button>
                 </div>
                 {this.props.documentations.length === 0 ? (
-                    <h5>You don`t have any documents for your cars</h5>
+                    <h5>You don`t have any documents</h5>
                 ) : (
                     <table className="table">
                         <thead>

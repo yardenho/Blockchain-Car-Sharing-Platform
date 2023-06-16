@@ -35,21 +35,6 @@ class CompanyRegistration extends Component {
             this.PrivateKey = privateKeys[res][1];
             this.Address = privateKeys[res][0];
             this.NodeNumber = res;
-            // const res = increaceIndex();
-            // if (res == null) {
-            //     alert(
-            //         "cannot register in that moment, the managers will fix the problem as soon as possible"
-            //     );
-            //     return true;
-            // }
-            // this.userPrivateKey = res[1];
-            // this.userAddress = res[2];
-            // this.garagePrivateKey = privateKeys[index - 1][1];
-            // this.Address = privateKeys[index - 1][0];
-            // this.garageNodeNumber = index;
-
-            //print the private key for 30 seconds
-            // this.showKey = true;
             this.setState({ showKey: true });
             await wait(10000); //waiting 10 secondes
             this.setState({ showKey: false });
@@ -145,11 +130,7 @@ class CompanyRegistration extends Component {
                                 password
                             );
                         }
-
-                        //TODO - need to move directlly to login page
-                        // const navigate = useNavigate();
-                        // navigate("/login");
-                        // window.open("/login ");
+                        window.location.href = "/";
                     }}
                 >
                     <div className="form-group mr-sm-2">
@@ -216,17 +197,12 @@ class CompanyRegistration extends Component {
                         Register
                     </button>
                 </form>
-
+                {/* 
                 <button className="btn btn-primary" style={{ marginTop: 5 }}>
                     <a href="/Login" style={{ color: "white" }}>
                         Move to login page
                     </a>
-                </button>
-                <button className="btn btn-primary" style={{ marginTop: 5 }}>
-                    <a href="/Register" style={{ color: "white" }}>
-                        Move to user register
-                    </a>
-                </button>
+                </button> */}
                 {this.state.showKey === true && (
                     <>
                         <p>Your private key is: {this.PrivateKey}</p>
