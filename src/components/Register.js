@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { privateKeys, index, increaceIndex } from "../privateKeys";
+import { privateKeys } from "../privateKeys";
 
 class Register extends Component {
     // showKey = false;
@@ -18,16 +18,22 @@ class Register extends Component {
         }
 
         const getKeys = async () => {
-            const res = increaceIndex();
-            if (res == null) {
+            const res = this.props.registeredCount + 1;
+            console.log(this.props.registeredCount);
+            console.log(res);
+            console.log(privateKeys.length);
+            console.log(res >= privateKeys.length);
+
+            if (res >= privateKeys.length) {
                 alert(
                     "cannot register in that moment, the managers will fix the problem as soon as possible"
                 );
                 return true;
             }
-            this.userPrivateKey = privateKeys[index - 1][1];
-            this.userAddress = privateKeys[index - 1][0];
-            this.userNodeNumber = index;
+
+            this.userPrivateKey = privateKeys[res][1];
+            this.userAddress = privateKeys[res][0];
+            this.userNodeNumber = res;
 
             //print the private key for 30 seconds
             // this.showKey = true;
@@ -43,7 +49,7 @@ class Register extends Component {
                 alert("A user must by older then 17 yaers old");
                 return true;
             }
-            console.log("id lengtht" + this.IDnumber.value.length);
+            console.log("id length" + this.IDnumber.value.length);
             if (this.IDnumber.value.length !== 9) {
                 alert("A user Id number must by 9 digits");
                 return true;
@@ -191,8 +197,13 @@ class Register extends Component {
                 </form>
 
                 <button className="btn btn-primary" style={{ marginTop: 5 }}>
-                    <a href="/login" style={{ color: "white" }}>
+                    <a href="/Login" style={{ color: "white" }}>
                         Move to login page
+                    </a>
+                </button>
+                <button className="btn btn-primary" style={{ marginTop: 5 }}>
+                    <a href="/CompanyRegistration" style={{ color: "white" }}>
+                        Move to company register
                     </a>
                 </button>
                 {this.state.showKey === true && (

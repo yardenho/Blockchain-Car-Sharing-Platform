@@ -30,10 +30,10 @@ class MainPage extends Component {
                         }}
                     >
                         <a
-                            href="/GarageRegistration"
+                            href="/CompanyRegistration"
                             style={{ color: "white" }}
                         >
-                            Register as garage
+                            Register as garage or as renting company
                         </a>
                     </button>
                     <button
@@ -41,7 +41,7 @@ class MainPage extends Component {
                         style={{ marginTop: 5, display: "block" }}
                     >
                         <a href="/Register" style={{ color: "white" }}>
-                            Register as individual or as renting company
+                            Register as individual
                         </a>
                     </button>
                     <button

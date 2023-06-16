@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import { privateKeys } from "../privateKeys";
 
 class Navbar extends Component {
@@ -11,19 +11,27 @@ class Navbar extends Component {
 
   render() {
     const checkUserConnected = () => {
-      console.log("this.props.userLog");
-      console.log(this.props.userLog);
-      // if (this.props.userLog == false) {
-      //     return -1;
-      // }
+      if (
+        window.location.pathname === "/Login" ||
+        window.location.pathname === "/" ||
+        window.location.pathname === "/Register" ||
+        window.location.pathname === "/GarageRegistration"
+      ) {
+        return -1;
+      }
       for (var i = 0; i < this.props.users.length; ++i) {
         if (this.props.users[i].userAddress === this.props.account) {
           return 0;
         }
       }
-      for (var i = 0; i < this.props.garages.length; ++i) {
-        if (this.props.garages[i].garageAddress === this.props.account) {
+      for (var j = 0; j < this.props.garages.length; ++j) {
+        if (this.props.garages[j].garageAddress === this.props.account) {
           return 1;
+        }
+      }
+      for (var k = 0; k < this.props.companies.length; ++k) {
+        if (this.props.companies[k].companyAddress === this.props.account) {
+          return 2;
         }
       }
       return -1;
@@ -32,7 +40,11 @@ class Navbar extends Component {
     const accountname = () => {
       if (
         privateKeys[0][0] === this.props.account ||
-        this.props.account === ""
+        this.props.account === "" ||
+        window.location.pathname === "/Login" ||
+        window.location.pathname === "/" ||
+        window.location.pathname === "/Register" ||
+        window.location.pathname === "/GarageRegistration"
       ) {
         return "Hello";
       }
@@ -68,7 +80,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a
           className="navbar-brand col-sm-3 col-md-2 mr-0"
-          href=""
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -87,12 +99,37 @@ class Navbar extends Component {
               &#9776; Menu actions
             </button>
             <div id="myDropdown" className="dropdown-content">
-              <a href="#">My Profile</a>
-              <a href="#">My cars</a>
+              <a href="/UserProfile">My Profile</a>
+              <a href="/UserOfferedCars">My cars</a>
               <a href="#">My Rents</a>
-              <a href="#">My cars documentations</a>
-              <a href="#">Log out</a>
-              <a href="/AddVehicle">Add Vehicle</a>
+              <a href="/DocsList">My cars documentations</a>
+              <a href="/">Log out</a>
+            </div>
+          </div>
+        )}
+        {checkUserConnected() === 1 && (
+          <div className="dropdown">
+            <button onClick={myFunction} className="dropbtn">
+              &#9776; Menu actions
+            </button>
+            <div id="myDropdown" className="dropdown-content">
+              <a href="#">My Profile</a>
+              <a href="/GarageMainPage">Cars documentations</a>
+              <a href="/">Log out</a>
+            </div>
+          </div>
+        )}
+        {checkUserConnected() === 2 && (
+          <div className="dropdown">
+            <button onClick={myFunction} className="dropbtn">
+              &#9776; Menu actions
+            </button>
+            <div id="myDropdown" className="dropdown-content">
+              <a href="#">My Profile</a>
+              <a href="/UserOfferedCars">My cars</a>
+              <a href="#">My Rents</a>
+              <a href="/DocsList">My cars documentations</a>
+              <a href="/">Log out</a>
             </div>
           </div>
         )}

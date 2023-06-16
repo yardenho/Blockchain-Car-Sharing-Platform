@@ -18,7 +18,7 @@ class Login extends Component {
                     //check if the private key similar to the running node
 
                     console.log(this.props.user === account.address);
-                    if (this.props.user != account.address) {
+                    if (this.props.user !== account.address) {
                         this.setState({
                             error:
                                 "The private key dose not match to the connected user in the wallet",
@@ -29,8 +29,8 @@ class Login extends Component {
                         this.setState({ error: "" });
                         //TODO - forwards to web
                         console.log("true");
-                        this.props.loginUser(true);
-                        window.location.replace("/userMainPage");
+                        window.location.href = "/userMainPage";
+                        // replace("/userMainPage");
                         return true;
                     } else {
                         this.setState({
@@ -56,7 +56,31 @@ class Login extends Component {
                         this.props.garages[i].password === this.password.value
                     ) {
                         this.setState({ error: "" });
-                        //TODO - forwards to web
+                        window.location.href = "/GarageMainPage";
+                        return true;
+                    } else {
+                        this.setState({
+                            error: "The password incorrect",
+                        });
+                        return false;
+                    }
+                }
+            }
+            return false;
+        };
+
+        const checkCompanies = (account) => {
+            for (var i = 0; i < this.props.companies.length; ++i) {
+                if (
+                    this.props.companies[i].companyAddress === account.address
+                ) {
+                    //check if the private key similar to the running node
+                    console.log(this.props.user === account.address);
+                    if (
+                        this.props.companies[i].password === this.password.value
+                    ) {
+                        this.setState({ error: "" });
+                        window.location.href = "/userMainPage";
                     } else {
                         this.setState({
                             error: "The password incorrect",
@@ -79,7 +103,7 @@ class Login extends Component {
                         console.log(this.privateKey.value.length);
                         if (
                             this.privateKey.value.startsWith("0x") === false ||
-                            this.privateKey.value.length != 66
+                            this.privateKey.value.length !== 66
                         ) {
                             this.setState({
                                 error:
@@ -96,7 +120,7 @@ class Login extends Component {
                         console.log(this.props.user);
                         console.log(account.address);
 
-                        if (this.props.user != account.address) {
+                        if (this.props.user !== account.address) {
                             this.setState({
                                 error:
                                     "The private key dose not match to the connected user in the wallet",
@@ -105,6 +129,9 @@ class Login extends Component {
                             let res = checkUsers(account);
                             if (res === false) {
                                 res = checkGarages(account);
+                            }
+                            if (res == false) {
+                                res = checkCompanies(account);
                             }
                         }
                     }}

@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Checkbox } from "react";
 import { privateKeys, index, increaceIndex } from "../privateKeys";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
-class GarageRegistration extends Component {
+class CompanyRegistration extends Component {
     // showKey = false;
 
     constructor(props) {
@@ -13,6 +11,7 @@ class GarageRegistration extends Component {
         };
     }
     render() {
+        console.log("index " + index);
         function wait(milliseconds) {
             return new Promise((resolve) => {
                 setTimeout(resolve, milliseconds);
@@ -20,16 +19,34 @@ class GarageRegistration extends Component {
         }
 
         const getKeys = async () => {
-            const res = increaceIndex();
-            if (res == null) {
+            const res = this.props.registeredCount + 1;
+            console.log(this.props.registeredCount);
+            console.log(res);
+            console.log(privateKeys.length);
+            console.log(res >= privateKeys.length);
+
+            if (res >= privateKeys.length) {
                 alert(
                     "cannot register in that moment, the managers will fix the problem as soon as possible"
                 );
                 return true;
             }
-            this.garagePrivateKey = privateKeys[index - 1][1];
-            this.garageAddress = privateKeys[index - 1][0];
-            this.garageNodeNumber = index;
+
+            this.PrivateKey = privateKeys[res][1];
+            this.Address = privateKeys[res][0];
+            this.NodeNumber = res;
+            // const res = increaceIndex();
+            // if (res == null) {
+            //     alert(
+            //         "cannot register in that moment, the managers will fix the problem as soon as possible"
+            //     );
+            //     return true;
+            // }
+            // this.userPrivateKey = res[1];
+            // this.userAddress = res[2];
+            // this.garagePrivateKey = privateKeys[index - 1][1];
+            // this.Address = privateKeys[index - 1][0];
+            // this.garageNodeNumber = index;
 
             //print the private key for 30 seconds
             // this.showKey = true;
@@ -62,6 +79,18 @@ class GarageRegistration extends Component {
             }
             return false;
         };
+
+        const checkCompany = () => {
+            console.log(this.props.companies);
+            for (let i = 0; i < this.props.companies.length; ++i) {
+                if (this.props.companies[i].BnNumber === this.BnNumber.value) {
+                    alert("There is already a company with this BN number");
+                    return true;
+                }
+            }
+            return false;
+        };
+
         return (
             <div id="content">
                 <h1>Welcome !</h1>
@@ -75,27 +104,48 @@ class GarageRegistration extends Component {
                 <form
                     onSubmit={async (event) => {
                         event.preventDefault();
-                        const garageName = this.garageName.value;
+                        const Name = this.garageName.value;
                         const BnNumber = this.BnNumber.value;
                         const city = this.city.value;
                         const password = this.password.value;
 
                         /// check the details corectness
                         if (checkDetails() === true) return;
+
+                        const GarageCheckBox = document.getElementById(
+                            "garageCheckBox"
+                        );
                         //**** check if garage isn't already exist ****
                         if (checkGarage() === true) return;
+
+                        //**** check if garage isn't already exist ****
+                        if (checkCompany() === true) return;
 
                         //get private key from the keys file
                         const res = await getKeys();
                         if (res === true) return;
-                        //saving the garage details
-                        this.props.createGarage(
-                            this.garageAddress,
-                            garageName,
-                            BnNumber,
-                            city,
-                            password
-                        );
+
+                        console.log(GarageCheckBox.checked);
+                        if (GarageCheckBox.checked) {
+                            //saving the garage details
+                            this.props.createGarage(
+                                this.Address,
+                                Name,
+                                BnNumber,
+                                city,
+                                password
+                            );
+                        } else {
+                            //saving the garage details
+                            this.props.createCompany(
+                                this.Address,
+                                Name,
+                                BnNumber,
+                                city,
+                                password
+                            );
+                        }
+
                         //TODO - need to move directlly to login page
                         // const navigate = useNavigate();
                         // navigate("/login");
@@ -111,7 +161,7 @@ class GarageRegistration extends Component {
                                 this.garageName = input;
                             }}
                             className="form-control"
-                            placeholder="Garage Name"
+                            placeholder="Company Name"
                             required
                         />
                         <input
@@ -154,31 +204,42 @@ class GarageRegistration extends Component {
                             placeholder="Confirm password"
                             required
                         />
+                        <input
+                            id="garageCheckBox"
+                            value="tehbjbbhbhst"
+                            type="checkbox"
+                        ></input>
+                        <span> If you are a garage, please mark here </span>
                     </div>
+
                     <button type="submit" className="btn btn-primary">
                         Register
                     </button>
                 </form>
 
                 <button className="btn btn-primary" style={{ marginTop: 5 }}>
-                    <a href="/login" style={{ color: "white" }}>
+                    <a href="/Login" style={{ color: "white" }}>
                         Move to login page
+                    </a>
+                </button>
+                <button className="btn btn-primary" style={{ marginTop: 5 }}>
+                    <a href="/Register" style={{ color: "white" }}>
+                        Move to user register
                     </a>
                 </button>
                 {this.state.showKey === true && (
                     <>
-                        <p>Your private key is: {this.garagePrivateKey}</p>
-                        <p>Your node is number: {this.garageNodeNumber}.</p>
+                        <p>Your private key is: {this.PrivateKey}</p>
+                        <p>Your node is number: {this.NodeNumber}.</p>
                         <p>
                             Your node run command apperes in the path node
-                            {this.garageNodeNumber}/run_command.txt
+                            {this.NodeNumber}/run_command.txt
                         </p>
                     </>
                 )}
-                <p>&nbsp;</p>
             </div>
         );
     }
 }
 
-export default GarageRegistration;
+export default CompanyRegistration;
