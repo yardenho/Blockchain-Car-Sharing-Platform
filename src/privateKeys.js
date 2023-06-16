@@ -11,7 +11,6 @@ export let privateKeys = [
     "0xe350ce02763C2cc593751E4249a77299cB1E95C1",
     "0x5910e50f521598de08f0d93a85799a0d85db3d85910199282cc25b711960a324",
   ],
-
   // [
   //     "0x2259bB585E0044421c53A3474206a1B00F26c364",
   //     "0xa27cd7179eb7f723b4cb729a44af5b65a28a313bdfe8845109a9c49fc6310923",
@@ -44,7 +43,6 @@ export let privateKeys = [
   //     "0x49486a7Ec1bA73CdBF52546A3c12e3Ec263e2c1B",
   //     "0x744e7dd0930e1ef81a6cb7fcfa50cf5acac58e7bc2b5a7a0391d253240c2dc90",
   // ],
-
   // // Chen's nodes
   // [
   //   "0x27714De4E323bA9c27d7609699b39eaC689b8A32",

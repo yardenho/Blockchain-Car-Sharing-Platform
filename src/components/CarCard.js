@@ -4,14 +4,14 @@ class CarCard extends Component {
   render() {
     console.log("in car card");
     console.log(this.props.data);
-    const navigate = useNavigate();
-    const openVehicleProfile = (VIN) => {
-      navigate("/ViewVehicle", {
-        state: {
-          vin: VIN,
-        },
-      });
-    };
+    // const navigate = useNavigate();
+    // const openVehicleProfile = (VIN) => {
+    //   navigate("/ViewVehicle", {
+    //     state: {
+    //       vin: VIN,
+    //     },
+    //   });
+    // };
     return (
       <div id="content">
         <div
