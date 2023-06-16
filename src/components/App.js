@@ -464,53 +464,54 @@ class App extends Component {
                     element={
                       //TODO - needs to delete it
                       <UserMainPage
-                        vehiclesList={[
-                          {
-                            vin: "1",
-                            vehicleType: "Honda",
-                            owner: "0x151515315d5fvfdv",
-                            vehiclePricePerDay: "1",
-                            unaviableDates: "null",
-                            numOfSeats: "5",
-                            gearboxType: "auto",
-                          },
-                          {
-                            vin: "2",
-                            vehicleType: "Tesla",
-                            owner: "0x151515315dfhdh55555fvfdv",
-                            vehiclePricePerDay: "2",
-                            unaviableDates: "null",
-                            numOfSeats: "3",
-                            gearboxType: "auto",
-                          },
-                          {
-                            vin: "3",
-                            vehicleType: "Mercedes",
-                            owner: "0x151515315dfhdh55555fvfdv",
-                            vehiclePricePerDay: "3",
-                            unaviableDates: "null",
-                            numOfSeats: "4",
-                            gearboxType: "auto",
-                          },
-                          {
-                            vin: "4",
-                            vehicleType: "Mercedes",
-                            owner: "0fhdh55555fvfdv",
-                            vehiclePricePerDay: "4",
-                            unaviableDates: "null",
-                            numOfSeats: "5",
-                            gearboxType: "auto",
-                          },
-                          {
-                            vin: "5",
-                            vehicleType: "Mercedes",
-                            owner: "0fhdh55555fvfdv",
-                            vehiclePricePerDay: "5",
-                            unaviableDates: "null",
-                            numOfSeats: "5",
-                            gearboxType: "auto",
-                          },
-                        ]}
+                        vehiclesList={this.state.vehicles}
+                        // vehiclesList={[
+                        //   {
+                        //     vin: "1",
+                        //     vehicleType: "Honda",
+                        //     owner: "0x151515315d5fvfdv",
+                        //     vehiclePricePerDay: "1",
+                        //     unaviableDates: "null",
+                        //     numOfSeats: "5",
+                        //     gearboxType: "auto",
+                        //   },
+                        //   {
+                        //     vin: "2",
+                        //     vehicleType: "Tesla",
+                        //     owner: "0x151515315dfhdh55555fvfdv",
+                        //     vehiclePricePerDay: "2",
+                        //     unaviableDates: "null",
+                        //     numOfSeats: "3",
+                        //     gearboxType: "auto",
+                        //   },
+                        //   {
+                        //     vin: "3",
+                        //     vehicleType: "Mercedes",
+                        //     owner: "0x151515315dfhdh55555fvfdv",
+                        //     vehiclePricePerDay: "3",
+                        //     unaviableDates: "null",
+                        //     numOfSeats: "4",
+                        //     gearboxType: "auto",
+                        //   },
+                        //   {
+                        //     vin: "4",
+                        //     vehicleType: "Mercedes",
+                        //     owner: "0fhdh55555fvfdv",
+                        //     vehiclePricePerDay: "4",
+                        //     unaviableDates: "null",
+                        //     numOfSeats: "5",
+                        //     gearboxType: "auto",
+                        //   },
+                        //   {
+                        //     vin: "5",
+                        //     vehicleType: "Mercedes",
+                        //     owner: "0fhdh55555fvfdv",
+                        //     vehiclePricePerDay: "5",
+                        //     unaviableDates: "null",
+                        //     numOfSeats: "5",
+                        //     gearboxType: "auto",
+                        //   },
+                        // ]}
                       />
                     }
                   />
