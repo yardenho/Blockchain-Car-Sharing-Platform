@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 
-class CarCard extends Component {
+class ViewVehicle extends Component {
   render() {
-    console.log("in car card");
-    console.log(this.props.data);
-    // const navigate = useNavigate();
-    // const openVehicleProfile = (VIN) => {
-    //   navigate("/ViewVehicle", {
-    //     state: {
-    //       vin: VIN,
-    //     },
-    //   });
-    // };
     return (
       <div id="content">
         <div
@@ -39,10 +29,17 @@ class CarCard extends Component {
             <a
               id="vehicle_type"
               className="d-lg-flex justify-content-lg-center product-name"
+              href="#"
               style={{ color: "var(--bs-gray-800)" }}
             >
               Vehicle Type:{this.props.data.vehicleType}
             </a>
+            <div
+              id="vehicle_owner"
+              className="d-lg-flex justify-content-lg-center product-sku"
+            >
+              <span>Owner: {this.props.data.owner}</span>
+            </div>
             <div
               id="vehicle_numOfSeats"
               className="d-lg-flex justify-content-lg-center product-sku"
@@ -62,25 +59,14 @@ class CarCard extends Component {
                   <h5
                     id="product_price"
                     style={{
-                      marginTop: "1vw",
+                      "margin-top": "1vw",
                     }}
                   >
-                    Vehicle price per day: {this.props.data.vehiclePricePerDay}{" "}
-                    Eth
+                    Vehicle price per day: {this.props.data.vehiclePricePerDay}
                   </h5>
                 </div>
               </div>
             </div>
-            {this.props.toEdit === true && (
-              <button
-                onClick={() => {
-                  window.location.replace("/EditVehicle");
-                }}
-                className="button"
-              >
-                Edit details
-              </button>
-            )}
           </div>
         </div>
       </div>
@@ -88,4 +74,4 @@ class CarCard extends Component {
   }
 }
 
-export default CarCard;
+export default ViewVehicle;
