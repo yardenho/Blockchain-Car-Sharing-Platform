@@ -10,7 +10,7 @@ const CarCard = (props) => {
 
   const navigate = useNavigate();
   const openVehicleProfile = (VIN) => {
-    navigate("/ViewVehicle", {
+    navigate("/ViewVehicleForRent", {
       state: {
         vin: VIN,
       },

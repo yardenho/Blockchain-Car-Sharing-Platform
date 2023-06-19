@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ViewVehicle extends Component {
+class ViewVehicleForRental extends Component {
   render() {
     return (
       <div id="content">
@@ -74,4 +74,4 @@ class ViewVehicle extends Component {
   }
 }
 
-export default ViewVehicle;
+export default ViewVehicleForRental;
