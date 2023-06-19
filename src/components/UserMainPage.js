@@ -27,7 +27,7 @@ class UserMainPage extends Component {
       let filterList = [];
       for (let i = 0; i < this.props.vehiclesList.length; ++i) {
         if (
-          this.props.vehiclesList[i].vehicleType.toLowerCase() ==
+          this.props.vehiclesList[i].vehicleType.toLowerCase() ===
           this.searchInput.value.toLowerCase()
         ) {
           filterList.push(this.props.vehiclesList[i]);
@@ -78,10 +78,15 @@ class UserMainPage extends Component {
           ></img>
         </a>
         {this.state.flag == 0 ? (
+          <VehicleList data={this.props.vehiclesList} />
+        ) : (
+          <VehicleList data={this.state.data} />
+        )}
+        {/* {this.state.flag == 0 ? (
           <RentersVehiclesList vehicles={this.props.vehiclesList} />
         ) : (
           <RentersVehiclesList vehicles={this.state.data} />
-        )}
+        )} */}
         {/* <RentersVehiclesList vehicles={this.props.vehiclesList} /> */}
         {/* <VehicleList vehicles={this.state.data} /> */}
       </div>
