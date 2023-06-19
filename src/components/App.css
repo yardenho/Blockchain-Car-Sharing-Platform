@@ -53,8 +53,8 @@
     background-color: black;
     color: white;
     font-size: 15px;
-    padding: 10px 10px;
+    /* padding: 8px 8px; */
     border-radius: 5px;
-    margin: 10px 80px;
+    /* margin: 10px 80px; */
     cursor: pointer;
 }

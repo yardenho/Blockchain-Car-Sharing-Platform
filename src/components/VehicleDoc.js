@@ -69,7 +69,7 @@ class VehicalDoc extends Component {
                             const garageBnNumber = this.garageBnNumber.value;
                             const description = this.description.value;
 
-                            const date = currentDate();
+                            const date = document.getElementById("date").value;
 
                             /// check the details corectness
                             if (checkDetails() === true) return;
@@ -113,6 +113,17 @@ class VehicalDoc extends Component {
                                 }}
                                 className="form-control"
                                 placeholder="garage Bn Number"
+                                required
+                                style={{ margin: "2px" }}
+                            />
+                            <input
+                                id="date"
+                                type="date"
+                                // ref={(input) => {
+                                //     this.date = input;
+                                // }}
+                                className="form-control"
+                                placeholder="date"
                                 required
                                 style={{ margin: "2px" }}
                             />

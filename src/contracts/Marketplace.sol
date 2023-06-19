@@ -11,7 +11,7 @@ contract Marketplace {
         string vehicleType;
         uint vehiclePricePerDay;
         address payable owner;
-        string[] unaviableDates;
+        string unaviableDates;
         uint numOfSeats;
         string gearboxType;
     }
@@ -21,7 +21,7 @@ contract Marketplace {
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
-        string[] unaviableDates,
+        string unaviableDates,
         uint numOfSeats,
         string gearboxType
     );
@@ -31,7 +31,7 @@ contract Marketplace {
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
-        string[] unaviableDates,
+        string unaviableDates,
         uint numOfSeats,
         string gearboxType
     );
@@ -41,7 +41,7 @@ contract Marketplace {
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
-        string[] unaviableDates,
+        string unaviableDates,
         uint numOfSeats,
         string gearboxType
     );
@@ -50,7 +50,7 @@ contract Marketplace {
         name = "Chen & Yarden final project";
     }
 
-    function createVehicle(string memory _vin, string memory _vehicleType, uint _price, uint _numOfSeats, string memory _gearboxType) public {
+    function createVehicle(string memory _vin, string memory _vehicleType, uint _price, uint _numOfSeats, string memory _gearboxType, string memory _unaviableDates) public {
         // Require a valid vin
         require(bytes(_vin).length > 0);
         // Require a valid price
@@ -69,17 +69,19 @@ contract Marketplace {
             _vehicleType,
             _price,
             payable(msg.sender),
-            new string[](0),
+            _unaviableDates,
             _numOfSeats,
             _gearboxType
         );
+
+
         // Trigger an event
         emit VehicleCreated(
             _vin,
             _vehicleType,
             _price,
             payable(msg.sender),
-            new string[](0),
+            _unaviableDates,
             _numOfSeats,
             _gearboxType
         );
