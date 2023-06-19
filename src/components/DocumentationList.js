@@ -15,6 +15,7 @@ class DocumentationList extends Component {
                             <th scope="col">Vehicle Vin</th>
                             <th scope="col">Garage BN</th>
                             <th scope="col">Date</th>
+                            <th scope="col">description</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@ class DocumentationList extends Component {
                                     <td>{doc.vehicleVin}</td>
                                     <td>{doc.garageBnNumber}</td>
                                     <td>{doc.date}</td>
+                                    <td>{doc.description}</td>
                                     <td>
                                         {!doc.approved ? (
                                             <button
