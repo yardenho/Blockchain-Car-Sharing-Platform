@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CarCard from "./CarCard";
 
 class VehiclesList extends Component {
   render() {
@@ -27,39 +28,40 @@ class VehiclesList extends Component {
               console.log(vehicle);
               console.log(vehicle.vin);
               return (
-                <tr key={key}>
-                  <th scope="row">{key + 1}</th>
-                  <td>{vehicle.vehicleType}</td>
-                  <td>
-                    {window.web3.utils.fromWei(
-                      vehicle.vehiclePricePerDay.toString(),
-                      "Ether"
-                    )}{" "}
-                    Eth
-                  </td>
-                  <td>{vehicle.numOfSeats.toString()}</td>
-                  <td>
-                    <button onClick={() => viewVehicle(vehicle.vin)}>
-                      View vehicle
-                    </button>
-                  </td>
-                  {/* <td>
-                    {true ? (
-                      <button
-                        name={vehicle.vin}
-                        value={vehicle.vehiclePrice}
-                        onClick={(event) => {
-                          this.props.purchaseVehicle(
-                            event.target.name,
-                            event.target.value
-                          );
-                        }}
-                      >
-                        BUY
-                      </button>
-                    ) : null}
-                  </td> */}
-                </tr>
+                <CarCard data={vehicle}></CarCard>
+                // <tr key={key}>
+                //   <th scope="row">{key + 1}</th>
+                //   <td>{vehicle.vehicleType}</td>
+                //   <td>
+                //     {window.web3.utils.fromWei(
+                //       vehicle.vehiclePricePerDay.toString(),
+                //       "Ether"
+                //     )}{" "}
+                //     Eth
+                //   </td>
+                //   <td>{vehicle.numOfSeats.toString()}</td>
+                //   <td>
+                //     <button onClick={() => viewVehicle(vehicle.vin)}>
+                //       View vehicle
+                //     </button>
+                //   </td>
+                //   {/* <td>
+                //     {true ? (
+                //       <button
+                //         name={vehicle.vin}
+                //         value={vehicle.vehiclePrice}
+                //         onClick={(event) => {
+                //           this.props.purchaseVehicle(
+                //             event.target.name,
+                //             event.target.value
+                //           );
+                //         }}
+                //       >
+                //         BUY
+                //       </button>
+                //     ) : null}
+                //   </td> */}
+                // </tr>
               );
             })}
           </tbody>
