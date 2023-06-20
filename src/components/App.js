@@ -26,6 +26,7 @@ import ViewVehicleForRent from "./ViewVehicleForRent";
 
 class App extends Component {
     async componentWillMount() {
+        console.log(new Date());
         await this.loadWeb3();
         await this.loadBlockchainData();
     }
@@ -239,6 +240,7 @@ class App extends Component {
         };
 
         this.createVehicle = this.createVehicle.bind(this);
+        this.EditVehicle = this.EditVehicle.bind(this);
         this.purchaseVehicle = this.purchaseVehicle.bind(this);
         this.createUser = this.createUser.bind(this);
         this.updateUser = this.updateUser.bind(this);
@@ -271,6 +273,17 @@ class App extends Component {
             .once("transactionHash", (transactionHash) => {
                 this.setState({ loading: false });
                 console.log(this.state.vehicles[0]);
+            });
+    }
+
+    EditVehicle(index, dates, price) {
+        this.setState({ loading: true });
+        const promise = this.state.marketplace.methods
+            .editVehicle(index, dates, price)
+            .send({ from: this.state.account })
+            .once("transactionHash", (transactionHash) => {
+                this.setState({ loading: false });
+                console.log("this.state.vehicles[0]");
             });
     }
 
@@ -584,7 +597,12 @@ class App extends Component {
                                     <Route
                                         exact
                                         path="/EditVehicle"
-                                        element={<EditVehicle />}
+                                        element={
+                                            <EditVehicle
+                                                vehicles={this.state.vehicles}
+                                                EditVehicle={this.EditVehicle}
+                                            />
+                                        }
                                     />
 
                                     <Route

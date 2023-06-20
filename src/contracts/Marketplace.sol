@@ -46,9 +46,16 @@ contract Marketplace {
         string gearboxType
     );
 
+    event VehicleEdited(
+        string vin,
+        uint vehiclePricePerDay
+    );
+
     constructor() public {
         name = "Chen & Yarden final project";
     }
+
+    
 
     function createVehicle(string memory _vin, string memory _vehicleType, uint _price, uint _numOfSeats, string memory _gearboxType, string memory _unaviableDates) public {
         // Require a valid vin
@@ -85,6 +92,20 @@ contract Marketplace {
             _numOfSeats,
             _gearboxType
         );
+    }
+
+function editVehicle(uint _index, string memory _dates, uint _price) public {
+        // Require a valid price
+        require(_price > 0);
+        // Require a valid price
+        // require(bytes(_dates).length > 0);
+        // Update the Vehicle
+        Vehicle memory _vehicle = vehicles[_index];
+        _vehicle.vehiclePricePerDay = _price;
+        _vehicle.unaviableDates = _dates;
+        vehicles[_index] = _vehicle;
+        // Trigger an event
+        emit VehicleEdited(_vehicle.vin, _vehicle.vehiclePricePerDay);
     }
 
     function purchaseVehicle(uint _id) public payable {
