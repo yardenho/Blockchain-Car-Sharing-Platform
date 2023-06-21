@@ -2,19 +2,19 @@
 // var keythereum = require("keythereum");
 
 export let privateKeys = [
-  // Yarden's nodes
-  [
-    "0xa1d68468E8f8091a03bE8D81d45b10017F27838A",
-    "0xbf3711965a522ec0826d5bcf848f9639b64bac90cad6e6dece440ac6f980caca",
-  ], // the register node
-  [
-    "0xe350ce02763C2cc593751E4249a77299cB1E95C1",
-    "0x5910e50f521598de08f0d93a85799a0d85db3d85910199282cc25b711960a324",
-  ],
-  [
-    "0xaf95434e713cF3E33FFeB1CC785427255f7b7201",
-    "0x10fdaef5f2290ec9aa2e130d6c4d46d43ed1e8bba1165e241ec303b14d5c3817",
-  ],
+  //   // Yarden's nodes
+  //   [
+  //     "0xa1d68468E8f8091a03bE8D81d45b10017F27838A",
+  //     "0xbf3711965a522ec0826d5bcf848f9639b64bac90cad6e6dece440ac6f980caca",
+  //   ], // the register node
+  //   [
+  //     "0xe350ce02763C2cc593751E4249a77299cB1E95C1",
+  //     "0x5910e50f521598de08f0d93a85799a0d85db3d85910199282cc25b711960a324",
+  //   ],
+  //   [
+  //     "0xaf95434e713cF3E33FFeB1CC785427255f7b7201",
+  //     "0x10fdaef5f2290ec9aa2e130d6c4d46d43ed1e8bba1165e241ec303b14d5c3817",
+  //   ],
   // [
   //     "0x1812E355c6c5B0C502a3A14b80E23c9C4bEBd398",
   //     "0xea7df52a815d9631b091407ca30118ab08c9a36ca52198ebf55341cff7a2c299",
@@ -93,15 +93,15 @@ export let privateKeys = [
   //     "0x49486a7Ec1bA73CdBF52546A3c12e3Ec263e2c1B",
   //     "0x744e7dd0930e1ef81a6cb7fcfa50cf5acac58e7bc2b5a7a0391d253240c2dc90",
   // ],
-  //   // Chen's nodes
-  //   [
-  //     "0x27714De4E323bA9c27d7609699b39eaC689b8A32",
-  //     "0xa3297288069201cc21accd74a51d504273983b612adefda7f2be819572699b0a",
-  //   ], // the register node
-  //   [
-  //     "0x48B90A323aa24268d7cad8CFffE2EfB70D0d3bdd",
-  //     "0x7d5b8ef6002c5eeef5b438c93cf089d24fd844b9fa0109af07bd76f02011424d",
-  //   ],
+  // Chen's nodes
+  [
+    "0x27714De4E323bA9c27d7609699b39eaC689b8A32",
+    "0xa3297288069201cc21accd74a51d504273983b612adefda7f2be819572699b0a",
+  ], // the register node
+  [
+    "0x48B90A323aa24268d7cad8CFffE2EfB70D0d3bdd",
+    "0x7d5b8ef6002c5eeef5b438c93cf089d24fd844b9fa0109af07bd76f02011424d",
+  ],
 ];
 export let index = 1;
 
