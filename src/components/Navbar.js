@@ -112,6 +112,7 @@ class Navbar extends Component {
                             <a href="#">My Rents</a>
                             <a href="/DocsList">My cars documentations</a>
                             <a href="/">Log out</a>
+                            <a href="/EditVehicle">EditVehicle</a>
                         </div>
                     </div>
                 )}

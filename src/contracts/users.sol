@@ -31,8 +31,7 @@ contract Users {
         string emailAddress,
         uint age,
         string picture,
-        string password,
-        uint res
+        string password
     );
 
     constructor() public {
@@ -78,7 +77,7 @@ contract Users {
         );
     }
 
-        function updateUser(string memory _userAddress, string memory _fullName, string memory _emailAddress, uint _age, string memory _picture, string memory _password) public {
+        function updateUser(uint _index, string memory _userAddress, string memory _IDnumber, string memory _fullName, string memory _emailAddress, uint _age, string memory _picture, string memory _password) public {
         // Require a valid user address
         require(bytes(_userAddress).length > 0);
         // Require a valid name
@@ -91,38 +90,33 @@ contract Users {
         require(bytes(_picture).length > 0);
         // Require a valid ID number
         require(bytes(_password).length > 0);  
+        // Make sure the index is valid
+        // require(_index > 0 && _index <= usersCount);
         // Update the user
-        uint res = 0;
-        // address _add1 =  address(bytes20(bytes(users[0].userAddress)));
-        // address _add2 =  address(bytes20(bytes(users[0].userAddress)));
+        // User memory user = users[_index];
+        users[_index] = User(
+            _userAddress,
+            _fullName,
+            _emailAddress,
+            _age,
+            _picture,
+            _IDnumber,
+            _password
+        );
+        // user.fullName = _fullName;
+        // user.emailAddress = _emailAddress;
+        // user.age = _age;
+        // user.picture = _picture;
+        // user.password = _password;
 
-       for(uint i = 0 ; i< usersCount; ++i){
-            string memory us = users[i].userAddress;
-            bytes memory b1 = bytes(us);
-            bytes memory b2 = bytes(_userAddress);
-            if(b1.length == b2.length){
-                res = 1;
-            }
-            bool a = keccak256(abi.encodePacked(us)) == keccak256(abi.encodePacked(_userAddress));
-            if(a)
-            {
-                users[i].fullName = _fullName;
-                users[i].emailAddress = _emailAddress;
-                users[i].age = _age;
-                users[i].picture = _picture;
-                users[i].password = _password;
-                res = 2;
-
-            }
-       }
+       
         // Trigger an event
         emit UserUpdated(
             _fullName,
             _emailAddress,
             _age,
             _picture,
-            _password,
-            res
+            _password
         );
     }
 }

@@ -69,10 +69,29 @@ class UserProfile extends Component {
                             //     alert("A user must by older then 17 yaers old");
                             //     return;
                             // }
+                            let position;
+                            console.log(
+                                "this.props.users.length + " +
+                                    this.props.users.length
+                            );
 
+                            for (let i = 0; i < this.props.users.length; ++i) {
+                                console.log("i + " + i);
+                                console.log("this.props.users[i] + ");
+                                console.log(this.props.users[i]);
+
+                                if (
+                                    this.props.users[i].userAddress ===
+                                    this.props.account
+                                ) {
+                                    position = i;
+                                }
+                            }
                             //saving the user details
                             this.props.updateUser(
+                                position,
                                 this.state.curUser.userAddress,
+                                this.state.curUser.IDnumber,
                                 fullName,
                                 emailAddress,
                                 age,

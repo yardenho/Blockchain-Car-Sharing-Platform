@@ -11,6 +11,7 @@ class OwnerCarsList extends Component {
                 </h1>
                 <div style={{ marginLeft: "20px" }}>
                     <button
+                        style={{ marginBottom: "9px", padding: "5px" }}
                         className="button"
                         onClick={() => {
                             window.location.replace("/AddVehicle");

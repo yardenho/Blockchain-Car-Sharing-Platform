@@ -1317,9 +1317,7 @@
   "ast": {
     "absolutePath": "project:/src/contracts/Migrations.sol",
     "exportedSymbols": {
-      "Migrations": [
-        502
-      ]
+      "Migrations": [502]
     },
     "id": 503,
     "license": "GPL-3.0",
@@ -1327,15 +1325,7 @@
     "nodes": [
       {
         "id": 446,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.5",
-          ".0",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.5", ".0", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "37:31:3"
       },
@@ -1346,9 +1336,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 502,
-        "linearizedBaseContracts": [
-          502
-        ],
+        "linearizedBaseContracts": [502],
         "name": "Migrations",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -1706,9 +1694,7 @@
               "src": "457:112:3",
               "statements": [
                 {
-                  "assignments": [
-                    489
-                  ],
+                  "assignments": [489],
                   "declarations": [
                     {
                       "constant": false,
@@ -1947,12 +1933,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xED0736a8D0d88A7918a024AeaCe9beA5694E5F18",
-      "transactionHash": "0x1c919e656972c60cbbab7c387699d53c0cdb63d2abbedb982ce4040907bb43a9"
+      "address": "0xECe1B61899157ca7D2161eC88b4A34d28F01606F",
+      "transactionHash": "0x8b44ed7dffdd814481db00e3e5830ccc1e58eb50786132910c50c53f99e53695"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-20T14:56:22.142Z",
+  "updatedAt": "2023-06-19T14:54:41.052Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
