@@ -6,11 +6,11 @@ const EditVehicle = (props) => {
   //TODO - changing the intialization
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [unavilableDates, setUnavilableDates] = useState("");
+  const [unavailableDates, setUnavailableDates] = useState("");
   const [pricePerDay, setPricePerDay] = useState("");
   const [vehicle, setVehicle] = useState("");
 
-  if (unavilableDates === "" && pricePerDay === "") {
+  if (unavailableDates === "" && pricePerDay === "") {
     props.vehicles.map((v) => {
       console.log("v.vin");
       console.log(v.vin);
@@ -21,19 +21,19 @@ const EditVehicle = (props) => {
           v.vehiclePricePerDay.toString(),
           "Ether"
         );
-        setUnavilableDates(v.unaviableDates);
+        setUnavailableDates(v.unavailableDates);
         setPricePerDay(price);
         setVehicle(v);
         console.log(pricePerDay);
-        console.log(unavilableDates);
+        console.log(unavailableDates);
       }
     });
   }
   const splitDates = () => {
-    if (unavilableDates !== "") {
+    if (unavailableDates !== "") {
       console.log("un");
-      console.log(unavilableDates);
-      let dates = unavilableDates.split("#");
+      console.log(unavailableDates);
+      let dates = unavailableDates.split("#");
       for (let i = 0; i < dates.length - 1; ++i) {
         dates[i] = dates[i].split("-");
         dates[i][0] = new Date(dates[i][0]);
@@ -63,7 +63,7 @@ const EditVehicle = (props) => {
     // Convert date strings to datetime objects
     var start2 = new Date(start).getTime();
     var end2 = new Date(end).getTime();
-    const dates = unavilableDates;
+    const dates = unavailableDates;
     let datesList = [];
     if (dates !== "") {
       datesList = dates.split("#");
@@ -114,7 +114,7 @@ const EditVehicle = (props) => {
             }
           }
 
-          let li = unavilableDates;
+          let li = unavailableDates;
           if (check_date_overlap(startDate, endDate) == false) {
             if (
               startDate !== "" &&
@@ -196,7 +196,9 @@ const EditVehicle = (props) => {
             />
           </label>
           <div>
-            <label style={{ marginRight: "5px" }}>Add unavilable dates: </label>
+            <label style={{ marginRight: "5px" }}>
+              Add unavailable dates:{" "}
+            </label>
             <DatePicker
               selected={startDate}
               onChange={(range) => {
@@ -221,8 +223,8 @@ const EditVehicle = (props) => {
               }}
               onClick={() => {
                 console.log("pressed");
-                let li = unavilableDates;
-                console.log(unavilableDates);
+                let li = unavailableDates;
+                console.log(unavailableDates);
 
                 console.log(startDate);
 
@@ -238,10 +240,10 @@ const EditVehicle = (props) => {
                     li += startDate + "-" + endDate + "#";
                   }
                 }
-                setUnavilableDates(li);
+                setUnavailableDates(li);
                 setStartDate("");
                 setEndDate("");
-                console.log(unavilableDates);
+                console.log(unavailableDates);
               }}
             >
               Add another range

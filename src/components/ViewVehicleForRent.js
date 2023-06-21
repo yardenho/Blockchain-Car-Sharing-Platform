@@ -8,13 +8,13 @@ const ViewVehicleForRent = (props) => {
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [unaviableDates, setUnaviableDates] = useState(
-    location.state.vehicle.unaviableDates
+  const [unavailableDates, setUnavailableDates] = useState(
+    location.state.vehicle.unavailableDates
   );
   console.log("vehicle for rent - dates");
-  console.log(unaviableDates);
+  console.log(unavailableDates);
 
-  // if (unavilableDates === "" && pricePerDay === "") {
+  // if (unavailableDates === "" && pricePerDay === "") {
   //   props.vehicles.map((v) => {
   //     console.log("v.vin");
   //     console.log(v.vin);
@@ -25,19 +25,19 @@ const ViewVehicleForRent = (props) => {
   //         v.vehiclePricePerDay.toString(),
   //         "Ether"
   //       );
-  //       setUnavilableDates(v.unaviableDates);
+  //       setUnavailableDates(v.unavailableDates);
   //       setPricePerDay(price);
   //       setVehicle(v);
   //       console.log(pricePerDay);
-  //       console.log(unavilableDates);
+  //       console.log(unavailableDates);
   //     }
   //   });
   // }
   // const splitDates = () => {
-  //   if (unavilableDates !== "") {
+  //   if (unavailableDates !== "") {
   //     console.log("un");
-  //     console.log(unavilableDates);
-  //     let dates = unavilableDates.split("#");
+  //     console.log(unavailableDates);
+  //     let dates = unavailableDates.split("#");
   //     for (let i = 0; i < dates.length - 1; ++i) {
   //       dates[i] = dates[i].split("-");
   //       dates[i][0] = new Date(dates[i][0]);
@@ -67,7 +67,7 @@ const ViewVehicleForRent = (props) => {
   //   // Convert date strings to datetime objects
   //   var start2 = new Date(start).getTime();
   //   var end2 = new Date(end).getTime();
-  //   const dates = unavilableDates;
+  //   const dates = unavailableDates;
   //   let datesList = [];
   //   if (dates !== "") {
   //     datesList = dates.split("#");
