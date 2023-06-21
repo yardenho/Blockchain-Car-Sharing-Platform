@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import { useState, state, useEffect } from "react";
+import { flags } from "geth";
 
 const EditVehicle = (props) => {
     //TODO - changing the intialization
@@ -15,7 +16,7 @@ const EditVehicle = (props) => {
             console.log("v.vin");
             console.log(v.vin);
 
-            if (v.vin === "2") {
+            if (v.vin === "1") {
                 console.log("in");
                 const price = window.web3.utils.fromWei(
                     v.vehiclePricePerDay.toString(),
@@ -92,7 +93,8 @@ const EditVehicle = (props) => {
         <div>
             <h1> Edit your vehicle details</h1>
             <form
-                onSubmit={(event) => {
+                id="formId"
+                onSubmit={async (event) => {
                     event.preventDefault();
 
                     if (isNaN(pricePerDay)) {
@@ -107,7 +109,7 @@ const EditVehicle = (props) => {
                     );
                     let index;
                     for (let i = 0; i < props.vehicles.length; ++i) {
-                        if (props.vehicles[i].vin === "2") {
+                        if (props.vehicles[i].vin === "1") {
                             //to change
                             index = i + 1;
                         }
@@ -128,9 +130,11 @@ const EditVehicle = (props) => {
                     console.log("index+ " + index);
                     console.log(li);
                     console.log(price);
-                    setUnavilableDates("");
-                    setPricePerDay("");
                     props.EditVehicle(index, li, price);
+                    await new Promise((resolve) => setTimeout(resolve, 5000));
+                    window.location.reload();
+                    // setLoading(false);
+                    // window.location.href = "/userMainPage";
                 }}
             >
                 <div className="form-group mr-sm-2">
@@ -214,7 +218,10 @@ const EditVehicle = (props) => {
                         <button
                             type="button"
                             className="button"
-                            style={{ margin: "5px", marginLeft: "20px" }}
+                            style={{
+                                margin: "5px",
+                                marginLeft: "20px",
+                            }}
                             onClick={() => {
                                 console.log("pressed");
                                 let li = unavilableDates;
