@@ -8,15 +8,6 @@ const CarCard = (props) => {
 
   const [data, setData] = useState(props.data);
 
-  const navigate = useNavigate();
-  const openVehicleProfile = (VIN) => {
-    navigate("/ViewVehicleForRent", {
-      state: {
-        vin: VIN,
-      },
-    });
-  };
-
   return (
     <div id="content">
       <div
@@ -40,7 +31,9 @@ const CarCard = (props) => {
             to="/ViewVehicleForRent"
             style={{ textDecoration: "none", color: "black" }}
             state={{
-              VIN: data.vin,
+              vehicle: data,
+              price: data.vehiclePricePerDay.toString(),
+              numberOfSeats: data.numOfSeats.toString(),
             }}
           >
             <div id="image_field" className="image">

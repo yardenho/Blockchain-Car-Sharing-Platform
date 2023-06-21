@@ -17,7 +17,7 @@ class VehicleList extends Component {
         }}
       >
         {this.props.data.map((vehicle) => {
-          return <CarCard data={vehicle}></CarCard>;
+          return <CarCard data={vehicle} list={this.props.data}></CarCard>;
         })}
       </div>
     );
