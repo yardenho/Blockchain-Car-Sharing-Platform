@@ -93,22 +93,14 @@ contract Users {
         // Make sure the index is valid
         // require(_index > 0 && _index <= usersCount);
         // Update the user
-        // User memory user = users[_index];
-        users[_index] = User(
-            _userAddress,
-            _fullName,
-            _emailAddress,
-            _age,
-            _picture,
-            _IDnumber,
-            _password
-        );
-        // user.fullName = _fullName;
-        // user.emailAddress = _emailAddress;
-        // user.age = _age;
-        // user.picture = _picture;
-        // user.password = _password;
+        User memory user = users[_index];
 
+        user.fullName = _fullName;
+        user.emailAddress = _emailAddress;
+        user.age = _age;
+        user.picture = _picture;
+        user.password = _password;
+        users[_index] = user;
        
         // Trigger an event
         emit UserUpdated(

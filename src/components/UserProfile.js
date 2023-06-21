@@ -41,8 +41,6 @@ class UserProfile extends Component {
                     <form
                         onSubmit={async (event) => {
                             event.preventDefault();
-                            const fn = document.getElementById("fullName");
-                            console.log(fn);
                             const fullName = this.state.fullName;
                             const emailAddress = this.state.email;
                             const age = this.state.age;
@@ -84,7 +82,7 @@ class UserProfile extends Component {
                                     this.props.users[i].userAddress ===
                                     this.props.account
                                 ) {
-                                    position = i;
+                                    position = i + 1;
                                 }
                             }
                             //saving the user details
@@ -98,6 +96,10 @@ class UserProfile extends Component {
                                 picture,
                                 password
                             );
+                            await new Promise((resolve) =>
+                                setTimeout(resolve, 5000)
+                            );
+                            window.location.href = "/userMainPage";
                         }}
                     >
                         <div className="form-group mr-sm-2">

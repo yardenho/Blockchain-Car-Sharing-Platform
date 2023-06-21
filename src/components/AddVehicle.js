@@ -108,7 +108,7 @@ class AddVehicle extends Component {
                             ) {
                                 console.log(" st + ", st);
                                 console.log("en + ", en);
-                                li += st + "-" + en;
+                                li += st + "-" + en + "#";
                                 console.log("li + ", li);
                             }
                         }
