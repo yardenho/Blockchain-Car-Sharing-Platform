@@ -63,7 +63,7 @@ const ViewVehicleForRent = (props) => {
                 <h5
                   id="product_price"
                   style={{
-                    "margin-top": "1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   Vehicle price per day:{" "}
