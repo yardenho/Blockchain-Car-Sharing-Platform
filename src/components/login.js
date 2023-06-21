@@ -156,7 +156,7 @@ class Login extends Component {
                         />
                         <input
                             id="password"
-                            type="text"
+                            type="password"
                             ref={(input) => {
                                 this.password = input;
                             }}
