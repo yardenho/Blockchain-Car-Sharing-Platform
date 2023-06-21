@@ -93,15 +93,16 @@ export let privateKeys = [
   //     "0x49486a7Ec1bA73CdBF52546A3c12e3Ec263e2c1B",
   //     "0x744e7dd0930e1ef81a6cb7fcfa50cf5acac58e7bc2b5a7a0391d253240c2dc90",
   // ],
-  // Chen's nodes
-  // [
+
+  //   // Chen's nodes
+  //   [
   //     "0x27714De4E323bA9c27d7609699b39eaC689b8A32",
   //     "0xa3297288069201cc21accd74a51d504273983b612adefda7f2be819572699b0a",
-  // ], // the register node
-  // [
+  //   ], // the register node
+  //   [
   //     "0x48B90A323aa24268d7cad8CFffE2EfB70D0d3bdd",
   //     "0x7d5b8ef6002c5eeef5b438c93cf089d24fd844b9fa0109af07bd76f02011424d",
-  // ],
+  //   ],
 ];
 export let index = 1;
 

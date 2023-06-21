@@ -4983,7 +4983,9 @@
   "ast": {
     "absolutePath": "project:/src/contracts/Company.sol",
     "exportedSymbols": {
-      "Company": [130]
+      "Company": [
+        130
+      ]
     },
     "id": 131,
     "license": "GPL-3.0",
@@ -4991,7 +4993,15 @@
     "nodes": [
       {
         "id": 1,
-        "literals": ["solidity", ">=", "0.5", ".0", "<", "0.9", ".0"],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
         "nodeType": "PragmaDirective",
         "src": "37:31:0"
       },
@@ -5002,7 +5012,9 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 130,
-        "linearizedBaseContracts": [130],
+        "linearizedBaseContracts": [
+          130
+        ],
         "name": "Company",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -5622,7 +5634,10 @@
                       "id": 55,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "852:7:0",
                       "typeDescriptions": {
@@ -5767,7 +5782,10 @@
                       "id": 65,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "946:7:0",
                       "typeDescriptions": {
@@ -5912,7 +5930,10 @@
                       "id": 75,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "1034:7:0",
                       "typeDescriptions": {
@@ -6057,7 +6078,10 @@
                       "id": 85,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "1114:7:0",
                       "typeDescriptions": {
@@ -6202,7 +6226,10 @@
                       "id": 95,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "1194:7:0",
                       "typeDescriptions": {
@@ -6719,12 +6746,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x89d9976Ab2A3EE745759262392208849b7853990",
-      "transactionHash": "0x46b415d3d2a191ceafc0d7d76a964188f66aa43446670e2befa3b6afbac9adc1"
+      "address": "0x0550D1907c9fa785a7195dF91b78e30650853816",
+      "transactionHash": "0x5ec4dd8e01134c264f7768b6ff9207fed1658c4f8488b3f2889160ab87806270"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-19T14:54:41.045Z",
+  "updatedAt": "2023-06-21T08:07:14.023Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
