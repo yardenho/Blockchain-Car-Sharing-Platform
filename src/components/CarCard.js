@@ -3,19 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, state } from "react";
 
 const CarCard = (props) => {
-  console.log("in car card");
-  console.log(props.data);
-
   const [data, setData] = useState(props.data);
-
-  const navigate = useNavigate();
-  const openVehicleProfile = (VIN) => {
-    navigate("/ViewVehicleForRent", {
-      state: {
-        vin: VIN,
-      },
-    });
-  };
 
   return (
     <div id="content">
@@ -40,34 +28,33 @@ const CarCard = (props) => {
             to="/ViewVehicleForRent"
             style={{ textDecoration: "none", color: "black" }}
             state={{
-              VIN: data.vin,
+              vehicle: data,
+              price: data.vehiclePricePerDay.toString(),
+              numberOfSeats: data.numOfSeats.toString(),
             }}
           >
             <div id="image_field" className="image">
-              <a>
-                <img
-                  id="vehicle_image"
-                  className="img-fluid d-block mx-auto"
-                  src={require("../assets/vehicle.jpg")}
-                  // style={{ width: "250px", height: " 300px" }}
-                />
-              </a>
+              <img
+                id="vehicle_image"
+                className="img-fluid d-block mx-auto"
+                src={require("../assets/vehicle.jpg")}
+                // style={{ width: "250px", height: " 300px" }}
+              />
             </div>
-            <a
+            <div
               id="vehicle_type"
               className="d-lg-flex justify-content-lg-center product-name"
               style={{ color: "var(--bs-gray-800)" }}
             >
               Vehicle Type:{data.vehicleType}
-            </a>
-            <a>
-              <div
-                id="vehicle_numOfSeats"
-                className="d-lg-flex justify-content-lg-center product-sku"
-              >
-                <span>Number of seats:{data.numOfSeats.toString()}</span>
-              </div>
-            </a>
+            </div>
+
+            <div
+              id="vehicle_numOfSeats"
+              className="d-lg-flex justify-content-lg-center product-sku"
+            >
+              <span>Number of seats:{data.numOfSeats.toString()}</span>
+            </div>
             <div
               id="product_gearboxType"
               className="d-lg-flex justify-content-lg-center product-sku"

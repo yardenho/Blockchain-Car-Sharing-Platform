@@ -23,6 +23,7 @@ import EditVehicle from "./EditVehicle";
 import VehiclesList from "./RentersVehiclesList";
 import GarageMainPage from "./GarageMainPage";
 import ViewVehicleForRent from "./ViewVehicleForRent";
+import RenterViewVehicle from "./RenterViewVehicle";
 
 class App extends Component {
     async componentWillMount() {
