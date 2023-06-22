@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import { useState, state, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const EditVehicle = (props) => {
+    const location = useLocation();
     //TODO - changing the intialization
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -15,24 +17,20 @@ const EditVehicle = (props) => {
             console.log("v.vin");
             console.log(v.vin);
 
-            if (v.vin === "1") {
+            if (v.vin === location.state.vehicle.vin) {
                 console.log("in");
                 const price = window.web3.utils.fromWei(
-                    v.vehiclePricePerDay.toString(),
+                    location.state.price.toString(),
                     "Ether"
                 );
-                setUnavailableDates(v.unavailableDates);
+                setUnavailableDates(location.state.vehicle.unavailableDates);
                 setPricePerDay(price);
-                setVehicle(v);
-                console.log(pricePerDay);
-                console.log(unavailableDates);
+                setVehicle(location.state.vehicle);
             }
         });
     }
     const splitDates = () => {
         if (unavailableDates !== "") {
-            console.log("un");
-            console.log(unavailableDates);
             let dates = unavailableDates.split("#");
             for (let i = 0; i < dates.length - 1; ++i) {
                 dates[i] = dates[i].split("-");
@@ -98,7 +96,11 @@ const EditVehicle = (props) => {
 
                     if (isNaN(pricePerDay)) {
                         // price per day is not a number - need to show an error message
-                        alert("Price per daymust be a number");
+                        alert("Price per day must be a number");
+                        return;
+                    }
+                    if (parseInt(pricePerDay) === 0) {
+                        alert("Price per day must greater then 0");
                         return;
                     }
 
@@ -108,7 +110,9 @@ const EditVehicle = (props) => {
                     );
                     let index;
                     for (let i = 0; i < props.vehicles.length; ++i) {
-                        if (props.vehicles[i].vin === "1") {
+                        if (
+                            props.vehicles[i].vin === location.state.vehicle.vin
+                        ) {
                             //to change
                             index = i + 1;
                         }
@@ -130,10 +134,6 @@ const EditVehicle = (props) => {
                     console.log(li);
                     console.log(price);
                     props.EditVehicle(index, li, price);
-                    await new Promise((resolve) => setTimeout(resolve, 5000));
-                    window.location.reload();
-                    // setLoading(false);
-                    // window.location.href = "/userMainPage";
                 }}
             >
                 <div className="form-group mr-sm-2">
@@ -179,7 +179,9 @@ const EditVehicle = (props) => {
                             id="seatsNum"
                             type="number"
                             className="form-control"
-                            value={vehicle.numOfSeats || ""}
+                            value={
+                                location.state.numberOfSeats.toString() || ""
+                            }
                             required
                             readOnly={true}
                         />

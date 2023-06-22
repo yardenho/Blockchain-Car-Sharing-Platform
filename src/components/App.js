@@ -247,7 +247,7 @@ class App extends Component {
         this.createGarage = this.createGarage.bind(this);
         this.createCompany = this.createCompany.bind(this);
         this.createDocument = this.createDocument.bind(this);
-        this.approveDoc = this.approveDoc.bind(this);
+        this.updateDoc = this.updateDoc.bind(this);
     }
 
     createVehicle(
@@ -270,9 +270,10 @@ class App extends Component {
                 unaviableDates
             )
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (receipt) => {
                 this.setState({ loading: false });
                 console.log(this.state.vehicles[0]);
+                window.location.href = "./UserOfferedCars";
             });
     }
 
@@ -281,9 +282,10 @@ class App extends Component {
         const promise = this.state.marketplace.methods
             .editVehicle(index, dates, price)
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (receipt) => {
                 this.setState({ loading: false });
                 console.log("this.state.vehicles[0]");
+                window.location.href = "./UserOfferedCars";
             });
     }
 
@@ -346,10 +348,11 @@ class App extends Component {
                 password
             )
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("comfirmation", (transactionHash) => {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
                 console.log(transactionHash);
+                window.location.reload();
             });
         // transactionHash
     }
@@ -418,14 +421,15 @@ class App extends Component {
         //         });
     }
 
-    approveDoc(id) {
+    updateDoc(id, status) {
         this.setState({ loading: true });
         this.state.VehicalDocContract.methods
-            .approveDoc(id)
+            .updateDoc(id, status)
             .send({ from: this.state.account })
-            .once("transactionHash", (receipt) => {
-                console.log(" in approveDoc in app.js");
+            .once("confirmation", (receipt) => {
+                console.log(" in updateDoc in app.js");
                 this.setState({ loading: false });
+                window.location.reload();
             });
     }
 
@@ -528,6 +532,7 @@ class App extends Component {
                                         path="/vehicleDoc"
                                         element={
                                             <VehicalDocumentation
+                                                account={this.state.account}
                                                 garages={this.state.garages}
                                                 vehicles={this.state.vehicles}
                                                 createDocument={
@@ -542,7 +547,7 @@ class App extends Component {
                                         element={
                                             <DocumentationList
                                                 docs={this.state.documentations}
-                                                approveDoc={this.approveDoc}
+                                                updateDoc={this.updateDoc}
                                             ></DocumentationList>
                                         }
                                     />
