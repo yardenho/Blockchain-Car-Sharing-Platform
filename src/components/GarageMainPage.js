@@ -84,7 +84,7 @@ class GarageMainPage extends Component {
                                 <th scope="col">Garage BN</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Description</th>
-                                <th scope="col"></th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
 
@@ -114,6 +114,7 @@ class GarageMainPage extends Component {
                                                 View
                                             </button>
                                         </td>
+                                        <td>{doc.approved}</td>
                                     </tr>
                                 );
                             })}

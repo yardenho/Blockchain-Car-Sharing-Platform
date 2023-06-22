@@ -96,10 +96,8 @@ class UserProfile extends Component {
                                 picture,
                                 password
                             );
-                            await new Promise((resolve) =>
-                                setTimeout(resolve, 5000)
-                            );
-                            window.location.href = "/userMainPage";
+
+                            // window.location.href = "/userMainPage";
                         }}
                     >
                         <div className="form-group mr-sm-2">

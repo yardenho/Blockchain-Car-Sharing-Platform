@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { APPROVED, DECLINED, WAITING } from "../variables.js";
 
 class VehicalDoc extends Component {
     render() {
-        const checkDetails = () => {
-            if (this.garageBnNumber.value.startsWith("51") === false) {
+        const checkDetails = (garageBnNumber) => {
+            if (garageBnNumber.startsWith("51") === false) {
                 alert("A BN number invalid");
                 return true;
             }
@@ -13,19 +14,19 @@ class VehicalDoc extends Component {
             }
             return false;
         };
-        const checkGarage = () => {
+        const getGarageBNnumber = () => {
             console.log("this.props.garages");
 
             console.log(this.props.garages);
             for (let i = 0; i < this.props.garages.length; ++i) {
                 if (
-                    this.props.garages[i].BnNumber === this.garageBnNumber.value
+                    this.props.garages[i].garageAddress === this.props.account
                 ) {
-                    return false; //exist
+                    return this.props.garages[i].BnNumber;
                 }
             }
             alert("There is not that garge BN in the system");
-            return true; // not exist
+            return ""; // not exist
         };
         const checkVehicle = () => {
             console.log("this.props.vehicles");
@@ -66,26 +67,32 @@ class VehicalDoc extends Component {
                         onSubmit={async (event) => {
                             event.preventDefault();
                             const vehicleVin = this.vehicleVin.value;
-                            const garageBnNumber = this.garageBnNumber.value;
                             const description = this.description.value;
 
                             const date = document.getElementById("date").value;
 
+                            const garageBnNumber = getGarageBNnumber();
+                            if (garageBnNumber === "") {
+                                alert(
+                                    "There is a problem in the documentation upload"
+                                );
+                                return;
+                            }
                             /// check the details corectness
-                            if (checkDetails() === true) return;
-
-                            //**** check if garage isn't already exist ****
-                            if (checkGarage() === true) return;
+                            if (checkDetails(garageBnNumber) === true) return;
 
                             //**** check if vehicle isn't already exist ****
                             if (checkVehicle() === true) return;
+                            console.log("WAITIN");
+                            console.log(WAITING);
+
                             //saving the document details
                             this.props.createDocument(
                                 vehicleVin,
                                 garageBnNumber,
                                 description,
                                 date,
-                                false
+                                WAITING
                             );
                             alert(
                                 "The document uploaded, waiting for the owner approval"
@@ -106,17 +113,6 @@ class VehicalDoc extends Component {
                                 style={{ margin: "2px" }}
                             />
                             <input
-                                id="garageBnNumber"
-                                type="text"
-                                ref={(input) => {
-                                    this.garageBnNumber = input;
-                                }}
-                                className="form-control"
-                                placeholder="garage Bn Number"
-                                required
-                                style={{ margin: "2px" }}
-                            />
-                            <input
                                 id="date"
                                 type="date"
                                 // ref={(input) => {
@@ -126,6 +122,7 @@ class VehicalDoc extends Component {
                                 placeholder="date"
                                 required
                                 style={{ margin: "2px" }}
+                                max={new Date().toJSON().split("T")[0]}
                             />
                             <input
                                 id="description"

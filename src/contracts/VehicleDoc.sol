@@ -12,7 +12,7 @@ contract VehicleDoc {
         string garageBnNumber;
         string description;
         string date;
-        bool approved;
+        string approved;
     }
 
     event DocumentCreated(
@@ -21,23 +21,23 @@ contract VehicleDoc {
         string garageBnNumber,
         string description,
         string date,
-        bool approved
+        string approved
     );
 
-    event DocumentApproved(
+    event DocumentUpdated(
         uint id,
         string vehicleVin,
         string garageBnNumber,
         string description,
         string date,
-        bool approved
+        string approved
     );
 
     constructor() public {
         name = "Chen & Yarden final project";
     }
 
-    function createDocument(string memory _vehicleVin, string memory _garageBnNumber, string memory _description, string memory _date, bool _approved) public {
+    function createDocument(string memory _vehicleVin, string memory _garageBnNumber, string memory _description, string memory _date, string memory _approved) public {
         // Require a valid vehicle vin
         require(bytes(_vehicleVin).length > 0);
         // Require a valid garage Bn number
@@ -69,26 +69,25 @@ contract VehicleDoc {
         );
     }
 
-    function approveDoc(uint _id) public payable {
+    function updateDoc(uint _id, string memory _approved) public payable {
         // Fetch the product
         Document memory _document = documentations[_id];
         // Make sure the product has a valid id
         require(_document.id > 0 && _document.id <= documentationsCount);
-        // Require that the product has not been purchased already
-        require(!_document.approved);
+
         //TODO - לבדוק האם הmsg.sender קיים לו המספר רכב הזה
         // Mark as approved
-        _document.approved = true;
+        _document.approved = _approved;
         // Update the product
         documentations[_id] = _document;
         // Trigger an event
-        emit DocumentApproved(
+        emit DocumentUpdated(
             documentationsCount,
             _document.vehicleVin,
             _document.garageBnNumber,
             _document.description,
             _document.date,
-            true
+            _approved
         );
     }
 
