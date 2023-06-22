@@ -54,6 +54,11 @@ class Register extends Component {
                 alert("A user Id number must by 9 digits");
                 return true;
             }
+            //check the password
+            if (this.password.value.length < 5) {
+                alert("Password is too short ");
+                return true;
+            }
             //*** how to chack id number **** - TODO
             if (this.password.value !== this.confirmPassword.value) {
                 alert("Please provide an equal passwords");
@@ -85,6 +90,16 @@ class Register extends Component {
                 <form
                     onSubmit={async (event) => {
                         event.preventDefault();
+
+                        if (
+                            this.props.account.toLowerCase() !==
+                            privateKeys[0][0].toString().toLowerCase()
+                        ) {
+                            alert(
+                                "You must register to the site only from the main node account, please change the account in MetaMask"
+                            );
+                            return;
+                        }
                         const fullName = this.fullName.value;
                         const emailAddress = this.emailAddress.value;
                         const age = parseInt(this.age.value);

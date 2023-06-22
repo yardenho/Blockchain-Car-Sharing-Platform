@@ -348,7 +348,7 @@ class App extends Component {
                 password
             )
             .send({ from: this.state.account })
-            .once("comfirmation", (transactionHash) => {
+            .once("confirmation", (transactionHash) => {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
                 console.log(transactionHash);
@@ -434,6 +434,11 @@ class App extends Component {
     }
 
     render() {
+        window.ethereum.on("accountsChanged", function(accounts) {
+            console.log("reload");
+            window.location.reload();
+        });
+
         const increaseAccountsCount = () => {
             // console.log("this.state.garagesCount");
 
@@ -472,6 +477,7 @@ class App extends Component {
                                         path="/Register"
                                         element={
                                             <Register
+                                                account={this.state.account}
                                                 createUser={this.createUser}
                                                 users={this.state.users}
                                                 registeredCount={
