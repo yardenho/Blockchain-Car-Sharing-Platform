@@ -131,10 +131,6 @@ const EditVehicle = (props) => {
                     console.log(li);
                     console.log(price);
                     props.EditVehicle(index, li, price);
-                    await new Promise((resolve) => setTimeout(resolve, 5000));
-                    window.location.reload();
-                    // setLoading(false);
-                    // window.location.href = "/userMainPage";
                 }}
             >
                 <div className="form-group mr-sm-2">

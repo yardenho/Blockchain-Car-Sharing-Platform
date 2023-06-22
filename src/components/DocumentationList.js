@@ -1,6 +1,16 @@
 import React, { Component } from "react";
+import { APPROVED, DECLINED, WAITING } from "../variables.js";
 
 class DocumentationList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            status: WAITING,
+            isOpen: false,
+            des: "",
+        };
+    }
+
     render() {
         return (
             <div id="content">
@@ -28,24 +38,116 @@ class DocumentationList extends Component {
                                     <td>{doc.vehicleVin}</td>
                                     <td>{doc.garageBnNumber}</td>
                                     <td>{doc.date}</td>
-                                    <td>{doc.description}</td>
                                     <td>
-                                        {!doc.approved ? (
-                                            <button
+                                        <button
+                                            className="button"
+                                            name={doc.id}
+                                            onClick={(event) => {
+                                                this.setState({
+                                                    isOpen: true,
+                                                    des: doc.description,
+                                                });
+
+                                                // this.openDescription(
+                                                //     doc.description
+                                                // );
+                                            }}
+                                        >
+                                            View
+                                        </button>
+                                    </td>
+                                    <td>
+                                        {doc.approved === WAITING ? (
+                                            <select
                                                 name={doc.id}
-                                                onClick={(event) => {
-                                                    this.props.approveDoc(
+                                                value={doc.approved} // ...force the select's value to match the state variable...
+                                                onChange={(event) => {
+                                                    event.preventDefault();
+
+                                                    console.log(
+                                                        "befor contract"
+                                                    );
+                                                    console.log(
                                                         event.target.name
                                                     );
-                                                }}
+                                                    console.log(
+                                                        event.target.value
+                                                    );
+                                                    this.setState({
+                                                        status:
+                                                            event.target.value,
+                                                    });
+                                                    this.props.updateDoc(
+                                                        event.target.name,
+                                                        event.target.value
+                                                    );
+                                                    return false;
+                                                }} // ... and update the state variable on any change!
                                             >
-                                                Approve
-                                            </button>
-                                        ) : null}
+                                                <option value={WAITING}>
+                                                    {WAITING}
+                                                </option>
+                                                <option value={APPROVED}>
+                                                    {APPROVED}
+                                                </option>
+                                                <option value={DECLINED}>
+                                                    {DECLINED}
+                                                </option>
+                                            </select>
+                                        ) : (
+                                            <p>{doc.approved}</p>
+                                        )}
                                     </td>
                                 </tr>
                             );
                         })}
+                        {this.state.isOpen && (
+                            <dialog
+                                open={this.state.isOpen}
+                                style={{
+                                    position: "fixed",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                    width: "400px",
+                                    maxWidth: "90%",
+
+                                    padding: " 20px",
+
+                                    //   background-color: "white",
+                                    //   border-radius: "5px",
+                                    //   box-shadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
+                                }}
+                            >
+                                <p
+                                    style={{
+                                        // maxWidth: "100%",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        textAlign: "center",
+                                        height: "100%",
+                                        wordBreak: "break-all",
+                                    }}
+                                >
+                                    {this.state.des}
+                                </p>
+                                <button
+                                    className="button"
+                                    style={{
+                                        justifyContent: "center",
+                                        textAlign: "center",
+                                        alignSelf: "center",
+                                        padding: "5px",
+                                    }}
+                                    onClick={() => {
+                                        this.setState({ isOpen: false });
+                                    }}
+                                >
+                                    Close
+                                </button>
+                            </dialog>
+                        )}
                     </tbody>
                 </table>
             </div>
