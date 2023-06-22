@@ -66,7 +66,6 @@ const ViewVehicleForRent = (props) => {
   };
 
   const updateRentPrice = (start, end) => {
-    console.log("in update Rent price");
     // calc the number of rent days
 
     var difference_in_time =
@@ -79,26 +78,16 @@ const ViewVehicleForRent = (props) => {
       window.web3.utils.fromWei(location.state.price.toString(), "Ether") *
       rentDays;
 
-    console.log("priceeeeeee");
-    console.log(price);
     if (price < 0) {
       setPrice(0);
     } else {
       setPrice(price);
     }
-
-    console.log("price for rent");
-    console.log(price);
   };
 
   const check_date_overlap = (start, end) => {
     var start2 = new Date(start).getTime();
     var end2 = new Date(end).getTime();
-    console.log("testing dates");
-    if (end2 < start2) {
-      console.log("in ifffff");
-      return false;
-    }
 
     const dates = unavailableDates;
     let datesList = [];
@@ -115,11 +104,8 @@ const ViewVehicleForRent = (props) => {
         (start1 <= end2 && end2 <= end1) ||
         (start1 <= start2 && start2 <= end1)
       ) {
-        console.log("true");
         return true;
       } else {
-        console.log("false");
-
         return false;
       }
     }
@@ -189,18 +175,10 @@ const ViewVehicleForRent = (props) => {
                 selected={startDate}
                 onChange={(range) => {
                   const [start, end] = range;
-                  console.log("range");
 
-                  console.log(start);
-                  console.log(end);
-                  console.log("end range");
                   setStartDate(start);
                   setEndDate(end);
 
-                  // need to test date availability
-                  // if (end === null) {
-                  //   setPrice(0);
-                  // }
                   if (check_date_overlap(startDate, endDate) === false) {
                     console.log("the date is available");
                     console.log(endDate);
@@ -209,7 +187,6 @@ const ViewVehicleForRent = (props) => {
                     console.log("the date is unavailable");
                     setPrice(0);
                   }
-                  // need to change price field if available
                 }}
                 startDate={startDate}
                 endDate={endDate}
