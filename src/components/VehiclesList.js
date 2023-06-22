@@ -19,6 +19,7 @@ class VehiclesList extends Component {
                 {this.props.data.map((vehicle, key) => {
                     return (
                         <CarCard
+                            key={key}
                             data={vehicle}
                             list={this.props.data}
                             flag={this.props.flag}

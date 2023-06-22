@@ -70,6 +70,15 @@ class AddVehicle extends Component {
             }
             return false;
         };
+        const check_if_vin_exist = () => {
+            for (let i = 0; i < this.props.vehicles.length; ++i) {
+                if (this.props.vehicles[i].vin === this.vin.value) {
+                    alert("The vin that entered is already in the system");
+                    console.log("npooooooooooooo");
+                    return true;
+                }
+            }
+        };
 
         return (
             <div id="content">
@@ -80,7 +89,11 @@ class AddVehicle extends Component {
                         const vin = this.vin.value;
                         const vehicleType = this.vehicleType.value;
                         const numOfSeats = this.numberOfSeats.value;
-
+                        const res = check_if_vin_exist();
+                        console.log(res);
+                        if (res === true) {
+                            return;
+                        }
                         if (isNaN(this.pricePerDay.value.toString())) {
                             // price per day is not a number - need to show an error message
                             return;
