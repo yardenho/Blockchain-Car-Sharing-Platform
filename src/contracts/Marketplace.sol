@@ -11,7 +11,7 @@ contract Marketplace {
         string vehicleType;
         uint vehiclePricePerDay;
         address payable owner;
-        string unaviableDates;
+        string unavailableDates;
         uint numOfSeats;
         string gearboxType;
     }
@@ -21,7 +21,7 @@ contract Marketplace {
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
-        string unaviableDates,
+        string unavailableDates,
         uint numOfSeats,
         string gearboxType
     );
@@ -31,7 +31,7 @@ contract Marketplace {
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
-        string unaviableDates,
+        string unavailableDates,
         uint numOfSeats,
         string gearboxType
     );
@@ -41,14 +41,14 @@ contract Marketplace {
         string vehicleType,
         uint vehiclePricePerDay,
         address payable owner,
-        string unaviableDates,
+        string unavailableDates,
         uint numOfSeats,
         string gearboxType
     );
 
     event VehicleEdited(
         string vin,
-        uint vehiclePricePerDay
+        uint vehiclePricePerDay 
     );
 
     constructor() public {
@@ -57,7 +57,7 @@ contract Marketplace {
 
     
 
-    function createVehicle(string memory _vin, string memory _vehicleType, uint _price, uint _numOfSeats, string memory _gearboxType, string memory _unaviableDates) public {
+    function createVehicle(string memory _vin, string memory _vehicleType, uint _price, uint _numOfSeats, string memory _gearboxType, string memory _unavailableDates) public {
         // Require a valid vin
         require(bytes(_vin).length > 0);
         // Require a valid price
@@ -76,7 +76,7 @@ contract Marketplace {
             _vehicleType,
             _price,
             payable(msg.sender),
-            _unaviableDates,
+            _unavailableDates,
             _numOfSeats,
             _gearboxType
         );
@@ -88,7 +88,7 @@ contract Marketplace {
             _vehicleType,
             _price,
             payable(msg.sender),
-            _unaviableDates,
+            _unavailableDates,
             _numOfSeats,
             _gearboxType
         );
@@ -102,7 +102,7 @@ function editVehicle(uint _index, string memory _dates, uint _price) public {
         // Update the Vehicle
         Vehicle memory _vehicle = vehicles[_index];
         _vehicle.vehiclePricePerDay = _price;
-        _vehicle.unaviableDates = _dates;
+        _vehicle.unavailableDates = _dates;
         vehicles[_index] = _vehicle;
         // Trigger an event
         emit VehicleEdited(_vehicle.vin, _vehicle.vehiclePricePerDay);

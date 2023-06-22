@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, state } from "react";
+import { useState, state, useEffect } from "react";
 
 const CarCard = (props) => {
   const [data, setData] = useState(props.data);
+  const [pathFlag, setPathFlag] = useState("");
+
+  useEffect(() => {
+    if (props.flag === "renter") {
+      setPathFlag("/ViewVehicleForRent");
+    } else {
+      setPathFlag("/EditVehicle");
+    }
+  });
 
   return (
     <div id="content">
@@ -25,7 +34,7 @@ const CarCard = (props) => {
           }}
         >
           <Link
-            to="/ViewVehicleForRent"
+            to={pathFlag}
             style={{ textDecoration: "none", color: "black" }}
             state={{
               vehicle: data,
