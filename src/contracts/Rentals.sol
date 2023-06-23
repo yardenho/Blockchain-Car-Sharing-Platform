@@ -108,6 +108,9 @@ contract Rentals {
         // this function purpose is to upadate the rental status to approved (final approval by the renter)
         // in this function we need to make the payment and update the status to approved in the contract
 
+        // Make sure the id is valid
+        require(_id > 0 && _id <= rentalsCount);
+
         // fetch the rental by id
         Rental memory _rental = rentals[_id];
 
