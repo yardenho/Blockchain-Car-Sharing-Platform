@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import { useLocation } from "react-router-dom";
 import BigNumber from "bignumber.js";
 import DatePicker from "react-datepicker";
+import { APPROVED, DECLINED, WAITING } from "../variables.js";
 
 const ViewVehicleForRent = (props) => {
   const location = useLocation();
@@ -11,59 +12,7 @@ const ViewVehicleForRent = (props) => {
   const [unavailableDates, setUnavailableDates] = useState(
     location.state.vehicle.unavailableDates
   );
-  console.log("vehicle for rent - dates");
-  console.log(unavailableDates);
-
   const [price, setPrice] = useState(0);
-
-  // if (unavailableDates === "" && pricePerDay === "") {
-  //   props.vehicles.map((v) => {
-  //     console.log("v.vin");
-  //     console.log(v.vin);
-
-  //     if (v.vin === "1") {
-  //       console.log("in");
-  //       const price = window.web3.utils.fromWei(
-  //         v.vehiclePricePerDay.toString(),
-  //         "Ether"
-  //       );
-  //       setUnavailableDates(v.unavailableDates);
-  //       setPricePerDay(price);
-  //       setVehicle(v);
-  //       console.log(pricePerDay);
-  //       console.log(unavailableDates);
-  //     }
-  //   });
-  // }
-  const splitDates = () => {
-    if (unavailableDates !== "") {
-      console.log("un");
-      console.log(unavailableDates);
-      let dates = unavailableDates.split("#");
-      for (let i = 0; i < dates.length - 1; ++i) {
-        dates[i] = dates[i].split("-");
-        dates[i][0] = new Date(dates[i][0]);
-        dates[i][1] = new Date(dates[i][1]);
-        dates[i][0] =
-          dates[i][0].getDate() +
-          "/" +
-          (dates[i][0].getMonth() + 1) +
-          "/" +
-          dates[i][0].getFullYear();
-        dates[i][1] =
-          dates[i][1].getDate() +
-          "/" +
-          (dates[i][1].getMonth() + 1) +
-          "/" +
-          dates[i][1].getFullYear();
-
-        dates[i] = dates[i][0] + "-" + dates[i][1];
-      }
-      return dates;
-    } else {
-      return [];
-    }
-  };
 
   const updateRentPrice = (start, end) => {
     // calc the number of rent days
@@ -117,7 +66,20 @@ const ViewVehicleForRent = (props) => {
       <div style={{ marginLeft: "500px", marginTop: "50px" }}>
         <h1>View Vehicle For Rent</h1>
       </div>
-      <form onSubmit={(event) => {}}>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log("holaaa");
+          const vin = location.state.vehicle.vin;
+          const owner = location.state.vehicle.owner;
+          const rentDates = startDate + "-" + endDate;
+          const status = WAITING;
+
+          const rentPrice = window.web3.utils.toWei(price.toString(), "Ether");
+
+          props.createRental(vin, owner, rentDates, rentPrice, status);
+        }}
+      >
         <div
           id="content"
           style={{
@@ -200,6 +162,14 @@ const ViewVehicleForRent = (props) => {
             >
               <label>Price: {price.toString()}</label>
             </div>
+            <button
+              type="submit"
+              disabled={price <= 0}
+              className="button"
+              style={{ marginLeft: "200px", fontSize: "30", padding: "5px" }}
+            >
+              Rent
+            </button>
           </div>
           <div
             id="image_field"
