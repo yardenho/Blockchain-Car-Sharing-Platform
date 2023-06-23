@@ -26,7 +26,7 @@ import GarageMainPage from "./GarageMainPage";
 import ViewVehicleForRent from "./ViewVehicleForRent";
 import CompanyProfile from "./CompanyProfile";
 import UserRentals from "./UserRentals";
-import VehicalsRentals from "./VehicalsRentals";
+import VehiclesRentals from "./VehiclesRentals";
 
 class App extends Component {
     async componentWillMount() {
@@ -206,15 +206,20 @@ class App extends Component {
         console.log(Rentals.abi);
         const networkData = Rentals.networks[networkId];
         if (networkData) {
-            const rentals = web3.eth.Contract(Rentals.abi, networkData.address);
-            this.setState({ rentals });
-            const rentalsCount = await rentals.methods.rentalsCount().call();
+            const rentalsContract = web3.eth.Contract(
+                Rentals.abi,
+                networkData.address
+            );
+            this.setState({ rentalsContract });
+            const rentalsCount = await rentalsContract.methods
+                .rentalsCount()
+                .call();
             console.log("rentals count = " + rentalsCount);
             this.setState({ rentalsCount });
             const stateRentals = this.state.rentals;
             // Load rentals
             for (var i = 1; i <= rentalsCount; i++) {
-                const rental = await rentals.methods.rentals(i).call();
+                const rental = await rentalsContract.methods.rentals(i).call();
                 stateRentals.push(rental);
             }
             this.setState({ rentals: stateRentals });
@@ -281,6 +286,8 @@ class App extends Component {
         this.updateCompany = this.updateCompany.bind(this);
         this.createDocument = this.createDocument.bind(this);
         this.updateDoc = this.updateDoc.bind(this);
+        this.createRental = this.createRental.bind(this);
+        this.updateRental = this.updateRental.bind(this);
     }
 
     createVehicle(
@@ -345,9 +352,10 @@ class App extends Component {
                 password
             )
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (transactionHash) => {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
+                window.location.href = "/";
             });
         // transactionHash
     }
@@ -397,9 +405,10 @@ class App extends Component {
         this.state.garagesContract.methods
             .createGarage(garageAddress, garageName, BnNumber, city, password)
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (receipt) => {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
+                window.location.href = "/";
             });
         // transactionHash
     }
@@ -432,9 +441,10 @@ class App extends Component {
                 password
             )
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (receipt) => {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
+                window.location.href = "/";
             });
         // transactionHash
     }
@@ -471,6 +481,22 @@ class App extends Component {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
             });
+        // transactionHash
+    }
+
+    createRental(vehicleVin, owner, rentDates, rentPrice, status) {
+        this.setState({ loading: true });
+        console.log("in app.js createRental");
+        console.log(this.state.account);
+        this.state.rentalsContract.methods
+            .createRental(vehicleVin, owner, rentDates, rentPrice, status)
+            .send({ from: this.state.account })
+            .once("transactionHash", (transactionHash) => {
+                console.log("in app.js receipt");
+
+                this.setState({ loading: false });
+            });
+
         // transactionHash
     }
 
@@ -587,6 +613,7 @@ class App extends Component {
                                         path="/CompanyRegistration"
                                         element={
                                             <CompanyRegistration
+                                                account={this.state.account}
                                                 garages={this.state.garages}
                                                 createGarage={this.createGarage}
                                                 companies={this.state.companies}
@@ -741,10 +768,12 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path="/VehicalsRentals"
+                                        path="/VehiclesRentals"
                                         element={
-                                            <VehicalsRentals
+                                            <VehiclesRentals
+                                                account={this.state.account}
                                                 rentals={this.state.rentals}
+                                                users={this.state.users}
                                             />
                                         }
                                     />

@@ -1,5 +1,11 @@
 import React, { Component, useState } from "react";
-import { ALL, APPROVED, DECLINED, WAITING } from "../variables.js";
+import {
+    ALL,
+    APPROVED,
+    APPROVED_BY_OWNER,
+    DECLINED,
+    WAITING,
+} from "../variables.js";
 
 const UserRentals = (props) => {
     const [searchInput, setSearchInput] = useState("");
@@ -107,7 +113,7 @@ const UserRentals = (props) => {
                 </a>
                 <select
                     name={"filter"}
-                    value={filterOption} // ...force the select's value to match the state variable...
+                    value={ALL} // ...force the select's value to match the state variable...
                     onChange={(event) => {
                         event.preventDefault();
 
@@ -122,6 +128,9 @@ const UserRentals = (props) => {
                     <option value={WAITING}>{WAITING}</option>
                     <option value={APPROVED}>{APPROVED}</option>
                     <option value={DECLINED}>{DECLINED}</option>
+                    <option value={APPROVED_BY_OWNER}>
+                        {APPROVED_BY_OWNER}
+                    </option>
                 </select>
             </div>
             <table className="table">
@@ -139,19 +148,20 @@ const UserRentals = (props) => {
 
                 <tbody id="RentalsList">
                     {data.map((rental, key) => {
+                        const dates = rental.rentDates.split("-");
                         return (
                             <tr key={key}>
                                 <th scope="row">{rental.id.toString()}</th>
                                 <td>{rental.vehicleVin}</td>
-                                <td>{rental.rentalStartDate}</td>
-                                <td>{rental.rentalEndDate}</td>
-                                <td>{rental.renterName}</td>
-                                <td>{rental.rentalPrice}</td>
+                                <td>{dates[0]}</td>
+                                <td>{dates[1]}</td>
+                                <td>{rental.renter.toString()}</td>
+                                <td>{rental.rentPrice}</td>
                                 <td>
-                                    {rental.approved === WAITING ? (
+                                    {rental.status === WAITING ? (
                                         <select
                                             name={rental.id}
-                                            value={rental.approved} // ...force the select's value to match the state variable...
+                                            value={rental.status} // ...force the select's value to match the state variable...
                                             onChange={(event) => {
                                                 event.preventDefault();
 
@@ -176,7 +186,7 @@ const UserRentals = (props) => {
                                             </option>
                                         </select>
                                     ) : (
-                                        <p>{doc.approved}</p>
+                                        <p>{rental.status}</p>
                                     )}
                                 </td>
                             </tr>

@@ -118,7 +118,7 @@ class Navbar extends Component {
                             <a href="/userMainPage">Main page</a>
                             <a href="/UserProfile">My Profile</a>
                             <a href="/UserOfferedCars">My vehicles</a>
-                            <a href="/VehicalsRentals">My vehicles' rentals</a>
+                            <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My vehicles documentations</a>
                             <a href="/UserRentals">My rentals</a>
                             <a href="/">Log out</a>
@@ -146,7 +146,7 @@ class Navbar extends Component {
                             <a href="/userMainPage">Main page</a>
                             <a href="/CompanyProfile">My Profile</a>
                             <a href="/UserOfferedCars">My vehicles</a>
-                            <a href="/VehicalsRentals">My vehicles' rentals</a>
+                            <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My cars documentations</a>
                             <a href="/UserRentals">My rentals</a>
                             <a href="/">Log out</a>

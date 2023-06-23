@@ -128,7 +128,6 @@ class Register extends Component {
                             IDnumber,
                             password
                         );
-                        window.location.href = "/";
                     }}
                 >
                     <div className="form-group mr-sm-2">

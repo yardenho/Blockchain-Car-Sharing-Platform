@@ -89,6 +89,17 @@ class CompanyRegistration extends Component {
                 <form
                     onSubmit={async (event) => {
                         event.preventDefault();
+
+                        if (
+                            this.props.account.toLowerCase() !==
+                            privateKeys[0][0].toString().toLowerCase()
+                        ) {
+                            alert(
+                                "You must register to the site only from the main node account, please change the account in MetaMask"
+                            );
+                            return;
+                        }
+
                         const Name = this.garageName.value;
                         const BnNumber = this.BnNumber.value;
                         const city = this.city.value;
@@ -130,7 +141,6 @@ class CompanyRegistration extends Component {
                                 password
                             );
                         }
-                        window.location.href = "/";
                     }}
                 >
                     <div className="form-group mr-sm-2">
