@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 
 class UserRentsList extends Component {
+    //TODO - TO DELETE ALL THE FILES
     render() {
         return (
             <div id="content">

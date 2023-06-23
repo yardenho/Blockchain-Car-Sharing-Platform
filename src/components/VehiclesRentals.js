@@ -3,22 +3,23 @@ import { ALL, APPROVED, DECLINED, WAITING } from "../variables.js";
 
 const VehicalsRentals = (props) => {
     const [searchInput, setSearchInput] = useState("");
-    const [data, setData] = useState(this.props.rentals);
+    const [data, setData] = useState(props.rentals);
     const [flag, SetFlag] = useState(0);
-
+    console.log("props.rentals");
+    console.log(props.rentals);
     const searchClicked = () => {
         console.log(searchInput);
         if (searchInput === "") {
             console.log("in");
-            console.log(this.props.rentals);
-            setData(this.props.rentals);
+            console.log(props.rentals);
+            setData(props.rentals);
             SetFlag(0);
             return;
         }
         let filterList = [];
         for (let i = 0; i < props.rentals.length; ++i) {
-            if (props.rentals[i].vin === searchInput) {
-                filterList.push(props.vehiclesList[i]);
+            if (props.rentals[i].vehicleVin === searchInput) {
+                filterList.push(props.rentals[i]);
             }
         }
         setData(filterList);
@@ -36,7 +37,7 @@ const VehicalsRentals = (props) => {
         let filterList = [];
 
         if (option === ALL) {
-            setData(this.props.rentals);
+            setData(props.rentals);
             return;
         } else if (option === WAITING) {
             props.rentals.map((rental) => {
