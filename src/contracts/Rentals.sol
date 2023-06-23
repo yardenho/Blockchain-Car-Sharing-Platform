@@ -104,7 +104,7 @@ contract Rentals {
         );  
     }
 
-    function rentalPayment(uint _id, string memory _status) public payable {
+    function rentalPayment(uint _id) public payable {
         // this function purpose is to upadate the rental status to approved (final approval by the renter)
         // in this function we need to make the payment and update the status to approved in the contract
 
@@ -114,7 +114,7 @@ contract Rentals {
         // fetch the rental by id
         Rental memory _rental = rentals[_id];
 
-        // we will need to do this outside of the contract
+        // TODO: we will need to do this outside of the contract
         // make sure the vehicle is available in the rental date
         // check if the renter paying is the one that created the rental request
 
