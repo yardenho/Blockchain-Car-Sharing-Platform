@@ -92,7 +92,16 @@ class Navbar extends Component {
                     rel="noopener noreferrer"
                 >
                     CrowdCarLink
+                    <img
+                        style={{
+                            height: "40px",
+                            width: "50px",
+                            marginLeft: "10px",
+                        }}
+                        src={require("../assets/newLogo.png")}
+                    ></img>
                 </a>
+
                 <ul className="navbar-nav px-3">
                     <li className="nav-item " style={{ marginLeft: "5px" }}>
                         <small className="text-white">
