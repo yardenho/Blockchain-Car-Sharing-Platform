@@ -74,26 +74,31 @@ contract Rentals {
         );
     }
 
-    // function updateDoc(uint _id, string memory _approved) public payable {
-    //     // Fetch the product
-    //     Document memory _document = documentations[_id];
-    //     // Make sure the product has a valid id
-    //     require(_document.id > 0 && _document.id <= documentationsCount);
+    function updateRental(uint _id, string memory _approved) public payable {
 
-    //     //TODO - לבדוק האם הmsg.sender קיים לו המספר רכב הזה
-    //     // Mark as approved
-    //     _document.approved = _approved;
-    //     // Update the product
-    //     documentations[_id] = _document;
-    //     // Trigger an event
-    //     emit DocumentUpdated(
-    //         documentationsCount,
-    //         _document.vehicleVin,
-    //         _document.garageBnNumber,
-    //         _document.description,
-    //         _document.date,
-    //         _approved
-    //     );
-    // }
+
+        // // Fetch the product
+        // Document memory _document = documentations[_id];
+        // // Make sure the product has a valid id
+        // require(_document.id > 0 && _document.id <= documentationsCount);
+
+        // //TODO - לבדוק האם הmsg.sender קיים לו המספר רכב הזה
+        // // Mark as approved
+        // _document.approved = _approved;
+        // // Update the product
+        // documentations[_id] = _document;
+        // // Trigger an event
+
+
+        // // check if the renter paying is the one that created the rental request
+        // emit DocumentUpdated(
+        //     documentationsCount,
+        //     _document.vehicleVin,
+        //     _document.garageBnNumber,
+        //     _document.description,
+        //     _document.date,
+        //     _approved
+        // );
+    }
 
 }
