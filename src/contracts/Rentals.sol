@@ -72,33 +72,53 @@ contract Rentals {
             _rentPrice,
             _status
         );
+
     }
 
-    function updateRental(uint _id, string memory _approved) public payable {
+    function updateRental(uint _id, string memory _status) public payable {
+        // this function purpose is to upadate the rental status in the follwing cases:
+        // 1. the rental status was updated to declined.
+        // 2. the rentl status was updated from waiting to approved by owner.
+
+        // Make sure the id is valid
+        require(_id > 0 && _id <= rentalsCount);
+
+        // fetch the rental by id
+        Rental memory _rental = rentals[_id];
+
+        // update the status
+        _rental.status = _status;
+
+        // Update the product
+        rentals[_id] = _rental;
+
+        // Trigger a rental update event
+        emit RentalUpdated(
+            _rental.id,
+            _rental.vehicleVin,
+            _rental.owner,
+            _rental.renter,
+            _rental.rentDates,
+            _rental.rentPrice,
+            _rental.status
+        );  
+    }
+
+    function rentalPayment(uint _id, string memory _status) public payable {
+        // this function purpose is to upadate the rental status to approved (final approval by the renter)
+        // in this function we need to make the payment and update the status to approved in the contract
+
+        // fetch the rental by id
+        Rental memory _rental = rentals[_id];
+
+        // we will need to do this outside of the contract
+        // make sure the vehicle is available in the rental date
+        // check if the renter paying is the one that created the rental request
 
 
-        // // Fetch the product
-        // Document memory _document = documentations[_id];
-        // // Make sure the product has a valid id
-        // require(_document.id > 0 && _document.id <= documentationsCount);
+        // make the paymenyt
 
-        // //TODO - לבדוק האם הmsg.sender קיים לו המספר רכב הזה
-        // // Mark as approved
-        // _document.approved = _approved;
-        // // Update the product
-        // documentations[_id] = _document;
-        // // Trigger an event
-
-
-        // // check if the renter paying is the one that created the rental request
-        // emit DocumentUpdated(
-        //     documentationsCount,
-        //     _document.vehicleVin,
-        //     _document.garageBnNumber,
-        //     _document.description,
-        //     _document.date,
-        //     _approved
-        // );
+        // update the status and save
     }
 
 }

@@ -5289,9 +5289,7 @@
   "ast": {
     "absolutePath": "project:/src/contracts/Rentals.sol",
     "exportedSymbols": {
-      "Rentals": [
-        705
-      ]
+      "Rentals": [705]
     },
     "id": 706,
     "license": "GPL-3.0",
@@ -5299,15 +5297,7 @@
     "nodes": [
       {
         "id": 558,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.5",
-          ".0",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.5", ".0", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "37:31:4"
       },
@@ -5318,9 +5308,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 705,
-        "linearizedBaseContracts": [
-          705
-        ],
+        "linearizedBaseContracts": [705],
         "name": "Rentals",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -6255,10 +6243,7 @@
                       "id": 636,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1137:7:4",
                       "typeDescriptions": {
@@ -6403,10 +6388,7 @@
                       "id": 646,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1231:7:4",
                       "typeDescriptions": {
@@ -6493,10 +6475,7 @@
                       "id": 656,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1320:7:4",
                       "typeDescriptions": {
