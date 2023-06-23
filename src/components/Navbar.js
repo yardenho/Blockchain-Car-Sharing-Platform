@@ -122,7 +122,7 @@ class Navbar extends Component {
                         </button>
                         <div id="myDropdown" className="dropdown-content">
                             <a href="/GarageMainPage">Main page</a>
-                            <a href="#">My Profile</a>
+                            <a href="/CompanyProfile">My Profile</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ class Navbar extends Component {
                         </button>
                         <div id="myDropdown" className="dropdown-content">
                             <a href="/userMainPage">Main page</a>
-                            <a href="#">My Profile</a>
+                            <a href="/CompanyProfile">My Profile</a>
                             <a href="/UserOfferedCars">My cars</a>
                             <a href="#">My Rents</a>
                             <a href="/DocsList">My cars documentations</a>

@@ -24,6 +24,7 @@ import EditVehicle from "./EditVehicle";
 import RentersVehiclesList from "./RentersVehiclesList";
 import GarageMainPage from "./GarageMainPage";
 import ViewVehicleForRent from "./ViewVehicleForRent";
+import CompanyProfile from "./CompanyProfile";
 
 class App extends Component {
   async componentWillMount() {
@@ -260,11 +261,11 @@ class App extends Component {
     this.createUser = this.createUser.bind(this);
     this.updateUser = this.updateUser.bind(this);
     this.createGarage = this.createGarage.bind(this);
+    this.updateGarage = this.updateGarage.bind(this);
     this.createCompany = this.createCompany.bind(this);
+    this.updateCompany = this.updateCompany.bind(this);
     this.createDocument = this.createDocument.bind(this);
     this.updateDoc = this.updateDoc.bind(this);
-    this.createRental = this.createRental.bind(this);
-    this.updateRental = this.updateRental.bind(this);
   }
 
   createVehicle(
@@ -388,6 +389,21 @@ class App extends Component {
     // transactionHash
   }
 
+  updateGarage(position, garageName, city, password) {
+    this.setState({ loading: true });
+    console.log("in app.js createGarage");
+    console.log(this.state.account);
+    this.state.garagesContract.methods
+      .updateGarage(position, garageName, city, password)
+      .send({ from: this.state.account })
+      .once("confirmation", (transactionHash) => {
+        console.log("in app.js receipt");
+        this.setState({ loading: false });
+        window.location.reload();
+      });
+    // transactionHash
+  }
+
   createCompany(companyAddress, companyName, BnNumber, city, password) {
     this.setState({ loading: true });
     console.log("in app.js createCompany");
@@ -402,26 +418,27 @@ class App extends Component {
     // transactionHash
   }
 
+  updateCompany(position, companyName, city, password) {
+    this.setState({ loading: true });
+    console.log("in app.js createGarage");
+    console.log(this.state.account);
+    this.state.companiesContract.methods
+      .updateCompany(position, companyName, city, password)
+      .send({ from: this.state.account })
+      .once("confirmation", (transactionHash) => {
+        console.log("in app.js receipt");
+        this.setState({ loading: false });
+        window.location.reload();
+      });
+    // transactionHash
+  }
+
   createDocument(vehicleVin, garageBnNumber, description, date, approved) {
     this.setState({ loading: true });
     console.log("in app.js createDocument");
     console.log(this.state.account);
     this.state.VehicalDocContract.methods
       .createDocument(vehicleVin, garageBnNumber, description, date, approved)
-      .send({ from: this.state.account })
-      .once("transactionHash", (transactionHash) => {
-        console.log("in app.js receipt");
-        this.setState({ loading: false });
-      });
-    // transactionHash
-  }
-
-  createRental(vehicleVin, owner, rentDates, rentPrice, status) {
-    this.setState({ loading: true });
-    console.log("in app.js createRental");
-    console.log(this.state.account);
-    this.state.rentals.methods
-      .createRental(vehicleVin, owner, rentDates, rentPrice, status)
       .send({ from: this.state.account })
       .once("transactionHash", (transactionHash) => {
         console.log("in app.js receipt");
@@ -636,6 +653,19 @@ class App extends Component {
                     element={
                       <GarageMainPage
                         documentations={this.state.documentations}
+                      />
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/CompanyProfile"
+                    element={
+                      <CompanyProfile
+                        account={this.state.account}
+                        companies={this.state.companies}
+                        garages={this.state.garages}
+                        updateCompany={this.updateCompany}
+                        updateGarage={this.updateGarage}
                       />
                     }
                   />

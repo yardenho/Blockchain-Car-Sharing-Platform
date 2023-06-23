@@ -23,6 +23,12 @@ contract GarageRegistration {
         string password
     );
 
+    event GarageUpdated(
+        string garageName,
+        string city,
+        string password
+    );
+
     constructor() public {
         name = "garage registration contract";
     }
@@ -58,5 +64,29 @@ contract GarageRegistration {
             _password
         );
     }
+
+    function updateGarage(uint _index, string memory _garageName, string memory _city, string memory _password) public {
+        // Require a valid company name
+        require(bytes(_garageName).length > 0);
+        // Require a valid city
+        require(bytes(_city).length > 0);
+        // Require a valid password
+        require(bytes(_password).length > 0);  
+
+        // Make sure the index is valid
+        // require(_index > 0 && _index <= usersCount);
+        // Update the user
+        Garage memory garage = garages[_index];
+
+        garage.garageName = _garageName;
+        garage.city = _city;
+        garage.password = _password;
+        garages[_index] = garage;
+       
+        // Trigger an event
+        emit GarageUpdated(garage.garageName, garage.city, garage.password);
+    }
+
+
 
 }
