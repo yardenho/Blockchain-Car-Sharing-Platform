@@ -11,15 +11,15 @@ const UserRentals = (props) => {
     const [searchInput, setSearchInput] = useState("");
     const [data, setData] = useState(props.rentals);
     const [flag, SetFlag] = useState(0);
-    console.log("props.rentals");
-    console.log(props.rentals);
+    const [ownerName, setOwnerName] = useState("");
+    const [filterOption, setFilterOption] = useState(ALL);
+
     const searchClicked = () => {
         console.log(searchInput);
         if (searchInput === "") {
             console.log("in");
             console.log(props.rentals);
             setData(props.rentals);
-            SetFlag(0);
             return;
         }
         let filterList = [];
@@ -29,7 +29,6 @@ const UserRentals = (props) => {
             }
         }
         setData(filterList);
-        SetFlag(1);
     };
 
     const handleKeyDown = (event) => {
@@ -41,45 +40,35 @@ const UserRentals = (props) => {
 
     const handleFilter = (option) => {
         let filterList = [];
-
         if (option === ALL) {
             setData(props.rentals);
             return;
-        } else if (option === WAITING) {
-            props.rentals.map((rental) => {
-                if (rental.status === WAITING) {
-                    filterList.push(rental);
-                }
-            });
-        } else if (option === DECLINED) {
-            props.rentals.map((rental) => {
-                if (rental.status === DECLINED) {
-                    filterList.push(rental);
-                }
-            });
-        } else if (option === APPROVED) {
-            props.rentals.map((rental) => {
-                if (rental.status === APPROVED) {
-                    filterList.push(rental);
-                }
-            });
         } else {
             props.rentals.map((rental) => {
-                if (rental.status === APPROVED_BY_OWNER) {
+                console.log(rental.status);
+                console.log(option);
+                if (rental.status === option) {
                     filterList.push(rental);
                 }
             });
+            setData(filterList);
+            return;
         }
-        setData(filterList);
-        return;
+    };
+
+    const getOwnerName = async (ownerAddress) => {
+        await props.users.map((user) => {
+            if (user.userAddress === ownerAddress.toString()) {
+                if (ownerName !== user.fullName) {
+                    setOwnerName(user.fullName);
+                }
+            }
+        });
     };
 
     return (
         <div id="content">
-            <h1>Your Vehicles Rentals</h1>
-            {props.rentals.length === 0 && (
-                <h5>You don`t have any rentals for your vehicles</h5>
-            )}
+            <h1>Your Rentals</h1>
             <div style={{ flexDirection: "row", display: "flex" }}>
                 <a
                     className="nav-link mx-auto"
@@ -113,24 +102,20 @@ const UserRentals = (props) => {
                 </a>
                 <select
                     name={"filter"}
-                    value={ALL} // ...force the select's value to match the state variable...
+                    value={filterOption} // ...force the select's value to match the state variable...
                     onChange={(event) => {
                         event.preventDefault();
-
-                        console.log("befor contract");
-                        console.log(event.target.name);
                         console.log(event.target.value);
+                        setFilterOption(event.target.value);
                         handleFilter(event.target.value);
                         return false;
                     }} // ... and update the state variable on any change!
                 >
-                    <option value={ALL}>{ALL}</option>
-                    <option value={WAITING}>{WAITING}</option>
-                    <option value={APPROVED}>{APPROVED}</option>
-                    <option value={DECLINED}>{DECLINED}</option>
-                    <option value={APPROVED_BY_OWNER}>
-                        {APPROVED_BY_OWNER}
-                    </option>
+                    <option value={ALL}>ALL</option>
+                    <option value={WAITING}>WAITING</option>
+                    <option value={APPROVED}>APPROVED</option>
+                    <option value={DECLINED}>DECLINED</option>
+                    <option value={APPROVED_BY_OWNER}>APPROVED_BY_OWNER</option>
                 </select>
             </div>
             <table className="table">
@@ -140,60 +125,65 @@ const UserRentals = (props) => {
                         <th scope="col">Vehicle Vin</th>
                         <th scope="col">Rental start date</th>
                         <th scope="col">Rental end date</th>
-                        <th scope="col">Renter name</th>
+                        <th scope="col">Owner name</th>
                         <th scope="col">Reatal price</th>
+                        <th scope="col">status</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
 
                 <tbody id="RentalsList">
                     {data.map((rental, key) => {
-                        const dates = rental.rentDates.split("-");
-                        return (
-                            <tr key={key}>
-                                <th scope="row">{rental.id.toString()}</th>
-                                <td>{rental.vehicleVin}</td>
-                                <td>{dates[0]}</td>
-                                <td>{dates[1]}</td>
-                                <td>{rental.renter.toString()}</td>
-                                <td>{rental.rentPrice}</td>
-                                <td>
-                                    {rental.status === WAITING ? (
-                                        <select
-                                            name={rental.id}
-                                            value={rental.status} // ...force the select's value to match the state variable...
-                                            onChange={(event) => {
-                                                event.preventDefault();
+                        if (
+                            rental.renter.toString().toLowerCase() ===
+                            props.account.toLowerCase()
+                        ) {
+                            const dates = rental.rentDates.split("-");
+                            dates[0] = new Date(dates[0]);
+                            dates[1] = new Date(dates[1]);
+                            getOwnerName(rental.owner);
 
-                                                console.log("befor contract");
-                                                console.log(event.target.name);
-                                                console.log(event.target.value);
-                                                // this.props.updateRental( //TODO: update to the rental contract function
-                                                //     event.target.name,
-                                                //     event.target.value
-                                                // );
-                                                return false;
-                                            }} // ... and update the state variable on any change!
-                                        >
-                                            <option value={WAITING}>
-                                                {WAITING}
-                                            </option>
-                                            <option value={APPROVED}>
-                                                {APPROVED}
-                                            </option>
-                                            <option value={DECLINED}>
-                                                {DECLINED}
-                                            </option>
-                                        </select>
-                                    ) : (
-                                        <p>{rental.status}</p>
-                                    )}
-                                </td>
-                            </tr>
-                        );
+                            return (
+                                <tr key={key}>
+                                    <th scope="row">{rental.id.toString()}</th>
+                                    <td>{rental.vehicleVin}</td>
+                                    <td>
+                                        {dates[0].getDate() +
+                                            "/" +
+                                            (dates[0].getMonth() + 1) +
+                                            "/" +
+                                            dates[0].getFullYear()}
+                                    </td>
+                                    <td>
+                                        {dates[1].getDate() +
+                                            "/" +
+                                            (dates[1].getMonth() + 1) +
+                                            "/" +
+                                            dates[1].getFullYear()}
+                                    </td>
+                                    <td>{ownerName}</td>
+                                    <td>
+                                        {window.web3.utils.fromWei(
+                                            rental.rentPrice.toString(),
+                                            "Ether"
+                                        )}
+                                    </td>
+                                    <td>
+                                        {rental.status === APPROVED_BY_OWNER ? (
+                                            <button>PAY FOR THE RENTAL</button>
+                                        ) : (
+                                            <p>{rental.status}</p>
+                                        )}
+                                    </td>
+                                </tr>
+                            );
+                        }
                     })}
                 </tbody>
             </table>
+            {props.rentals.length === 0 && (
+                <h5>You don`t have any rentals for your vehicles</h5>
+            )}
         </div>
     );
 };

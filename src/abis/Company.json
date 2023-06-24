@@ -8968,12 +8968,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x2EAf6a288943fbFaaa27F61C89C2e91bc4D222b6",
-      "transactionHash": "0x57b3a698f75fa067149622e195468516da931634b8854875594ef50fd1663d5c"
+      "address": "0x7A73dCC542A7A702b1275471AB0b1130c9a75F60",
+      "transactionHash": "0xb9129e2ca41bca5fc0f7a4a2a3df7297df50113494cf6704211a790bbd0e49ca"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-23T13:35:20.286Z",
+  "updatedAt": "2023-06-24T18:02:36.338Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

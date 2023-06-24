@@ -10,7 +10,6 @@ import {
 const VehicalsRentals = (props) => {
     const [searchInput, setSearchInput] = useState("");
     const [data, setData] = useState(props.rentals);
-    const [flag, SetFlag] = useState(0);
     const [renterName, setRenterName] = useState("");
     const [filterOption, setFilterOption] = useState(ALL);
 
@@ -188,17 +187,19 @@ const VehicalsRentals = (props) => {
                                                     console.log(
                                                         event.target.value
                                                     );
-                                                    // this.props.updateRental( //TODO: update to the rental contract function
-                                                    //     event.target.name,
-                                                    //     event.target.value
-                                                    // );
+                                                    props.updateRental(
+                                                        rental.id,
+                                                        event.target.value
+                                                    );
                                                     return false;
                                                 }} // ... and update the state variable on any change!
                                             >
                                                 <option value={WAITING}>
                                                     {WAITING}
                                                 </option>
-                                                <option value={APPROVED}>
+                                                <option
+                                                    value={APPROVED_BY_OWNER}
+                                                >
                                                     {APPROVED}
                                                 </option>
                                                 <option value={DECLINED}>

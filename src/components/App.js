@@ -501,15 +501,15 @@ class App extends Component {
     }
 
     updateRental(id, status) {
-        // this.setState({ loading: true });
-        // this.state.RentalsContract.methods
-        //   .updateRental(id, status)
-        //   .send({ from: this.state.account })
-        //   .once("confirmation", (receipt) => {
-        //     console.log(" in updateRental in app.js");
-        //     this.setState({ loading: false });
-        //     window.location.reload();
-        //   });
+        this.setState({ loading: true });
+        this.state.rentalsContract.methods
+            .updateRental(id, status)
+            .send({ from: this.state.account })
+            .once("confirmation", (receipt) => {
+                console.log(" in updateRental in app.js");
+                this.setState({ loading: false });
+                window.location.reload();
+            });
     }
 
     purchaseVehicle(id, price) {
@@ -774,6 +774,7 @@ class App extends Component {
                                                 account={this.state.account}
                                                 rentals={this.state.rentals}
                                                 users={this.state.users}
+                                                updateRental={this.updateRental}
                                             />
                                         }
                                     />
