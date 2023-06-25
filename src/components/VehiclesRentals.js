@@ -23,7 +23,7 @@ const VehicalsRentals = (props) => {
         }
         let filterList = [];
         for (let i = 0; i < props.rentals.length; ++i) {
-            if (props.rentals[i].vehicleVin === searchInput) {
+            if (props.rentals[i].vehicleVin === searchInput.value) {
                 filterList.push(props.rentals[i]);
             }
         }

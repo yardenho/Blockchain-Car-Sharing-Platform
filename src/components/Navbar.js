@@ -56,8 +56,21 @@ class Navbar extends Component {
             for (var i = 0; i < this.props.users.length; i++) {
                 if (this.props.users[i].userAddress === this.props.account) {
                     return "Hello " + this.props.users[i].fullName;
-                } else {
-                    return "Hello";
+                }
+            }
+            for (var i = 0; i < this.props.companies.length; i++) {
+                if (
+                    this.props.companies[i].companyAddress ===
+                    this.props.account
+                ) {
+                    return "Hello " + this.props.companies[i].companyName;
+                }
+            }
+            for (var i = 0; i < this.props.garages.length; i++) {
+                if (
+                    this.props.garages[i].garageAddress === this.props.account
+                ) {
+                    return "Hello " + this.props.garages[i].garageName;
                 }
             }
         };
@@ -143,9 +156,8 @@ class Navbar extends Component {
                             &#9776; Menu actions
                         </button>
                         <div id="myDropdown" className="dropdown-content">
-                            <a href="/userMainPage">Main page</a>
+                            <a href="/UserOfferedCars">Main page</a>
                             <a href="/CompanyProfile">My Profile</a>
-                            <a href="/UserOfferedCars">My vehicles</a>
                             <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My cars documentations</a>
                             <a href="/UserRentals">My rentals</a>

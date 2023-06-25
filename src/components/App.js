@@ -243,8 +243,9 @@ class App extends Component {
         this.loadCompanysContract(web3, networkId);
         this.loadRentalsContract(web3, networkId);
 
+        console.log("this.state.users");
         console.log(this.state.users);
-
+        console.log("this.state.garages");
         console.log(this.state.garages);
         console.log("this.state.companies");
         console.log(this.state.companies);
@@ -727,6 +728,8 @@ class App extends Component {
                                                 //   garages={this.state.garages}
                                                 //   vehicles={this.state.vehicles}
                                                 createRental={this.createRental}
+                                                users={this.state.users}
+                                                companies={this.state.companies}
                                             ></ViewVehicleForRent>
                                         }
                                     />
@@ -763,6 +766,9 @@ class App extends Component {
                                         element={
                                             <UserRentals
                                                 rentals={this.state.rentals}
+                                                account={this.state.account}
+                                                users={this.state.users}
+                                                companies={this.state.companies}
                                             />
                                         }
                                     />

@@ -10,13 +10,12 @@ import {
 const UserRentals = (props) => {
     const [searchInput, setSearchInput] = useState("");
     const [data, setData] = useState(props.rentals);
-    const [flag, SetFlag] = useState(0);
     const [ownerName, setOwnerName] = useState("");
     const [filterOption, setFilterOption] = useState(ALL);
 
     const searchClicked = () => {
-        console.log(searchInput);
-        if (searchInput === "") {
+        console.log(searchInput.value);
+        if (searchInput.value === "") {
             console.log("in");
             console.log(props.rentals);
             setData(props.rentals);
@@ -24,7 +23,7 @@ const UserRentals = (props) => {
         }
         let filterList = [];
         for (let i = 0; i < props.rentals.length; ++i) {
-            if (props.rentals[i].vehicleVin === searchInput) {
+            if (props.rentals[i].vehicleVin === searchInput.value) {
                 filterList.push(props.rentals[i]);
             }
         }
@@ -56,11 +55,21 @@ const UserRentals = (props) => {
         }
     };
 
-    const getOwnerName = async (ownerAddress) => {
-        await props.users.map((user) => {
+    const getOwnerName = (ownerAddress) => {
+        props.users.map((user) => {
             if (user.userAddress === ownerAddress.toString()) {
                 if (ownerName !== user.fullName) {
                     setOwnerName(user.fullName);
+                    return;
+                }
+            }
+        });
+
+        props.companies.map((company) => {
+            if (company.companyAddress === ownerAddress.toString()) {
+                if (ownerName !== company.companyName) {
+                    setOwnerName(company.companyName);
+                    return;
                 }
             }
         });
@@ -75,6 +84,7 @@ const UserRentals = (props) => {
                     href="#"
                     style={{
                         paddingLeft: "70px",
+                        color: "black",
                     }}
                 >
                     {" "}
@@ -115,7 +125,9 @@ const UserRentals = (props) => {
                     <option value={WAITING}>WAITING</option>
                     <option value={APPROVED}>APPROVED</option>
                     <option value={DECLINED}>DECLINED</option>
-                    <option value={APPROVED_BY_OWNER}>APPROVED_BY_OWNER</option>
+                    <option value={APPROVED_BY_OWNER}>
+                        WAITING FOR PAYMENTS
+                    </option>
                 </select>
             </div>
             <table className="table">
@@ -170,7 +182,14 @@ const UserRentals = (props) => {
                                     </td>
                                     <td>
                                         {rental.status === APPROVED_BY_OWNER ? (
-                                            <button>PAY FOR THE RENTAL</button>
+                                            <button
+                                                className="button"
+                                                onClick={() => {
+                                                    //TODO
+                                                }}
+                                            >
+                                                PAY FOR THE RENTAL
+                                            </button>
                                         ) : (
                                             <p>{rental.status}</p>
                                         )}
