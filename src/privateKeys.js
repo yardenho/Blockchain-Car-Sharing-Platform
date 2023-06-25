@@ -2,7 +2,7 @@
 // var keythereum = require("keythereum");
 
 export let privateKeys = [
-    //   // Yarden's nodes
+    // Yarden's nodes
     [
         "0xa1d68468E8f8091a03bE8D81d45b10017F27838A",
         "0xbf3711965a522ec0826d5bcf848f9639b64bac90cad6e6dece440ac6f980caca",
@@ -19,10 +19,10 @@ export let privateKeys = [
         "0x0cf580dC1cFe6f564B4e7822b45fF21A61457DF3",
         "0x1aba4756c3432f6a347feaba4db3fa6f1895180f0bee90ed644dc92e3c48cf4a",
     ],
-    //   [
-    //     "0x0cf580dC1cFe6f564B4e7822b45fF21A61457DF3",
-    //     "0x1aba4756c3432f6a347feaba4db3fa6f1895180f0bee90ed644dc92e3c48cf4a",
-    //   ],
+    [
+        "0x0cf580dC1cFe6f564B4e7822b45fF21A61457DF3",
+        "0x1aba4756c3432f6a347feaba4db3fa6f1895180f0bee90ed644dc92e3c48cf4a",
+    ],
     // [
     //     "0xB667D926a81c84B7f3EaA97833Afb7950947fC37",
     //     "0xb530578726a4e5d049904710ffdf3015889975de7092df34f8298532d2881009",
