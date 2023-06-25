@@ -36,6 +36,16 @@ contract Rentals {
         string status
     );
 
+    event RentalPayed(
+        uint id,
+        string vehicleVin,
+        address payable owner,
+        address payable renter,
+        string rentDates,
+        uint rentPrice,
+        string status
+    );
+
     constructor() public {
         name = "Chen & Yarden final project";
     }
@@ -104,7 +114,7 @@ contract Rentals {
         );  
     }
 
-    function rentalPayment(uint _id) public payable {
+    function rentalPayment(uint _id, string memory _status) public payable {
         // this function purpose is to upadate the rental status to approved (final approval by the renter)
         // in this function we need to make the payment and update the status to approved in the contract
 
@@ -121,7 +131,35 @@ contract Rentals {
 
         // make the paymenyt
 
-        // update the status and save
-    }
+        // Fetch the owner
+        address payable _owner = _rental.owner;
 
+        // Require that there is enough Ether in the transaction
+        require(msg.value >= _rental.rentPrice);
+
+        // Require that the buyer is not the seller
+        require(_owner != msg.sender);
+
+        // Require that the buyer is the same one that created the rental request
+        address payable _renter = _rental.renter;
+        require(_renter == msg.sender);
+
+
+        // Pay the owner by sending them Ether
+        payable(address(_owner)).transfer(msg.value);
+
+        // update the status and save
+        _rental.status = _status;
+
+        // Trigger an event
+        emit RentalPayed(
+            _rental.id,
+            _rental.vehicleVin,
+            _rental.owner,
+            _rental.renter,
+            _rental.rentDates,
+            _rental.rentPrice,
+            _rental.status
+        );
+    }
 }
