@@ -7,7 +7,7 @@ class OwnerCarsList extends Component {
         return (
             <div id="content">
                 <h1 style={{ marginLeft: "600px", marginTop: "40px" }}>
-                    Vehicles you offes
+                    Vehicles you offer
                 </h1>
                 <div style={{ marginLeft: "20px" }}>
                     <button
