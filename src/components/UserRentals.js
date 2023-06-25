@@ -185,9 +185,52 @@ const UserRentals = (props) => {
                                             <button
                                                 className="button"
                                                 onClick={() => {
+                                                    let index;
+                                                    let PricePerDay;
+                                                    let dates;
+                                                    for (
+                                                        let i = 0;
+                                                        i <
+                                                        props.vehicles.length;
+                                                        ++i
+                                                    ) {
+                                                        if (
+                                                            props.vehicles[i]
+                                                                .vin ===
+                                                            rental.vehicleVin
+                                                        ) {
+                                                            index = i + 1;
+                                                            PricePerDay =
+                                                                props.vehicles[
+                                                                    i
+                                                                ]
+                                                                    .vehiclePricePerDay;
+                                                            dates =
+                                                                props.vehicles[
+                                                                    i
+                                                                ]
+                                                                    .unavailableDates;
+                                                        }
+                                                    }
+                                                    console.log(dates);
+                                                    if (dates == null) {
+                                                        dates =
+                                                            rental.rentDates +
+                                                            "#";
+                                                    } else {
+                                                        dates +=
+                                                            rental.rentDates +
+                                                            "#";
+                                                    }
+                                                    console.log(dates);
+
                                                     props.rentalPayment(
                                                         rental.id,
-                                                        APPROVED
+                                                        APPROVED,
+                                                        rental.rentPrice,
+                                                        index,
+                                                        dates,
+                                                        PricePerDay
                                                     );
                                                 }}
                                             >

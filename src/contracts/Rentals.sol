@@ -114,12 +114,12 @@ contract Rentals {
         );  
     }
 
-    function rentalPayment(uint _id, string memory _status) public payable {
+    function rentalPayment(uint _id, string memory _status)payable public  {
         // this function purpose is to upadate the rental status to approved (final approval by the renter)
         // in this function we need to make the payment and update the status to approved in the contract
 
         // Make sure the id is valid
-        // require(_id > 0 && _id <= rentalsCount);
+        require(_id > 0 && _id <= rentalsCount);
 
         // fetch the rental by id
         Rental memory _rental = rentals[_id];
@@ -153,7 +153,7 @@ contract Rentals {
         rentals[_id] = _rental;
 
         // Pay the owner by sending them Ether
-        payable(address(_owner)).transfer(_rental.rentPrice);
+        payable(_owner).transfer(msg.value);
 
         // Trigger an event
         emit RentalPayed(

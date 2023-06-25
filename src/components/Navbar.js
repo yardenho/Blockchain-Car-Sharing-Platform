@@ -160,7 +160,6 @@ class Navbar extends Component {
                             <a href="/CompanyProfile">My Profile</a>
                             <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My cars documentations</a>
-                            <a href="/UserRentals">My rentals</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>

@@ -318,15 +318,20 @@ class App extends Component {
             });
     }
 
-    EditVehicle(index, dates, price) {
+    EditVehicle(index, dates, price, flag) {
+        console.log("in editttt");
         this.setState({ loading: true });
-        const promise = this.state.marketplace.methods
+        this.state.marketplace.methods
             .editVehicle(index, dates, price)
             .send({ from: this.state.account })
             .once("confirmation", (receipt) => {
                 this.setState({ loading: false });
                 console.log("this.state.vehicles[0]");
-                window.location.href = "./UserOfferedCars";
+                if (flag === 0) {
+                    window.location.href = "./UserOfferedCars";
+                } else {
+                    window.location.reload();
+                }
             });
     }
 
@@ -513,16 +518,17 @@ class App extends Component {
             });
     }
 
-    rentalPayment(id, status) {
+    rentalPayment(id, status, price, vehicleIndex, newDates, pricePerDay) {
         this.setState({ loading: true });
         console.log(typeof id);
         console.log(id);
         this.state.rentalsContract.methods
             .rentalPayment(id, status)
-            .send({ from: this.state.account })
+            .send({ from: this.state.account, value: price })
             .once("confirmation", (receipt) => {
                 this.setState({ loading: false });
-                window.location.reload();
+                console.log("before edit");
+                this.EditVehicle(vehicleIndex, newDates, pricePerDay, 1);
             });
     }
 
@@ -762,6 +768,7 @@ class App extends Component {
                                                 account={this.state.account}
                                                 users={this.state.users}
                                                 companies={this.state.companies}
+                                                vehicles={this.state.vehicles}
                                                 rentalPayment={
                                                     this.rentalPayment
                                                 }

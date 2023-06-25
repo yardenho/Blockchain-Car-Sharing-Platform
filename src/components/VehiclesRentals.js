@@ -116,7 +116,7 @@ const VehicalsRentals = (props) => {
                     <option value={ALL}>ALL</option>
                     <option value={WAITING}>WAITING</option>
                     <option value={DECLINED}>DECLINED</option>
-                    <option value={APPROVED_BY_OWNER}>APPROVED</option>
+                    <option value={APPROVED_BY_OWNER}>APPROVED_BY_OWNER</option>
                     <option value={APPROVED}>PAYED</option>
                 </select>
             </div>

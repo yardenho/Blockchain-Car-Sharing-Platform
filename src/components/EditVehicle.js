@@ -133,7 +133,7 @@ const EditVehicle = (props) => {
                     console.log("index+ " + index);
                     console.log(li);
                     console.log(price);
-                    props.EditVehicle(index, li, price);
+                    props.EditVehicle(index, li, price, 0);
                 }}
             >
                 <div className="form-group mr-sm-2">
