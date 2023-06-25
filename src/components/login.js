@@ -78,7 +78,7 @@ class Login extends Component {
                         this.props.companies[i].password === this.password.value
                     ) {
                         this.setState({ error: "" });
-                        window.location.href = "/userMainPage";
+                        window.location.href = "/UserOfferedCars";
                         return true;
                     } else {
                         this.setState({

@@ -119,7 +119,7 @@ contract Rentals {
         // in this function we need to make the payment and update the status to approved in the contract
 
         // Make sure the id is valid
-        require(_id > 0 && _id <= rentalsCount);
+        // require(_id > 0 && _id <= rentalsCount);
 
         // fetch the rental by id
         Rental memory _rental = rentals[_id];
@@ -135,21 +135,25 @@ contract Rentals {
         address payable _owner = _rental.owner;
 
         // Require that there is enough Ether in the transaction
-        require(msg.value >= _rental.rentPrice);
+        // require(msg.value >= _rental.rentPrice);
 
         // Require that the buyer is not the seller
-        require(_owner != msg.sender);
+        // require(_owner != msg.sender);
 
         // Require that the buyer is the same one that created the rental request
-        address payable _renter = _rental.renter;
-        require(_renter == msg.sender);
+        // address payable _renter = _rental.renter;
+        // require(_renter == msg.sender);
 
 
-        // Pay the owner by sending them Ether
-        payable(address(_owner)).transfer(msg.value);
 
         // update the status and save
         _rental.status = _status;
+
+        // Update the product
+        rentals[_id] = _rental;
+
+        // Pay the owner by sending them Ether
+        payable(address(_owner)).transfer(_rental.rentPrice);
 
         // Trigger an event
         emit RentalPayed(

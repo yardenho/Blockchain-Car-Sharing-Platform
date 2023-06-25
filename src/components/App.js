@@ -278,7 +278,7 @@ class App extends Component {
 
         this.createVehicle = this.createVehicle.bind(this);
         this.EditVehicle = this.EditVehicle.bind(this);
-        this.purchaseVehicle = this.purchaseVehicle.bind(this);
+        this.rentalPayment = this.rentalPayment.bind(this);
         this.createUser = this.createUser.bind(this);
         this.updateUser = this.updateUser.bind(this);
         this.createGarage = this.createGarage.bind(this);
@@ -492,10 +492,10 @@ class App extends Component {
         this.state.rentalsContract.methods
             .createRental(vehicleVin, owner, rentDates, rentPrice, status)
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (receipt) => {
                 console.log("in app.js receipt");
-
                 this.setState({ loading: false });
+                window.location.href = "/userMainPage";
             });
 
         // transactionHash
@@ -513,14 +513,17 @@ class App extends Component {
             });
     }
 
-    purchaseVehicle(id, price) {
-        //     this.setState({ loading: true });
-        //     this.state.marketplace.methods
-        //         .purchaseProduct(id)
-        //         .send({ from: this.state.account, value: price })
-        //         .once("receipt", (receipt) => {
-        //             this.setState({ loading: false });
-        //         });
+    rentalPayment(id, status) {
+        this.setState({ loading: true });
+        console.log(typeof id);
+        console.log(id);
+        this.state.rentalsContract.methods
+            .rentalPayment(id, status)
+            .send({ from: this.state.account })
+            .once("confirmation", (receipt) => {
+                this.setState({ loading: false });
+                window.location.reload();
+            });
     }
 
     updateDoc(id, status) {
@@ -540,16 +543,6 @@ class App extends Component {
             console.log("reload");
             window.location.reload();
         });
-
-        const increaseAccountsCount = () => {
-            // console.log("this.state.garagesCount");
-
-            // console.log(this.state.accountsCount);
-            const res = parseInt(localStorage.getItem("count")) + 1;
-            localStorage.setItem("count", res);
-            this.setState({ accountsCount: res });
-            return res;
-        };
 
         return (
             <div>
@@ -769,6 +762,9 @@ class App extends Component {
                                                 account={this.state.account}
                                                 users={this.state.users}
                                                 companies={this.state.companies}
+                                                rentalPayment={
+                                                    this.rentalPayment
+                                                }
                                             />
                                         }
                                     />

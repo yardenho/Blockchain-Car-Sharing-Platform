@@ -126,7 +126,7 @@ const UserRentals = (props) => {
                     <option value={APPROVED}>APPROVED</option>
                     <option value={DECLINED}>DECLINED</option>
                     <option value={APPROVED_BY_OWNER}>
-                        WAITING FOR PAYMENTS
+                        WAITING FOR PAYMENT
                     </option>
                 </select>
             </div>
@@ -185,7 +185,10 @@ const UserRentals = (props) => {
                                             <button
                                                 className="button"
                                                 onClick={() => {
-                                                    //TODO
+                                                    props.rentalPayment(
+                                                        rental.id,
+                                                        APPROVED
+                                                    );
                                                 }}
                                             >
                                                 PAY FOR THE RENTAL

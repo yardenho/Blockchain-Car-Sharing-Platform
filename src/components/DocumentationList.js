@@ -15,9 +15,6 @@ class DocumentationList extends Component {
         return (
             <div id="content">
                 <h1>Garages Documentation that needs aprroval</h1>
-                {this.props.docs.length === 0 && (
-                    <h5>You don`t have any documents for your cars</h5>
-                )}
                 <table className="table">
                     <thead>
                         <tr>
@@ -150,6 +147,9 @@ class DocumentationList extends Component {
                         )}
                     </tbody>
                 </table>
+                {this.props.docs.length === 0 && (
+                    <h5>You don`t have any documents for your cars</h5>
+                )}
             </div>
         );
     }
