@@ -27,10 +27,8 @@ class Login extends Component {
                     }
                     if (this.props.users[i].password === this.password.value) {
                         this.setState({ error: "" });
-                        //TODO - forwards to web
                         console.log("true");
                         window.location.href = "/userMainPage";
-                        // replace("/userMainPage");
                         return true;
                     } else {
                         this.setState({
@@ -81,6 +79,7 @@ class Login extends Component {
                     ) {
                         this.setState({ error: "" });
                         window.location.href = "/userMainPage";
+                        return true;
                     } else {
                         this.setState({
                             error: "The password incorrect",
@@ -90,7 +89,7 @@ class Login extends Component {
                 }
             }
             this.setState({
-                error: "Incorrect private key",
+                error: "Cannot find user with that address",
             });
         };
 

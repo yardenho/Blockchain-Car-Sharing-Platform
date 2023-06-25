@@ -92,7 +92,16 @@ class Navbar extends Component {
                     rel="noopener noreferrer"
                 >
                     CrowdCarLink
+                    <img
+                        style={{
+                            height: "40px",
+                            width: "50px",
+                            marginLeft: "10px",
+                        }}
+                        src={require("../assets/newLogo.png")}
+                    ></img>
                 </a>
+
                 <ul className="navbar-nav px-3">
                     <li className="nav-item " style={{ marginLeft: "5px" }}>
                         <small className="text-white">
@@ -108,9 +117,10 @@ class Navbar extends Component {
                         <div id="myDropdown" className="dropdown-content">
                             <a href="/userMainPage">Main page</a>
                             <a href="/UserProfile">My Profile</a>
-                            <a href="/UserOfferedCars">My cars</a>
-                            <a href="#">My Rents</a>
-                            <a href="/DocsList">My cars documentations</a>
+                            <a href="/UserOfferedCars">My vehicles</a>
+                            <a href="/VehiclesRentals">My vehicles' rentals</a>
+                            <a href="/DocsList">My vehicles documentations</a>
+                            <a href="/UserRentals">My rentals</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>
@@ -135,9 +145,10 @@ class Navbar extends Component {
                         <div id="myDropdown" className="dropdown-content">
                             <a href="/userMainPage">Main page</a>
                             <a href="/CompanyProfile">My Profile</a>
-                            <a href="/UserOfferedCars">My cars</a>
-                            <a href="#">My Rents</a>
+                            <a href="/UserOfferedCars">My vehicles</a>
+                            <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My cars documentations</a>
+                            <a href="/UserRentals">My rentals</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>
