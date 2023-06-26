@@ -73,6 +73,11 @@ class Register extends Component {
                 if (this.props.users[i].IDnumber === this.IDnumber.value) {
                     alert("There is already a user with this ID number");
                     return true;
+                } else if (
+                    this.props.users[i].emailAddress == this.emailAddress.value
+                ) {
+                    alert("There is already a user with this email address");
+                    return true;
                 }
             }
             return false;

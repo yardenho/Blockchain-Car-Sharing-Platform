@@ -10,6 +10,13 @@ class Navbar extends Component {
     }
 
     render() {
+        window.ethereum.on("accountsChanged", function(accounts) {
+            console.log("change in nav bar");
+            const res = checkUserConnected();
+            if (res !== -1) {
+                window.location.href = "/";
+            }
+        });
         const checkUserConnected = () => {
             if (
                 window.location.pathname === "/Login" ||
