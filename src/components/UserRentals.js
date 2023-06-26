@@ -225,7 +225,7 @@ const UserRentals = (props) => {
                                                     console.log(dates);
 
                                                     props.rentalPayment(
-                                                        parseInt(rental.id),
+                                                        rental.id,
                                                         APPROVED,
                                                         rental.rentPrice,
                                                         index,

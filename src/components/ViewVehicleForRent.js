@@ -55,8 +55,6 @@ const ViewVehicleForRent = (props) => {
         (start1 <= start2 && start2 <= end1)
       ) {
         return true;
-      } else {
-        return false;
       }
     }
     return false;
@@ -181,14 +179,16 @@ const ViewVehicleForRent = (props) => {
 
                   setStartDate(start);
                   setEndDate(end);
-
-                  if (check_date_overlap(startDate, endDate) === false) {
-                    console.log("the date is available");
-                    console.log(endDate);
-                    updateRentPrice(start, end);
-                  } else {
-                    console.log("the date is unavailable");
-                    setPrice(0);
+                  if (end != null) {
+                    if (check_date_overlap(startDate, endDate) === false) {
+                      console.log("the date is available");
+                      console.log(endDate);
+                      updateRentPrice(start, end);
+                    } else {
+                      window.alert("The dates are unavailable");
+                      console.log("the date is unavailable");
+                      setPrice(0);
+                    }
                   }
                 }}
                 startDate={startDate}
@@ -196,6 +196,12 @@ const ViewVehicleForRent = (props) => {
                 selectsRange
                 minDate={new Date()}
               />
+            </div>
+            <div
+              id="rent_price"
+              className="d-lg-flex justify-content-lg-center product-price"
+            >
+              <label>Price: {price.toString()}</label>
             </div>
             <div>
               <button
