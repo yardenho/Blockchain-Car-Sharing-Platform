@@ -62,10 +62,6 @@ class AddVehicle extends Component {
                 ) {
                     console.log("true");
                     return true;
-                } else {
-                    console.log("false");
-
-                    return false;
                 }
             }
             return false;

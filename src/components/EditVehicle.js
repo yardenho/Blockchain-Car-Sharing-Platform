@@ -78,10 +78,6 @@ const EditVehicle = (props) => {
             ) {
                 console.log("true");
                 return true;
-            } else {
-                console.log("false");
-
-                return false;
             }
         }
         return false;
