@@ -134,8 +134,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -148,8 +147,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -162,8 +160,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -214,8 +211,7 @@
       "name": "updateDoc",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleVin\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"garageBnNumber\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"date\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"approved\",\"type\":\"string\"}],\"name\":\"DocumentCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleVin\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"garageBnNumber\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"date\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"approved\",\"type\":\"string\"}],\"name\":\"DocumentUpdated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_vehicleVin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_garageBnNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_date\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_approved\",\"type\":\"string\"}],\"name\":\"createDocument\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"documentations\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"vehicleVin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"garageBnNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"date\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"approved\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"documentationsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_approved\",\"type\":\"string\"}],\"name\":\"updateDoc\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/contracts/VehicleDoc.sol\":\"VehicleDoc\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/contracts/VehicleDoc.sol\":{\"keccak256\":\"0xed0e0bc6926e29a8fc5a5ec3d90888f75d74d2ef94529a6173e4b9fd2c6c1a14\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://9e8b58fccb30ffbb19e867eba65ec9ac3804211ed8f74500da28b39fc2363722\",\"dweb:/ipfs/QmTFtTNFPxSJWGqFLCMkuUwHcLYuppWe6SNXhoHyvFix23\"]}},\"version\":1}",
@@ -7998,13 +7994,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xf7A472302B402b3643Ef90b9876419933daaEC47",
-      "transactionHash": "0xc53afcdbe35567a6eade27f325cd7416f70452f46e44b5677c17ed3d4b4ff641"
+      "address": "0xA3FeD47Ff91848c2263F1B1545a2447D6F968fff",
+      "transactionHash": "0x277cc58d3874cfebafbfc0a0ac2cff09879c272b86a5aa8ccc77c76692f82146"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-26T06:46:36.744Z",
-  "networkType": "ethereum",
+  "updatedAt": "2023-06-26T09:54:33.565Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

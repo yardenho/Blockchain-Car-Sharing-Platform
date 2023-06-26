@@ -183,8 +183,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -197,8 +196,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -247,8 +245,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -322,8 +319,7 @@
       "name": "purchaseVehicle",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vin\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehiclePricePerDay\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"unavailableDates\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"numOfSeats\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"gearboxType\",\"type\":\"string\"}],\"name\":\"VehicleCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vin\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehiclePricePerDay\",\"type\":\"uint256\"}],\"name\":\"VehicleEdited\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vin\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehiclePricePerDay\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"unavailableDates\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"numOfSeats\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"gearboxType\",\"type\":\"string\"}],\"name\":\"VehiclePurchased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vin\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehiclePricePerDay\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"unavailableDates\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"numOfSeats\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"gearboxType\",\"type\":\"string\"}],\"name\":\"VehicleRented\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_vin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_vehicleType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_numOfSeats\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_gearboxType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_unavailableDates\",\"type\":\"string\"}],\"name\":\"createVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_dates\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"editVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"purchaseVehicle\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vehicleCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"vehicles\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"vin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"vehicleType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"vehiclePricePerDay\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"unavailableDates\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"numOfSeats\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"gearboxType\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/contracts/Marketplace.sol\":\"Marketplace\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/contracts/Marketplace.sol\":{\"keccak256\":\"0x312ca1ee2bae938feb8665f96439a990f67c71306864fd617cfc67d31d411e3c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4f54c2eb81c797ef97c55bd6c362b9b81275850795e26f3629c06a67bf36cc54\",\"dweb:/ipfs/QmbUTifzE6sxHurYBeJN4H35HLS8s5Kg1pfYiVTAftdsWC\"]}},\"version\":1}",
@@ -9081,13 +9077,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xf0668D9FfFE389aeB187347Cea5f99176501e2a3",
-      "transactionHash": "0xd5ef6e95a7d8961b987d83249120ce15dfe5be14a9211955514d17f6cfbf0bf1"
+      "address": "0xd5F3e40F3FA165D6Eaca89201f4a71084B682C8A",
+      "transactionHash": "0xf9afc5447f6af2df57c1288a2dfa5735cd079dd1c44963f6558191e0e262a2d9"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-26T06:46:36.711Z",
-  "networkType": "ethereum",
+  "updatedAt": "2023-06-26T09:54:33.540Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
