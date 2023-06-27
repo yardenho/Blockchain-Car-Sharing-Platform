@@ -220,81 +220,101 @@ const UserRentals = (props) => {
                                     </td>
                                     <td>
                                         {rental.status === APPROVED_BY_OWNER ? (
-                                            <button
-                                                className="button"
-                                                onClick={() => {
-                                                    let index;
-                                                    let PricePerDay;
-                                                    let dates;
-                                                    for (
-                                                        let i = 0;
-                                                        i <
-                                                        props.vehicles.length;
-                                                        ++i
-                                                    ) {
-                                                        if (
-                                                            props.vehicles[i]
-                                                                .vin ===
-                                                            rental.vehicleVin
+                                            <div>
+                                                <button
+                                                    style={{
+                                                        marginRight: "10px",
+                                                    }}
+                                                    className="button"
+                                                    onClick={() => {
+                                                        let index;
+                                                        let PricePerDay;
+                                                        let dates;
+                                                        for (
+                                                            let i = 0;
+                                                            i <
+                                                            props.vehicles
+                                                                .length;
+                                                            ++i
                                                         ) {
-                                                            index = i + 1;
-                                                            PricePerDay =
+                                                            if (
                                                                 props.vehicles[
                                                                     i
-                                                                ]
-                                                                    .vehiclePricePerDay;
-                                                            dates =
-                                                                props.vehicles[
-                                                                    i
-                                                                ]
-                                                                    .unavailableDates;
+                                                                ].vin ===
+                                                                rental.vehicleVin
+                                                            ) {
+                                                                index = i + 1;
+                                                                PricePerDay =
+                                                                    props
+                                                                        .vehicles[
+                                                                        i
+                                                                    ]
+                                                                        .vehiclePricePerDay;
+                                                                dates =
+                                                                    props
+                                                                        .vehicles[
+                                                                        i
+                                                                    ]
+                                                                        .unavailableDates;
+                                                            }
                                                         }
-                                                    }
-                                                    console.log(dates);
+                                                        console.log(dates);
 
-                                                    if (
-                                                        check_date_overlap(
+                                                        if (
+                                                            check_date_overlap(
+                                                                dates,
+                                                                rental.rentDates.split(
+                                                                    "-"
+                                                                )[0],
+                                                                rental.rentDates.split(
+                                                                    "-"
+                                                                )[1]
+                                                            ) === true
+                                                        ) {
+                                                            alert(
+                                                                "The vehicle is already taken on those dates"
+                                                            );
+                                                            props.updateRental(
+                                                                rental.id,
+                                                                DECLINED
+                                                            );
+                                                            return;
+                                                        }
+                                                        if (dates == null) {
+                                                            dates =
+                                                                rental.rentDates +
+                                                                "#";
+                                                        } else {
+                                                            dates +=
+                                                                rental.rentDates +
+                                                                "#";
+                                                        }
+                                                        console.log(dates);
+
+                                                        props.rentalPayment(
+                                                            rental.id,
+                                                            APPROVED,
+                                                            rental.rentPrice,
+                                                            index,
                                                             dates,
-                                                            rental.rentDates.split(
-                                                                "-"
-                                                            )[0],
-                                                            rental.rentDates.split(
-                                                                "-"
-                                                            )[1]
-                                                        ) === true
-                                                    ) {
-                                                        alert(
-                                                            "The vehicle is already taken on those dates"
+                                                            PricePerDay
                                                         );
+                                                    }}
+                                                >
+                                                    PAY FOR THE RENTAL
+                                                </button>
+                                                <button
+                                                    className="button"
+                                                    onClick={() => {
                                                         props.updateRental(
                                                             rental.id,
                                                             DECLINED
                                                         );
-                                                        return;
-                                                    }
-                                                    if (dates == null) {
-                                                        dates =
-                                                            rental.rentDates +
-                                                            "#";
-                                                    } else {
-                                                        dates +=
-                                                            rental.rentDates +
-                                                            "#";
-                                                    }
-                                                    console.log(dates);
-
-                                                    props.rentalPayment(
-                                                        rental.id,
-                                                        APPROVED,
-                                                        rental.rentPrice,
-                                                        index,
-                                                        dates,
-                                                        PricePerDay
-                                                    );
-                                                }}
-                                            >
-                                                PAY FOR THE RENTAL
-                                            </button>
+                                                    }}
+                                                >
+                                                    CANCLE RENTAL
+                                                </button>
+                                            </div>
                                         ) : (
                                             <p>{rental.status}</p>
                                         )}
