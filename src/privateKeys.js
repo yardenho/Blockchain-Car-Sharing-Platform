@@ -20,8 +20,8 @@ export let privateKeys = [
         "0x1aba4756c3432f6a347feaba4db3fa6f1895180f0bee90ed644dc92e3c48cf4a",
     ],
     [
-        "0x0cf580dC1cFe6f564B4e7822b45fF21A61457DF3",
-        "0x1aba4756c3432f6a347feaba4db3fa6f1895180f0bee90ed644dc92e3c48cf4a",
+        "0x81EDBDfC295dA7A54dec6110948e0aa708b02Cb1",
+        "0xeb036765488a134934e7bdeace706371cad55f70d69d5b0bd022241e7af7d7ac",
     ],
     // [
     //     "0xB667D926a81c84B7f3EaA97833Afb7950947fC37",

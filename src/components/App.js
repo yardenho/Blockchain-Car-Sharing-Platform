@@ -490,12 +490,28 @@ class App extends Component {
         // transactionHash
     }
 
-    createRental(vehicleVin, owner, rentDates, rentPrice, status) {
+    createRental(
+        vehicleVin,
+        owner,
+        rentDates,
+        rentPrice,
+        status,
+        ownerName,
+        renterName
+    ) {
         this.setState({ loading: true });
         console.log("in app.js createRental");
         console.log(this.state.account);
         this.state.rentalsContract.methods
-            .createRental(vehicleVin, owner, rentDates, rentPrice, status)
+            .createRental(
+                vehicleVin,
+                owner,
+                rentDates,
+                rentPrice,
+                status,
+                ownerName,
+                renterName
+            )
             .send({ from: this.state.account })
             .once("confirmation", (receipt) => {
                 console.log("in app.js receipt");
@@ -772,6 +788,7 @@ class App extends Component {
                                                 rentalPayment={
                                                     this.rentalPayment
                                                 }
+                                                updateRental={this.updateRental}
                                             />
                                         }
                                     />

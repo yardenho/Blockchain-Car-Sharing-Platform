@@ -55,8 +55,8 @@ const VehicalsRentals = (props) => {
         }
     };
 
-    const getRenterName = async (renterAddress) => {
-        await props.users.map((user) => {
+    const getRenterName = (renterAddress) => {
+        props.users.map((user) => {
             if (user.userAddress === renterAddress.toString()) {
                 if (renterName !== user.fullName) {
                     setRenterName(user.fullName);
@@ -67,9 +67,23 @@ const VehicalsRentals = (props) => {
 
     return (
         <div id="content">
-            <h1>Your Vehicles' Rentals</h1>
+            <h1
+                style={{
+                    marginTop: "20px",
+                    marginBottom: "20px",
+                    marginLeft: "500px",
+                }}
+            >
+                Your Vehicles' Rentals
+            </h1>
 
-            <div style={{ flexDirection: "row", display: "flex" }}>
+            <div
+                style={{
+                    flexDirection: "row",
+                    display: "flex",
+                    marginBottom: "10px",
+                }}
+            >
                 <a
                     className="nav-link mx-auto"
                     href="#"
@@ -86,9 +100,7 @@ const VehicalsRentals = (props) => {
                         className="mx-auto"
                         type="search"
                         placeholder="Search by vehicle type"
-                        ref={(input) => {
-                            setSearchInput(input);
-                        }}
+                        ref={setSearchInput}
                         onKeyUp={handleKeyDown}
                     />
                     <img
@@ -144,7 +156,7 @@ const VehicalsRentals = (props) => {
                             dates[0] = new Date(dates[0]);
                             dates[1] = new Date(dates[1]);
 
-                            getRenterName(rental.renter);
+                            // getRenterName(rental.renter);
                             return (
                                 <tr key={key}>
                                     <th scope="row">{rental.id.toString()}</th>
@@ -163,7 +175,7 @@ const VehicalsRentals = (props) => {
                                             "/" +
                                             dates[1].getFullYear()}
                                     </td>
-                                    <td>{renterName}</td>
+                                    <td>{rental.renterName}</td>
                                     <td>
                                         {window.web3.utils.fromWei(
                                             rental.rentPrice.toString(),

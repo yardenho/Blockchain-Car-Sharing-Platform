@@ -10,7 +10,6 @@ import {
 const UserRentals = (props) => {
     const [searchInput, setSearchInput] = useState("");
     const [data, setData] = useState(props.rentals);
-    const [ownerName, setOwnerName] = useState("");
     const [filterOption, setFilterOption] = useState(ALL);
 
     const searchClicked = () => {
@@ -55,30 +54,69 @@ const UserRentals = (props) => {
         }
     };
 
-    const getOwnerName = (ownerAddress) => {
-        props.users.map((user) => {
-            if (user.userAddress === ownerAddress.toString()) {
-                if (ownerName !== user.fullName) {
-                    setOwnerName(user.fullName);
-                    return;
-                }
-            }
-        });
+    // const getOwnerName = (ownerAddress) => {
+    //     props.users.map((user) => {
+    //         if (user.userAddress === ownerAddress.toString()) {
+    //             if (ownerName !== user.fullName) {
+    //                 setOwnerName(user.fullName);
+    //                 return;
+    //             }
+    //         }
+    //     });
 
-        props.companies.map((company) => {
-            if (company.companyAddress === ownerAddress.toString()) {
-                if (ownerName !== company.companyName) {
-                    setOwnerName(company.companyName);
-                    return;
-                }
+    //     props.companies.map((company) => {
+    //         if (company.companyAddress === ownerAddress.toString()) {
+    //             if (ownerName !== company.companyName) {
+    //                 setOwnerName(company.companyName);
+    //                 return;
+    //             }
+    //         }
+    //     });
+    // };
+
+    const check_date_overlap = (dates, start, end) => {
+        // Convert date strings to datetime objects
+        var start2 = new Date(start).getTime();
+        var end2 = new Date(end).getTime();
+        let datesList = [];
+        if (dates !== "") {
+            datesList = dates.split("#");
+        }
+
+        for (let i = 0; i < datesList.length; ++i) {
+            const range = datesList[i].split("-");
+            const start1 = new Date(range[0]).getTime();
+            const end1 = new Date(range[1]).getTime();
+            // Check for overlapping dates
+            if (
+                (start1 <= end2 && end2 <= end1) ||
+                (start1 <= start2 && start2 <= end1)
+            ) {
+                console.log("true");
+                return true;
             }
-        });
+        }
+        return false;
     };
 
     return (
         <div id="content">
-            <h1>Your Rentals</h1>
-            <div style={{ flexDirection: "row", display: "flex" }}>
+            <h1
+                style={{
+                    marginTop: "20px",
+                    marginLeft: "600px",
+                    marginBottom: "30px",
+                }}
+            >
+                Your Rentals
+            </h1>
+            <div
+                style={{
+                    flexDirection: "row",
+                    display: "flex",
+                    marginBottom: "20px",
+                }}
+            >
                 <a
                     className="nav-link mx-auto"
                     href="#"
@@ -153,7 +191,7 @@ const UserRentals = (props) => {
                             const dates = rental.rentDates.split("-");
                             dates[0] = new Date(dates[0]);
                             dates[1] = new Date(dates[1]);
-                            getOwnerName(rental.owner);
+                            // getOwnerName(rental.owner);
 
                             return (
                                 <tr key={key}>
@@ -173,7 +211,7 @@ const UserRentals = (props) => {
                                             "/" +
                                             dates[1].getFullYear()}
                                     </td>
-                                    <td>{ownerName}</td>
+                                    <td>{rental.ownerName}</td>
                                     <td>
                                         {window.web3.utils.fromWei(
                                             rental.rentPrice.toString(),
@@ -213,6 +251,27 @@ const UserRentals = (props) => {
                                                         }
                                                     }
                                                     console.log(dates);
+
+                                                    if (
+                                                        check_date_overlap(
+                                                            dates,
+                                                            rental.rentDates.split(
+                                                                "-"
+                                                            )[0],
+                                                            rental.rentDates.split(
+                                                                "-"
+                                                            )[1]
+                                                        ) === true
+                                                    ) {
+                                                        alert(
+                                                            "The vehicle is already taken on those dates"
+                                                        );
+                                                        props.updateRental(
+                                                            rental.id,
+                                                            DECLINED
+                                                        );
+                                                        return;
+                                                    }
                                                     if (dates == null) {
                                                         dates =
                                                             rental.rentDates +

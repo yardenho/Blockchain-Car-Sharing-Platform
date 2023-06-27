@@ -13,8 +13,10 @@ class DocumentationList extends Component {
 
     render() {
         return (
-            <div id="content">
-                <h1>Garages Documentation that needs aprroval</h1>
+            <div style={{ marginTop: "40px", width: "70%" }} id="content">
+                <h1 style={{ marginLeft: "400px", marginBottom: "20px" }}>
+                    Maintenance documentation
+                </h1>
                 <table className="table">
                     <thead>
                         <tr>

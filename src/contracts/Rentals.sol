@@ -14,6 +14,8 @@ contract Rentals {
         string rentDates;
         uint rentPrice;
         string status;
+        string ownerName;
+        string renterName;
     }
 
     event RentalCreated(
@@ -50,7 +52,7 @@ contract Rentals {
         name = "Chen & Yarden final project";
     }
 
-    function createRental(string memory _vehicleVin, address _owner, string memory _rentDates, uint _rentPrice, string memory _status) public {
+    function createRental(string memory _vehicleVin, address _owner, string memory _rentDates, uint _rentPrice, string memory _status, string memory _ownerName, string memory _renterName) public {
         // Require a valid vehicle vin
         require(bytes(_vehicleVin).length > 0);
     
@@ -59,6 +61,10 @@ contract Rentals {
 
         // Require a valid rent price
         require(_rentPrice > 0);
+        // Require a valid owner name
+        require(bytes(_ownerName).length > 0);
+        // Require a valid owner name
+        require(bytes(_renterName).length > 0);
 
         // Increment retals count
         rentalsCount++;
@@ -70,7 +76,9 @@ contract Rentals {
             payable(msg.sender),
             _rentDates,
             _rentPrice,
-            _status
+            _status,
+            _ownerName,
+            _renterName
         );
         // Trigger an event
         emit RentalCreated(
