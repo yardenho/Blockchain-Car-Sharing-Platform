@@ -55,16 +55,6 @@ const VehicalsRentals = (props) => {
         }
     };
 
-    const getRenterName = (renterAddress) => {
-        props.users.map((user) => {
-            if (user.userAddress === renterAddress.toString()) {
-                if (renterName !== user.fullName) {
-                    setRenterName(user.fullName);
-                }
-            }
-        });
-    };
-
     return (
         <div id="content">
             <h1
@@ -99,7 +89,7 @@ const VehicalsRentals = (props) => {
                         id="search_input"
                         className="mx-auto"
                         type="search"
-                        placeholder="Search by vehicle type"
+                        placeholder="Search by vehicle vin"
                         ref={setSearchInput}
                         onKeyUp={handleKeyDown}
                     />

@@ -27,6 +27,7 @@ import ViewVehicleForRent from "./ViewVehicleForRent";
 import CompanyProfile from "./CompanyProfile";
 import UserRentals from "./UserRentals";
 import VehiclesRentals from "./VehiclesRentals";
+import AboutAs from "./AboutAs";
 
 class App extends Component {
     async componentWillMount() {
@@ -483,9 +484,10 @@ class App extends Component {
                 approved
             )
             .send({ from: this.state.account })
-            .once("transactionHash", (transactionHash) => {
+            .once("confirmation", (transactionHash) => {
                 console.log("in app.js receipt");
                 this.setState({ loading: false });
+                window.location.href = "/GarageMainPage";
             });
         // transactionHash
     }
@@ -745,6 +747,7 @@ class App extends Component {
                                                 createRental={this.createRental}
                                                 users={this.state.users}
                                                 companies={this.state.companies}
+                                                docs={this.state.documentations}
                                             ></ViewVehicleForRent>
                                         }
                                     />
@@ -803,6 +806,11 @@ class App extends Component {
                                                 updateRental={this.updateRental}
                                             />
                                         }
+                                    />
+                                    <Route
+                                        exact
+                                        path="/AboutAs"
+                                        element={<AboutAs></AboutAs>}
                                     />
                                 </Routes>
                             )}

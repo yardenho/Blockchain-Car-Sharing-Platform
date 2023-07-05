@@ -6,7 +6,10 @@ import { APPROVED, DECLINED, WAITING } from "../variables.js";
 
 const ViewVehicleForRent = (props) => {
     const location = useLocation();
-
+    const [status, setStatus] = useState(WAITING);
+    const [isOpen, setIsOpen] = useState(false);
+    const [des, setDes] = useState("");
+    const [hasData, setHasData] = useState(0);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [unavailableDates, setUnavailableDates] = useState(
@@ -280,7 +283,97 @@ const ViewVehicleForRent = (props) => {
                     </div>
                 </div>
             </form>
-            <p>&nbsp;</p>
+            <h5 style={{ marginTop: "30px", marginBottom: "20px" }}>
+                {" "}
+                Documentation list of this vehicle:{" "}
+            </h5>
+            <table style={{ marginTop: "20px" }} className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Vehicle Vin</th>
+                        <th scope="col">Garage BN</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">description</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="documentationList">
+                    {props.docs.map((doc, key) => {
+                        if (doc.vehicleVin === location.state.vehicle.vin) {
+                            if (hasData === 0) {
+                                setHasData(1);
+                            }
+                            return (
+                                <tr key={key}>
+                                    <th scope="row">{doc.id.toString()}</th>
+                                    <td>{doc.vehicleVin}</td>
+                                    <td>{doc.garageBnNumber}</td>
+                                    <td>{doc.date}</td>
+                                    <td>
+                                        <button
+                                            className="button"
+                                            name={doc.id}
+                                            onClick={(event) => {
+                                                setIsOpen(true);
+                                                setDes(doc.description);
+                                            }}
+                                        >
+                                            View
+                                        </button>
+                                    </td>
+                                    <td>{doc.approved}</td>
+                                </tr>
+                            );
+                        }
+                    })}
+                    {isOpen && (
+                        <dialog
+                            open={isOpen}
+                            style={{
+                                position: "fixed",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                width: "400px",
+                                maxWidth: "90%",
+                                padding: " 20px",
+                            }}
+                        >
+                            <p
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    textAlign: "center",
+                                    height: "100%",
+                                    wordBreak: "break-all",
+                                }}
+                            >
+                                {des}
+                            </p>
+                            <button
+                                className="button"
+                                style={{
+                                    justifyContent: "center",
+                                    textAlign: "center",
+                                    alignSelf: "center",
+                                    padding: "5px",
+                                }}
+                                onClick={() => {
+                                    setIsOpen(false);
+                                }}
+                            >
+                                Close
+                            </button>
+                        </dialog>
+                    )}
+                </tbody>
+            </table>
+            {hasData === 0 && (
+                <h5>This vehicle don`t have any documents yet</h5>
+            )}
         </div>
     );
 };

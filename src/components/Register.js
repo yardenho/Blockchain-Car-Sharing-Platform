@@ -213,11 +213,11 @@ class Register extends Component {
                         Register
                     </button>
                 </form>
-                {/* <button className="btn btn-primary" style={{ marginTop: 5 }}>
+                <button className="btn btn-primary" style={{ marginTop: 5 }}>
                     <a href="/Login" style={{ color: "white" }}>
                         Move to login page
                     </a>
-                </button> */}
+                </button>
                 {this.state.showKey === true && (
                     <>
                         <p>Your private key is: {this.userPrivateKey}</p>
