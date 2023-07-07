@@ -5458,15 +5458,15 @@
     "absolutePath": "project:/src/contracts/VehicleDoc.sol",
     "exportedSymbols": {
       "VehicleDoc": [
-        1268
+        1289
       ]
     },
-    "id": 1269,
+    "id": 1290,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1077,
+        "id": 1098,
         "literals": [
           "solidity",
           ">=",
@@ -5485,9 +5485,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 1268,
+        "id": 1289,
         "linearizedBaseContracts": [
-          1268
+          1289
         ],
         "name": "VehicleDoc",
         "nodeType": "ContractDefinition",
@@ -5495,11 +5495,11 @@
           {
             "constant": false,
             "functionSelector": "06fdde03",
-            "id": 1079,
+            "id": 1100,
             "mutability": "mutable",
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 1268,
+            "scope": 1289,
             "src": "99:18:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5508,7 +5508,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 1078,
+              "id": 1099,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "99:6:5",
@@ -5522,11 +5522,11 @@
           {
             "constant": false,
             "functionSelector": "dbc7d0f8",
-            "id": 1082,
+            "id": 1103,
             "mutability": "mutable",
             "name": "documentationsCount",
             "nodeType": "VariableDeclaration",
-            "scope": 1268,
+            "scope": 1289,
             "src": "124:35:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5535,7 +5535,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1080,
+              "id": 1101,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "124:4:5",
@@ -5546,7 +5546,7 @@
             },
             "value": {
               "hexValue": "30",
-              "id": 1081,
+              "id": 1102,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -5565,22 +5565,22 @@
           {
             "constant": false,
             "functionSelector": "863dac71",
-            "id": 1087,
+            "id": 1108,
             "mutability": "mutable",
             "name": "documentations",
             "nodeType": "VariableDeclaration",
-            "scope": 1268,
+            "scope": 1289,
             "src": "166:47:5",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1100_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1121_storage_$",
               "typeString": "mapping(uint256 => struct VehicleDoc.Document)"
             },
             "typeName": {
-              "id": 1086,
+              "id": 1107,
               "keyType": {
-                "id": 1083,
+                "id": 1104,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "174:4:5",
@@ -5592,23 +5592,23 @@
               "nodeType": "Mapping",
               "src": "166:25:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1100_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1121_storage_$",
                 "typeString": "mapping(uint256 => struct VehicleDoc.Document)"
               },
               "valueType": {
-                "id": 1085,
+                "id": 1106,
                 "nodeType": "UserDefinedTypeName",
                 "pathNode": {
-                  "id": 1084,
+                  "id": 1105,
                   "name": "Document",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1100,
+                  "referencedDeclaration": 1121,
                   "src": "182:8:5"
                 },
-                "referencedDeclaration": 1100,
+                "referencedDeclaration": 1121,
                 "src": "182:8:5",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Document_$1100_storage_ptr",
+                  "typeIdentifier": "t_struct$_Document_$1121_storage_ptr",
                   "typeString": "struct VehicleDoc.Document"
                 }
               }
@@ -5617,15 +5617,15 @@
           },
           {
             "canonicalName": "VehicleDoc.Document",
-            "id": 1100,
+            "id": 1121,
             "members": [
               {
                 "constant": false,
-                "id": 1089,
+                "id": 1110,
                 "mutability": "mutable",
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1100,
+                "scope": 1121,
                 "src": "249:7:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5634,7 +5634,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1088,
+                  "id": 1109,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "249:4:5",
@@ -5647,11 +5647,11 @@
               },
               {
                 "constant": false,
-                "id": 1091,
+                "id": 1112,
                 "mutability": "mutable",
                 "name": "vehicleVin",
                 "nodeType": "VariableDeclaration",
-                "scope": 1100,
+                "scope": 1121,
                 "src": "267:17:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5660,7 +5660,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1090,
+                  "id": 1111,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "267:6:5",
@@ -5673,11 +5673,11 @@
               },
               {
                 "constant": false,
-                "id": 1093,
+                "id": 1114,
                 "mutability": "mutable",
                 "name": "garageBnNumber",
                 "nodeType": "VariableDeclaration",
-                "scope": 1100,
+                "scope": 1121,
                 "src": "295:21:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5686,7 +5686,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1092,
+                  "id": 1113,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "295:6:5",
@@ -5699,11 +5699,11 @@
               },
               {
                 "constant": false,
-                "id": 1095,
+                "id": 1116,
                 "mutability": "mutable",
                 "name": "description",
                 "nodeType": "VariableDeclaration",
-                "scope": 1100,
+                "scope": 1121,
                 "src": "327:18:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5712,7 +5712,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1094,
+                  "id": 1115,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "327:6:5",
@@ -5725,11 +5725,11 @@
               },
               {
                 "constant": false,
-                "id": 1097,
+                "id": 1118,
                 "mutability": "mutable",
                 "name": "date",
                 "nodeType": "VariableDeclaration",
-                "scope": 1100,
+                "scope": 1121,
                 "src": "356:11:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5738,7 +5738,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1096,
+                  "id": 1117,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "356:6:5",
@@ -5751,11 +5751,11 @@
               },
               {
                 "constant": false,
-                "id": 1099,
+                "id": 1120,
                 "mutability": "mutable",
                 "name": "approved",
                 "nodeType": "VariableDeclaration",
-                "scope": 1100,
+                "scope": 1121,
                 "src": "378:15:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5764,7 +5764,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1098,
+                  "id": 1119,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "378:6:5",
@@ -5778,27 +5778,27 @@
             ],
             "name": "Document",
             "nodeType": "StructDefinition",
-            "scope": 1268,
+            "scope": 1289,
             "src": "222:179:5",
             "visibility": "public"
           },
           {
             "anonymous": false,
-            "id": 1114,
+            "id": 1135,
             "name": "DocumentCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1113,
+              "id": 1134,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1102,
+                  "id": 1123,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1114,
+                  "scope": 1135,
                   "src": "441:7:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5807,7 +5807,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1101,
+                    "id": 1122,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "441:4:5",
@@ -5820,12 +5820,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1104,
+                  "id": 1125,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "vehicleVin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1114,
+                  "scope": 1135,
                   "src": "459:17:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5834,7 +5834,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1103,
+                    "id": 1124,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "459:6:5",
@@ -5847,12 +5847,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1106,
+                  "id": 1127,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "garageBnNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1114,
+                  "scope": 1135,
                   "src": "487:21:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5861,7 +5861,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1105,
+                    "id": 1126,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "487:6:5",
@@ -5874,12 +5874,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1108,
+                  "id": 1129,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1114,
+                  "scope": 1135,
                   "src": "519:18:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5888,7 +5888,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1107,
+                    "id": 1128,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "519:6:5",
@@ -5901,12 +5901,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1110,
+                  "id": 1131,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1114,
+                  "scope": 1135,
                   "src": "548:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5915,7 +5915,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1109,
+                    "id": 1130,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "548:6:5",
@@ -5928,12 +5928,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1112,
+                  "id": 1133,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "approved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1114,
+                  "scope": 1135,
                   "src": "570:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5942,7 +5942,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1111,
+                    "id": 1132,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "570:6:5",
@@ -5960,21 +5960,21 @@
           },
           {
             "anonymous": false,
-            "id": 1128,
+            "id": 1149,
             "name": "DocumentUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1127,
+              "id": 1148,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1116,
+                  "id": 1137,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1128,
+                  "scope": 1149,
                   "src": "633:7:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5983,7 +5983,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1115,
+                    "id": 1136,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "633:4:5",
@@ -5996,12 +5996,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1118,
+                  "id": 1139,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "vehicleVin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1128,
+                  "scope": 1149,
                   "src": "651:17:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6010,7 +6010,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1117,
+                    "id": 1138,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "651:6:5",
@@ -6023,12 +6023,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1120,
+                  "id": 1141,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "garageBnNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1128,
+                  "scope": 1149,
                   "src": "679:21:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6037,7 +6037,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1119,
+                    "id": 1140,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "679:6:5",
@@ -6050,12 +6050,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1122,
+                  "id": 1143,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1128,
+                  "scope": 1149,
                   "src": "711:18:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6064,7 +6064,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1121,
+                    "id": 1142,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "711:6:5",
@@ -6077,12 +6077,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1124,
+                  "id": 1145,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1128,
+                  "scope": 1149,
                   "src": "740:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6091,7 +6091,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1123,
+                    "id": 1144,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "740:6:5",
@@ -6104,12 +6104,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1126,
+                  "id": 1147,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "approved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1128,
+                  "scope": 1149,
                   "src": "762:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6118,7 +6118,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1125,
+                    "id": 1146,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "762:6:5",
@@ -6136,23 +6136,23 @@
           },
           {
             "body": {
-              "id": 1135,
+              "id": 1156,
               "nodeType": "Block",
               "src": "814:55:5",
               "statements": [
                 {
                   "expression": {
-                    "id": 1133,
+                    "id": 1154,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1131,
+                      "id": 1152,
                       "name": "name",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1079,
+                      "referencedDeclaration": 1100,
                       "src": "825:4:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
@@ -6163,7 +6163,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "4368656e20262059617264656e2066696e616c2070726f6a656374",
-                      "id": 1132,
+                      "id": 1153,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -6183,31 +6183,31 @@
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 1134,
+                  "id": 1155,
                   "nodeType": "ExpressionStatement",
                   "src": "825:36:5"
                 }
               ]
             },
-            "id": 1136,
+            "id": 1157,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1129,
+              "id": 1150,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "804:2:5"
             },
             "returnParameters": {
-              "id": 1130,
+              "id": 1151,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "814:0:5"
             },
-            "scope": 1268,
+            "scope": 1289,
             "src": "793:76:5",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -6215,7 +6215,7 @@
           },
           {
             "body": {
-              "id": 1214,
+              "id": 1235,
               "nodeType": "Block",
               "src": "1040:930:5",
               "statements": [
@@ -6227,7 +6227,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 1156,
+                        "id": 1177,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -6236,11 +6236,11 @@
                           "expression": {
                             "arguments": [
                               {
-                                "id": 1152,
+                                "id": 1173,
                                 "name": "_vehicleVin",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1138,
+                                "referencedDeclaration": 1159,
                                 "src": "1105:11:5",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
@@ -6255,7 +6255,7 @@
                                   "typeString": "string memory"
                                 }
                               ],
-                              "id": 1151,
+                              "id": 1172,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -6267,14 +6267,14 @@
                                 "typeString": "type(bytes storage pointer)"
                               },
                               "typeName": {
-                                "id": 1150,
+                                "id": 1171,
                                 "name": "bytes",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "1099:5:5",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 1153,
+                            "id": 1174,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -6289,7 +6289,7 @@
                               "typeString": "bytes memory"
                             }
                           },
-                          "id": 1154,
+                          "id": 1175,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6306,7 +6306,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 1155,
+                          "id": 1176,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -6334,7 +6334,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1149,
+                      "id": 1170,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -6348,7 +6348,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1157,
+                    "id": 1178,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6363,7 +6363,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1158,
+                  "id": 1179,
                   "nodeType": "ExpressionStatement",
                   "src": "1091:38:5"
                 },
@@ -6375,7 +6375,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 1166,
+                        "id": 1187,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -6384,11 +6384,11 @@
                           "expression": {
                             "arguments": [
                               {
-                                "id": 1162,
+                                "id": 1183,
                                 "name": "_garageBnNumber",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1140,
+                                "referencedDeclaration": 1161,
                                 "src": "1199:15:5",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
@@ -6403,7 +6403,7 @@
                                   "typeString": "string memory"
                                 }
                               ],
-                              "id": 1161,
+                              "id": 1182,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -6415,14 +6415,14 @@
                                 "typeString": "type(bytes storage pointer)"
                               },
                               "typeName": {
-                                "id": 1160,
+                                "id": 1181,
                                 "name": "bytes",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "1193:5:5",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 1163,
+                            "id": 1184,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -6437,7 +6437,7 @@
                               "typeString": "bytes memory"
                             }
                           },
-                          "id": 1164,
+                          "id": 1185,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6454,7 +6454,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 1165,
+                          "id": 1186,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -6482,7 +6482,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1159,
+                      "id": 1180,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -6496,7 +6496,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1167,
+                    "id": 1188,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6511,7 +6511,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1168,
+                  "id": 1189,
                   "nodeType": "ExpressionStatement",
                   "src": "1185:42:5"
                 },
@@ -6523,7 +6523,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 1176,
+                        "id": 1197,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -6532,11 +6532,11 @@
                           "expression": {
                             "arguments": [
                               {
-                                "id": 1172,
+                                "id": 1193,
                                 "name": "_description",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1142,
+                                "referencedDeclaration": 1163,
                                 "src": "1292:12:5",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
@@ -6551,7 +6551,7 @@
                                   "typeString": "string memory"
                                 }
                               ],
-                              "id": 1171,
+                              "id": 1192,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -6563,14 +6563,14 @@
                                 "typeString": "type(bytes storage pointer)"
                               },
                               "typeName": {
-                                "id": 1170,
+                                "id": 1191,
                                 "name": "bytes",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "1286:5:5",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 1173,
+                            "id": 1194,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -6585,7 +6585,7 @@
                               "typeString": "bytes memory"
                             }
                           },
-                          "id": 1174,
+                          "id": 1195,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6602,7 +6602,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 1175,
+                          "id": 1196,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -6630,7 +6630,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1169,
+                      "id": 1190,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -6644,7 +6644,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1177,
+                    "id": 1198,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6659,7 +6659,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1178,
+                  "id": 1199,
                   "nodeType": "ExpressionStatement",
                   "src": "1278:39:5"
                 },
@@ -6671,7 +6671,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 1186,
+                        "id": 1207,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -6680,11 +6680,11 @@
                           "expression": {
                             "arguments": [
                               {
-                                "id": 1182,
+                                "id": 1203,
                                 "name": "_date",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1144,
+                                "referencedDeclaration": 1165,
                                 "src": "1375:5:5",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
@@ -6699,7 +6699,7 @@
                                   "typeString": "string memory"
                                 }
                               ],
-                              "id": 1181,
+                              "id": 1202,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -6711,14 +6711,14 @@
                                 "typeString": "type(bytes storage pointer)"
                               },
                               "typeName": {
-                                "id": 1180,
+                                "id": 1201,
                                 "name": "bytes",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "1369:5:5",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 1183,
+                            "id": 1204,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -6733,7 +6733,7 @@
                               "typeString": "bytes memory"
                             }
                           },
-                          "id": 1184,
+                          "id": 1205,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6750,7 +6750,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 1185,
+                          "id": 1206,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -6778,7 +6778,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1179,
+                      "id": 1200,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -6792,7 +6792,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1187,
+                    "id": 1208,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6807,13 +6807,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1188,
+                  "id": 1209,
                   "nodeType": "ExpressionStatement",
                   "src": "1361:32:5"
                 },
                 {
                   "expression": {
-                    "id": 1190,
+                    "id": 1211,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6823,11 +6823,11 @@
                     "prefix": false,
                     "src": "1449:21:5",
                     "subExpression": {
-                      "id": 1189,
+                      "id": 1210,
                       "name": "documentationsCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1082,
+                      "referencedDeclaration": 1103,
                       "src": "1449:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -6839,37 +6839,37 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1191,
+                  "id": 1212,
                   "nodeType": "ExpressionStatement",
                   "src": "1449:21:5"
                 },
                 {
                   "expression": {
-                    "id": 1203,
+                    "id": 1224,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 1192,
+                        "id": 1213,
                         "name": "documentations",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1087,
+                        "referencedDeclaration": 1108,
                         "src": "1512:14:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1100_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1121_storage_$",
                           "typeString": "mapping(uint256 => struct VehicleDoc.Document storage ref)"
                         }
                       },
-                      "id": 1194,
+                      "id": 1215,
                       "indexExpression": {
-                        "id": 1193,
+                        "id": 1214,
                         "name": "documentationsCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1082,
+                        "referencedDeclaration": 1103,
                         "src": "1527:19:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -6883,7 +6883,7 @@
                       "nodeType": "IndexAccess",
                       "src": "1512:35:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Document_$1100_storage",
+                        "typeIdentifier": "t_struct$_Document_$1121_storage",
                         "typeString": "struct VehicleDoc.Document storage ref"
                       }
                     },
@@ -6892,11 +6892,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 1196,
+                          "id": 1217,
                           "name": "documentationsCount",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1082,
+                          "referencedDeclaration": 1103,
                           "src": "1573:19:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -6904,11 +6904,11 @@
                           }
                         },
                         {
-                          "id": 1197,
+                          "id": 1218,
                           "name": "_vehicleVin",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1138,
+                          "referencedDeclaration": 1159,
                           "src": "1607:11:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -6916,11 +6916,11 @@
                           }
                         },
                         {
-                          "id": 1198,
+                          "id": 1219,
                           "name": "_garageBnNumber",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1140,
+                          "referencedDeclaration": 1161,
                           "src": "1633:15:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -6928,11 +6928,11 @@
                           }
                         },
                         {
-                          "id": 1199,
+                          "id": 1220,
                           "name": "_description",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1142,
+                          "referencedDeclaration": 1163,
                           "src": "1663:12:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -6940,11 +6940,11 @@
                           }
                         },
                         {
-                          "id": 1200,
+                          "id": 1221,
                           "name": "_date",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1144,
+                          "referencedDeclaration": 1165,
                           "src": "1690:5:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -6952,11 +6952,11 @@
                           }
                         },
                         {
-                          "id": 1201,
+                          "id": 1222,
                           "name": "_approved",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1146,
+                          "referencedDeclaration": 1167,
                           "src": "1710:9:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -6991,18 +6991,18 @@
                             "typeString": "string memory"
                           }
                         ],
-                        "id": 1195,
+                        "id": 1216,
                         "name": "Document",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1100,
+                        "referencedDeclaration": 1121,
                         "src": "1550:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Document_$1100_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Document_$1121_storage_ptr_$",
                           "typeString": "type(struct VehicleDoc.Document storage pointer)"
                         }
                       },
-                      "id": 1202,
+                      "id": 1223,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -7013,17 +7013,17 @@
                       "src": "1550:180:5",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                        "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                         "typeString": "struct VehicleDoc.Document memory"
                       }
                     },
                     "src": "1512:218:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Document_$1100_storage",
+                      "typeIdentifier": "t_struct$_Document_$1121_storage",
                       "typeString": "struct VehicleDoc.Document storage ref"
                     }
                   },
-                  "id": 1204,
+                  "id": 1225,
                   "nodeType": "ExpressionStatement",
                   "src": "1512:218:5"
                 },
@@ -7031,11 +7031,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 1206,
+                        "id": 1227,
                         "name": "documentationsCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1082,
+                        "referencedDeclaration": 1103,
                         "src": "1805:19:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -7043,11 +7043,11 @@
                         }
                       },
                       {
-                        "id": 1207,
+                        "id": 1228,
                         "name": "_vehicleVin",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1138,
+                        "referencedDeclaration": 1159,
                         "src": "1839:11:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7055,11 +7055,11 @@
                         }
                       },
                       {
-                        "id": 1208,
+                        "id": 1229,
                         "name": "_garageBnNumber",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1140,
+                        "referencedDeclaration": 1161,
                         "src": "1865:15:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7067,11 +7067,11 @@
                         }
                       },
                       {
-                        "id": 1209,
+                        "id": 1230,
                         "name": "_description",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1142,
+                        "referencedDeclaration": 1163,
                         "src": "1895:12:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7079,11 +7079,11 @@
                         }
                       },
                       {
-                        "id": 1210,
+                        "id": 1231,
                         "name": "_date",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1144,
+                        "referencedDeclaration": 1165,
                         "src": "1922:5:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7091,11 +7091,11 @@
                         }
                       },
                       {
-                        "id": 1211,
+                        "id": 1232,
                         "name": "_approved",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1146,
+                        "referencedDeclaration": 1167,
                         "src": "1942:9:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7130,18 +7130,18 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1205,
+                      "id": 1226,
                       "name": "DocumentCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1114,
+                      "referencedDeclaration": 1135,
                       "src": "1775:15:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (uint256,string memory,string memory,string memory,string memory,string memory)"
                       }
                     },
-                    "id": 1212,
+                    "id": 1233,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7156,30 +7156,30 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1213,
+                  "id": 1234,
                   "nodeType": "EmitStatement",
                   "src": "1770:192:5"
                 }
               ]
             },
             "functionSelector": "5ee4b8ec",
-            "id": 1215,
+            "id": 1236,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "createDocument",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1147,
+              "id": 1168,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1138,
+                  "id": 1159,
                   "mutability": "mutable",
                   "name": "_vehicleVin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1215,
+                  "scope": 1236,
                   "src": "901:25:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7188,7 +7188,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1137,
+                    "id": 1158,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "901:6:5",
@@ -7201,11 +7201,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1140,
+                  "id": 1161,
                   "mutability": "mutable",
                   "name": "_garageBnNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1215,
+                  "scope": 1236,
                   "src": "928:29:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7214,7 +7214,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1139,
+                    "id": 1160,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "928:6:5",
@@ -7227,11 +7227,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1142,
+                  "id": 1163,
                   "mutability": "mutable",
                   "name": "_description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1215,
+                  "scope": 1236,
                   "src": "959:26:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7240,7 +7240,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1141,
+                    "id": 1162,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "959:6:5",
@@ -7253,11 +7253,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1144,
+                  "id": 1165,
                   "mutability": "mutable",
                   "name": "_date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1215,
+                  "scope": 1236,
                   "src": "987:19:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7266,7 +7266,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1143,
+                    "id": 1164,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "987:6:5",
@@ -7279,11 +7279,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1146,
+                  "id": 1167,
                   "mutability": "mutable",
                   "name": "_approved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1215,
+                  "scope": 1236,
                   "src": "1008:23:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7292,7 +7292,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1145,
+                    "id": 1166,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1008:6:5",
@@ -7307,12 +7307,12 @@
               "src": "900:132:5"
             },
             "returnParameters": {
-              "id": 1148,
+              "id": 1169,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1040:0:5"
             },
-            "scope": 1268,
+            "scope": 1289,
             "src": "877:1093:5",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -7320,70 +7320,70 @@
           },
           {
             "body": {
-              "id": 1266,
+              "id": 1287,
               "nodeType": "Block",
               "src": "2047:721:5",
               "statements": [
                 {
                   "assignments": [
-                    1224
+                    1245
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1224,
+                      "id": 1245,
                       "mutability": "mutable",
                       "name": "_document",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1266,
+                      "scope": 1287,
                       "src": "2088:25:5",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                        "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                         "typeString": "struct VehicleDoc.Document"
                       },
                       "typeName": {
-                        "id": 1223,
+                        "id": 1244,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 1222,
+                          "id": 1243,
                           "name": "Document",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1100,
+                          "referencedDeclaration": 1121,
                           "src": "2088:8:5"
                         },
-                        "referencedDeclaration": 1100,
+                        "referencedDeclaration": 1121,
                         "src": "2088:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Document_$1100_storage_ptr",
+                          "typeIdentifier": "t_struct$_Document_$1121_storage_ptr",
                           "typeString": "struct VehicleDoc.Document"
                         }
                       },
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1228,
+                  "id": 1249,
                   "initialValue": {
                     "baseExpression": {
-                      "id": 1225,
+                      "id": 1246,
                       "name": "documentations",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1087,
+                      "referencedDeclaration": 1108,
                       "src": "2116:14:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1100_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1121_storage_$",
                         "typeString": "mapping(uint256 => struct VehicleDoc.Document storage ref)"
                       }
                     },
-                    "id": 1227,
+                    "id": 1248,
                     "indexExpression": {
-                      "id": 1226,
+                      "id": 1247,
                       "name": "_id",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1217,
+                      "referencedDeclaration": 1238,
                       "src": "2131:3:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -7397,7 +7397,7 @@
                     "nodeType": "IndexAccess",
                     "src": "2116:19:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Document_$1100_storage",
+                      "typeIdentifier": "t_struct$_Document_$1121_storage",
                       "typeString": "struct VehicleDoc.Document storage ref"
                     }
                   },
@@ -7412,7 +7412,7 @@
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         },
-                        "id": 1238,
+                        "id": 1259,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7422,32 +7422,32 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 1233,
+                          "id": 1254,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "expression": {
-                              "id": 1230,
+                              "id": 1251,
                               "name": "_document",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1224,
+                              "referencedDeclaration": 1245,
                               "src": "2203:9:5",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                                "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                                 "typeString": "struct VehicleDoc.Document memory"
                               }
                             },
-                            "id": 1231,
+                            "id": 1252,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "id",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1089,
+                            "referencedDeclaration": 1110,
                             "src": "2203:12:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -7458,7 +7458,7 @@
                           "operator": ">",
                           "rightExpression": {
                             "hexValue": "30",
-                            "id": 1232,
+                            "id": 1253,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -7485,32 +7485,32 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 1237,
+                          "id": 1258,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "expression": {
-                              "id": 1234,
+                              "id": 1255,
                               "name": "_document",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1224,
+                              "referencedDeclaration": 1245,
                               "src": "2223:9:5",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                                "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                                 "typeString": "struct VehicleDoc.Document memory"
                               }
                             },
-                            "id": 1235,
+                            "id": 1256,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "id",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1089,
+                            "referencedDeclaration": 1110,
                             "src": "2223:12:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -7520,11 +7520,11 @@
                           "nodeType": "BinaryOperation",
                           "operator": "<=",
                           "rightExpression": {
-                            "id": 1236,
+                            "id": 1257,
                             "name": "documentationsCount",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1082,
+                            "referencedDeclaration": 1103,
                             "src": "2239:19:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -7551,7 +7551,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1229,
+                      "id": 1250,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -7565,7 +7565,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1239,
+                    "id": 1260,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7580,38 +7580,38 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1240,
+                  "id": 1261,
                   "nodeType": "ExpressionStatement",
                   "src": "2195:64:5"
                 },
                 {
                   "expression": {
-                    "id": 1245,
+                    "id": 1266,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 1241,
+                        "id": 1262,
                         "name": "_document",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1224,
+                        "referencedDeclaration": 1245,
                         "src": "2389:9:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                          "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                           "typeString": "struct VehicleDoc.Document memory"
                         }
                       },
-                      "id": 1243,
+                      "id": 1264,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "approved",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1099,
+                      "referencedDeclaration": 1120,
                       "src": "2389:18:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -7621,11 +7621,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1244,
+                      "id": 1265,
                       "name": "_approved",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1219,
+                      "referencedDeclaration": 1240,
                       "src": "2410:9:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -7638,37 +7638,37 @@
                       "typeString": "string memory"
                     }
                   },
-                  "id": 1246,
+                  "id": 1267,
                   "nodeType": "ExpressionStatement",
                   "src": "2389:30:5"
                 },
                 {
                   "expression": {
-                    "id": 1251,
+                    "id": 1272,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 1247,
+                        "id": 1268,
                         "name": "documentations",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1087,
+                        "referencedDeclaration": 1108,
                         "src": "2461:14:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1100_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Document_$1121_storage_$",
                           "typeString": "mapping(uint256 => struct VehicleDoc.Document storage ref)"
                         }
                       },
-                      "id": 1249,
+                      "id": 1270,
                       "indexExpression": {
-                        "id": 1248,
+                        "id": 1269,
                         "name": "_id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1217,
+                        "referencedDeclaration": 1238,
                         "src": "2476:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -7682,31 +7682,31 @@
                       "nodeType": "IndexAccess",
                       "src": "2461:19:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Document_$1100_storage",
+                        "typeIdentifier": "t_struct$_Document_$1121_storage",
                         "typeString": "struct VehicleDoc.Document storage ref"
                       }
                     },
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1250,
+                      "id": 1271,
                       "name": "_document",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1224,
+                      "referencedDeclaration": 1245,
                       "src": "2483:9:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                        "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                         "typeString": "struct VehicleDoc.Document memory"
                       }
                     },
                     "src": "2461:31:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Document_$1100_storage",
+                      "typeIdentifier": "t_struct$_Document_$1121_storage",
                       "typeString": "struct VehicleDoc.Document storage ref"
                     }
                   },
-                  "id": 1252,
+                  "id": 1273,
                   "nodeType": "ExpressionStatement",
                   "src": "2461:31:5"
                 },
@@ -7714,11 +7714,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 1254,
+                        "id": 1275,
                         "name": "documentationsCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1082,
+                        "referencedDeclaration": 1103,
                         "src": "2567:19:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -7727,25 +7727,25 @@
                       },
                       {
                         "expression": {
-                          "id": 1255,
+                          "id": 1276,
                           "name": "_document",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1224,
+                          "referencedDeclaration": 1245,
                           "src": "2601:9:5",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                            "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                             "typeString": "struct VehicleDoc.Document memory"
                           }
                         },
-                        "id": 1256,
+                        "id": 1277,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "vehicleVin",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1091,
+                        "referencedDeclaration": 1112,
                         "src": "2601:20:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7754,25 +7754,25 @@
                       },
                       {
                         "expression": {
-                          "id": 1257,
+                          "id": 1278,
                           "name": "_document",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1224,
+                          "referencedDeclaration": 1245,
                           "src": "2636:9:5",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                            "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                             "typeString": "struct VehicleDoc.Document memory"
                           }
                         },
-                        "id": 1258,
+                        "id": 1279,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "garageBnNumber",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1093,
+                        "referencedDeclaration": 1114,
                         "src": "2636:24:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7781,25 +7781,25 @@
                       },
                       {
                         "expression": {
-                          "id": 1259,
+                          "id": 1280,
                           "name": "_document",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1224,
+                          "referencedDeclaration": 1245,
                           "src": "2675:9:5",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                            "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                             "typeString": "struct VehicleDoc.Document memory"
                           }
                         },
-                        "id": 1260,
+                        "id": 1281,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "description",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1095,
+                        "referencedDeclaration": 1116,
                         "src": "2675:21:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7808,25 +7808,25 @@
                       },
                       {
                         "expression": {
-                          "id": 1261,
+                          "id": 1282,
                           "name": "_document",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1224,
+                          "referencedDeclaration": 1245,
                           "src": "2711:9:5",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Document_$1100_memory_ptr",
+                            "typeIdentifier": "t_struct$_Document_$1121_memory_ptr",
                             "typeString": "struct VehicleDoc.Document memory"
                           }
                         },
-                        "id": 1262,
+                        "id": 1283,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "date",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1097,
+                        "referencedDeclaration": 1118,
                         "src": "2711:14:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7834,11 +7834,11 @@
                         }
                       },
                       {
-                        "id": 1263,
+                        "id": 1284,
                         "name": "_approved",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1219,
+                        "referencedDeclaration": 1240,
                         "src": "2740:9:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -7873,18 +7873,18 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1253,
+                      "id": 1274,
                       "name": "DocumentUpdated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1128,
+                      "referencedDeclaration": 1149,
                       "src": "2537:15:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (uint256,string memory,string memory,string memory,string memory,string memory)"
                       }
                     },
-                    "id": 1264,
+                    "id": 1285,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7899,30 +7899,30 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1265,
+                  "id": 1286,
                   "nodeType": "EmitStatement",
                   "src": "2532:228:5"
                 }
               ]
             },
             "functionSelector": "12665ecb",
-            "id": 1267,
+            "id": 1288,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "updateDoc",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1220,
+              "id": 1241,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1217,
+                  "id": 1238,
                   "mutability": "mutable",
                   "name": "_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1267,
+                  "scope": 1288,
                   "src": "1997:8:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -7931,7 +7931,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1216,
+                    "id": 1237,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1997:4:5",
@@ -7944,11 +7944,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1219,
+                  "id": 1240,
                   "mutability": "mutable",
                   "name": "_approved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1267,
+                  "scope": 1288,
                   "src": "2007:23:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7957,7 +7957,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1218,
+                    "id": 1239,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "2007:6:5",
@@ -7972,19 +7972,19 @@
               "src": "1996:35:5"
             },
             "returnParameters": {
-              "id": 1221,
+              "id": 1242,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2047:0:5"
             },
-            "scope": 1268,
+            "scope": 1289,
             "src": "1978:790:5",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1269,
+        "scope": 1290,
         "src": "72:2701:5"
       }
     ],
@@ -7998,12 +7998,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x71EEa33b285A9955d1973D00697C1f79E7d18d2E",
-      "transactionHash": "0xefacbb9a22aa78767f9458ad97f9bac8688cb23867dfeddf204591d8e23a0fc4"
+      "address": "0x3a828f15251a5b587aA59455630EA14BEFcFED2a",
+      "transactionHash": "0x58525274a8aba5abbba6ba69cbc36de8b595268dbf52c439bd913f22ac155992"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-07-07T08:19:45.897Z",
+  "updatedAt": "2023-07-07T13:39:49.339Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

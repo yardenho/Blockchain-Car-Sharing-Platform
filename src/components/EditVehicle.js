@@ -38,7 +38,13 @@ const EditVehicle = (props) => {
     // alert("The vehicle can be deleted");
 
     // delete the vehicle
-    // props.DeleteVehicle(index);
+    let index;
+    for (let i = 0; i < props.vehicles.length; ++i) {
+      if (props.vehicles[i].vin === location.state.vehicle.vin) {
+        index = i + 1;
+      }
+    }
+    props.DeleteVehicle(index);
   };
 
   const canBeDeleted = () => {

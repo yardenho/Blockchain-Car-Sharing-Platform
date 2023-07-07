@@ -125,41 +125,16 @@ function editVehicle(uint _index, string memory _dates, uint _price) public {
         emit VehicleEdited(_vehicle.vin, _vehicle.vehiclePricePerDay);
     }
 
-  function deleteVehicle(uint _index, string memory _dates, uint _price) public {
-        // // delete vehicle
-        // vehicles[_index] = _vehicle;
-        // // Trigger an event
-        // emit VehicleEdited(_vehicle.vin, _vehicle.vehiclePricePerDay);
+  function deleteVehicle(uint _index) public {
+        // delete vehicle
+         Vehicle memory _vehicle = vehicles[_index];
+        _vehicle.deleteFlag = "true";
+        vehicles[_index] = _vehicle;
+        // Trigger an event
+        emit VehicleDeleted(_vehicle.vin, "true");
     }  
 
-    function purchaseVehicle(uint _id) public payable {
-    //     // Fetch the product
-    //     Product memory _product = products[_id];
-    //     // Fetch the owner
-    //     address payable _seller = _product.owner;
-    //     // Make sure the product has a valid id
-    //     require(_product.id > 0 && _product.id <= productCount);
-    //     // Require that there is enough Ether in the transaction
-    //     require(msg.value >= _product.price);
-    //     // Require that the product has not been purchased already
-    //     require(!_product.purchased);
-    //     // Require that the buyer is not the seller
-    //     require(_seller != msg.sender);
-    //     // Transfer ownership to the buyer
-    //     _product.owner = payable(msg.sender);
-    //     // Mark as purchased
-    //     _product.purchased = true;
-    //     // Update the product
-    //     products[_id] = _product;
-    //     // Pay the seller by sending them Ether
-    //     payable(address(_seller)).transfer(msg.value);
-    //     // Trigger an event
-    //     emit ProductPurchased(
-    //         productCount,
-    //         _product.name,
-    //         _product.price,
-    //         payable(msg.sender),
-    //         true
-    //     );
-    }
+    // function purchaseVehicle(uint _id) public payable {
+
+    // }
 }
