@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 const EditVehicle = (props) => {
   const location = useLocation();
-  //TODO - changing the intialization
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [unavailableDates, setUnavailableDates] = useState("");
@@ -29,6 +28,42 @@ const EditVehicle = (props) => {
       }
     });
   }
+
+  const deleteVehicle = () => {
+    // make sure the vehicle has no future rentals
+    if (!canBeDeleted()) {
+      alert("The vehicle has future rental, so it can not be deleted");
+      return;
+    }
+    // alert("The vehicle can be deleted");
+
+    // delete the vehicle
+    // props.DeleteVehicle(index);
+  };
+
+  const canBeDeleted = () => {
+    // get current date
+    var currentDate = new Date().getTime();
+
+    const dates = unavailableDates;
+    let datesList = [];
+    if (dates !== "") {
+      datesList = dates.split("#");
+    }
+
+    for (let i = 0; i < datesList.length; ++i) {
+      const range = datesList[i].split("-");
+      const start1 = new Date(range[0]).getTime();
+      const end1 = new Date(range[1]).getTime();
+      // Check for future rentals
+      if (currentDate <= end1) {
+        console.log("false");
+        return false;
+      }
+    }
+    return true;
+  };
+
   const splitDates = () => {
     if (unavailableDates !== "") {
       let dates = unavailableDates.split("#");
@@ -107,7 +142,6 @@ const EditVehicle = (props) => {
           let index;
           for (let i = 0; i < props.vehicles.length; ++i) {
             if (props.vehicles[i].vin === location.state.vehicle.vin) {
-              //to change
               index = i + 1;
             }
           }
@@ -124,9 +158,6 @@ const EditVehicle = (props) => {
               console.log("li + ", li);
             }
           }
-          console.log("index+ " + index);
-          console.log(li);
-          console.log(price);
           props.EditVehicle(index, li, price, 0);
         }}
       >
@@ -190,6 +221,19 @@ const EditVehicle = (props) => {
             />
           </label>
           <div>
+            <label>
+              vehicle's gas type:{" "}
+              <input
+                id="gasType"
+                type="text"
+                className="form-control"
+                value={vehicle.gasType || ""}
+                required
+                readOnly={true}
+              />
+            </label>
+          </div>
+          <div>
             <label style={{ marginRight: "5px" }}>
               Add unavailable dates:{" "}
             </label>
@@ -197,9 +241,6 @@ const EditVehicle = (props) => {
               selected={startDate}
               onChange={(range) => {
                 const [start, end] = range;
-                console.log(start);
-                console.log(end);
-
                 setStartDate(start);
                 setEndDate(end);
               }}
@@ -251,6 +292,18 @@ const EditVehicle = (props) => {
         </div>
         <button type="submit" className="btn btn-primary">
           Edit Vehicle
+        </button>
+        <button
+          type="button"
+          onClick={deleteVehicle}
+          style={{
+            marginLeft: "10px",
+            backgroundColor: "red",
+            color: "white",
+          }}
+          className="btn"
+        >
+          Delete Vehicle
         </button>
       </form>
     </div>
