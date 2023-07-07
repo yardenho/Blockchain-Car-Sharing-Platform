@@ -1,0 +1,1 @@
+geth --nousb --datadir node8/ --syncmode full --port 30311 --networkid 4964 --miner.gasprice 0  --http --http.corsdomain '*' --http.port 8545 --http.vhosts '*' --nodiscover --miner.etherbase 0x4308Eb32bF4783763Cbe609d7e6d8f4e127c90CC  --allow-insecure-unlock --unlock 0x4308Eb32bF4783763Cbe609d7e6d8f4e127c90CC --password node8/password.txt --mine
