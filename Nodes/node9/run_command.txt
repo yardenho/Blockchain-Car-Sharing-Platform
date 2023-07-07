@@ -1,0 +1,1 @@
+geth --nousb --datadir node9/ --syncmode full --port 30311 --networkid 4964 --miner.gasprice 0  --http --http.corsdomain '*' --http.port 8545 --http.vhosts '*' --nodiscover --miner.etherbase 0x029F99C4adfD6b70d595554E80837aBBA2Ba2bb8  --allow-insecure-unlock --unlock 0x029F99C4adfD6b70d595554E80837aBBA2Ba2bb8 --password node9/password.txt --mine

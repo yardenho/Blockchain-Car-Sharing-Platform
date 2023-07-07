@@ -1,0 +1,1 @@
+geth --nousb --datadir node7/ --syncmode full --port 30311 --networkid 4964 --miner.gasprice 0  --http --http.corsdomain '*' --http.port 8545 --http.vhosts '*' --nodiscover --miner.etherbase 0xD6b1256Ae6Ef65Eb972fBe41830d20e82fDb1745  --allow-insecure-unlock --unlock 0xD6b1256Ae6Ef65Eb972fBe41830d20e82fDb1745 --password node7/password.txt --mine
