@@ -141,7 +141,7 @@ class Navbar extends Component {
                             <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My vehicles documentations</a>
                             <a href="/UserRentals">My rentals</a>
-                            <a href="/AboutAs">About As & Terms</a>
+                            <a href="/AboutUs">About us & Terms</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>
@@ -154,7 +154,7 @@ class Navbar extends Component {
                         <div id="myDropdown" className="dropdown-content">
                             <a href="/GarageMainPage">Main page</a>
                             <a href="/CompanyProfile">My Profile</a>
-                            <a href="/AboutAs">About As & Terms</a>
+                            <a href="/AboutUs">About us & Terms</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>
@@ -169,7 +169,7 @@ class Navbar extends Component {
                             <a href="/CompanyProfile">My Profile</a>
                             <a href="/VehiclesRentals">My vehicles' rentals</a>
                             <a href="/DocsList">My cars documentations</a>
-                            <a href="/AboutAs">About As & Terms</a>
+                            <a href="/AboutUs">About us & Terms</a>
                             <a href="/">Log out</a>
                         </div>
                     </div>

@@ -169,9 +169,17 @@ class Login extends Component {
                         Login
                     </button>
                 </form>
+                <button
+                    className="btn btn-primary"
+                    style={{ marginTop: 5, marginRight: "6px" }}
+                >
+                    <a href="/Register" style={{ color: "white" }}>
+                        Register as individual
+                    </a>
+                </button>
                 <button className="btn btn-primary" style={{ marginTop: 5 }}>
-                    <a href="/" style={{ color: "white" }}>
-                        Back to register page
+                    <a href="/CompanyRegistration" style={{ color: "white" }}>
+                        Register as company
                     </a>
                 </button>
                 {this.state.error !== "" && (

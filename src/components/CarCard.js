@@ -37,9 +37,9 @@ const CarCard = (props) => {
                         to={pathFlag}
                         style={{ textDecoration: "none", color: "black" }}
                         state={{
-                            vehicle: data,
-                            price: data.vehiclePricePerDay.toString(),
-                            numberOfSeats: data.numOfSeats.toString(),
+                            vehicle: props.data,
+                            price: props.data.vehiclePricePerDay.toString(),
+                            numberOfSeats: props.data.numOfSeats.toString(),
                         }}
                     >
                         <div id="image_field" className="image">
@@ -55,7 +55,7 @@ const CarCard = (props) => {
                             className="d-lg-flex justify-content-lg-center product-name"
                             style={{ color: "var(--bs-gray-800)" }}
                         >
-                            Vehicle Type:{data.vehicleType}
+                            Vehicle Type:{props.data.vehicleType}
                         </div>
 
                         <div
@@ -63,14 +63,15 @@ const CarCard = (props) => {
                             className="d-lg-flex justify-content-lg-center product-sku"
                         >
                             <span>
-                                Number of seats:{data.numOfSeats.toString()}
+                                Number of seats:
+                                {props.data.numOfSeats.toString()}
                             </span>
                         </div>
                         <div
                             id="product_gearboxType"
                             className="d-lg-flex justify-content-lg-center product-sku"
                         >
-                            <span>Gear box type: {data.gearboxType}</span>
+                            <span>Gear box type: {props.data.gearboxType}</span>
                         </div>
 
                         <div className="text-center d-lg-flex justify-content-lg-center about">
@@ -84,7 +85,7 @@ const CarCard = (props) => {
                                     >
                                         Vehicle price per day:{" "}
                                         {window.web3.utils.fromWei(
-                                            data.vehiclePricePerDay.toString(),
+                                            props.data.vehiclePricePerDay.toString(),
                                             "Ether"
                                         )}{" "}
                                         Eth
